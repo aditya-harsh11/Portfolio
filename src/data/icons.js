@@ -1,7 +1,16 @@
 // Desktop icons + start menu items.
-// Each entry: { id, label, emoji, component, title, width, height, singleton, link? }
 
 export const desktopIcons = [
+  {
+    id: 'computer',
+    label: 'My Computer',
+    emoji: '🖥️',
+    component: 'Explorer',
+    title: 'My Computer — Explorer',
+    width: 720,
+    height: 460,
+    singleton: true,
+  },
   {
     id: 'about',
     label: 'About Me',
@@ -9,7 +18,7 @@ export const desktopIcons = [
     component: 'About',
     title: 'About Me',
     width: 620,
-    height: 480,
+    height: 520,
     singleton: true,
   },
   {
@@ -35,7 +44,7 @@ export const desktopIcons = [
   {
     id: 'terminal',
     label: 'Terminal',
-    emoji: '🖥️',
+    emoji: '🖳',
     component: 'Terminal',
     title: 'Terminal — cmd.exe',
     width: 720,
@@ -53,25 +62,49 @@ export const desktopIcons = [
     singleton: true,
   },
   {
+    id: 'recycle',
+    label: 'Recycle Bin',
+    emoji: '🗑',
+    component: 'RecycleBin',
+    title: 'Recycle Bin',
+    width: 520,
+    height: 380,
+    singleton: true,
+  },
+  {
+    id: 'settings',
+    label: 'Settings',
+    emoji: '🛠',
+    component: 'Settings',
+    title: 'Display Properties',
+    width: 480,
+    height: 380,
+    singleton: true,
+  },
+  {
     id: 'github',
     label: 'GitHub',
     emoji: '🐱',
-    link: 'https://github.com/yourhandle', // TODO
+    link: 'https://github.com/aditya-harsh11',
   },
   {
     id: 'linkedin',
     label: 'LinkedIn',
     emoji: '💼',
-    link: 'https://linkedin.com/in/yourhandle', // TODO
+    link: 'https://linkedin.com/in/aditya-harshavardhan11',
   },
 ];
 
 export const startMenuItems = [
   { id: 'about', label: 'About Me', emoji: '👤' },
   { id: 'projects', label: 'Projects', emoji: '📁' },
-  { id: 'terminal', label: 'Terminal', emoji: '🖥️' },
+  { id: 'computer', label: 'My Computer', emoji: '🖥️' },
+  { id: 'terminal', label: 'Terminal', emoji: '🖳' },
   { id: 'contact', label: 'Contact', emoji: '✉️' },
   { id: 'snake', label: 'Snake', emoji: '🐍' },
+  { separator: true },
+  { id: 'settings', label: 'Settings', emoji: '🛠' },
+  { id: 'recycle', label: 'Recycle Bin', emoji: '🗑' },
   { separator: true },
   { id: 'github', label: 'GitHub', emoji: '🐱' },
   { id: 'linkedin', label: 'LinkedIn', emoji: '💼' },

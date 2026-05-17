@@ -1,0 +1,23 @@
+.matrix-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 99997;
+}
+
+.matrix-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.matrix-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  color: #0f0;
+  font-family: monospace;
+  font-size: 11px;
+  opacity: 0.7;
+}

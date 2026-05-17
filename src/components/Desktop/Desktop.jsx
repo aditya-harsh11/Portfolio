@@ -57,9 +57,11 @@ export function Desktop() {
     });
   };
 
-  const bgStyle = wallpaper
-    ? { backgroundImage: `url(${wallpaper})` }
-    : { backgroundColor: '#008080' };
+  const bgStyle = !wallpaper
+    ? { backgroundColor: '#008080' }
+    : wallpaper.startsWith('color:')
+    ? { backgroundColor: wallpaper.slice('color:'.length) }
+    : { backgroundImage: `url(${wallpaper})` };
 
   return (
     <div className="desktop-root" style={bgStyle}>

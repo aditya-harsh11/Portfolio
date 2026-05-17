@@ -39,6 +39,10 @@ export const useDesktopStore = create((set, get) => ({
   wallpaper: loadJSON('wallpaper', DEFAULT_WALLPAPER),
   recycleBin: loadJSON('recycleBin', []),
   soundEnabled: loadJSON('soundEnabled', true),
+  soundVolume: loadJSON('soundVolume', 0.4),
+  bsodActive: false,
+  matrixActive: false,
+  confettiActive: false,
 
   openWindow: (spec) => {
     const { openWindows, zCounter } = get();
@@ -156,8 +160,23 @@ export const useDesktopStore = create((set, get) => ({
     set({ soundEnabled: enabled });
   },
 
+  setSoundVolume: (volume) => {
+    const v = Math.max(0, Math.min(1, volume));
+    saveJSON('soundVolume', v);
+    set({ soundVolume: v });
+  },
+
   emptyBin: () => {
     saveJSON('recycleBin', []);
     set({ recycleBin: [] });
   },
+
+  triggerBSOD: () => set({ bsodActive: true }),
+  dismissBSOD: () => set({ bsodActive: false }),
+
+  triggerMatrix: () => set({ matrixActive: true }),
+  dismissMatrix: () => set({ matrixActive: false }),
+
+  triggerConfetti: () => set({ confettiActive: true }),
+  dismissConfetti: () => set({ confettiActive: false }),
 }));

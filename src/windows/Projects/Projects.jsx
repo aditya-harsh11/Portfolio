@@ -20,6 +20,7 @@ export function Projects() {
             >
               {p.title}
             </a>
+            {p.tagline ? <div className="project-tagline">{p.tagline}</div> : null}
             <p className="project-blurb">{p.blurb}</p>
             <ul className="project-stack">
               {p.stack.map((s) => (

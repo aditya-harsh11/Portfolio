@@ -1,4 +1,4 @@
-import { profile, contact } from '../../data/content';
+import { profile, contact, education, experience } from '../../data/content';
 import './About.css';
 
 export function About() {
@@ -30,6 +30,46 @@ export function About() {
       </section>
 
       <section className="about-section">
+        <h2 className="about-h2">Education</h2>
+        {education.map((ed, i) => (
+          <div key={i} className="about-edu">
+            <div className="about-row">
+              <strong>{ed.school}</strong>
+              <span className="muted">{ed.dates}</span>
+            </div>
+            <div className="about-row">
+              <em>{ed.degree}</em>
+              <span className="muted">GPA: {ed.gpa}</span>
+            </div>
+            <p className="about-p">
+              <strong>Coursework:</strong> {ed.coursework.join(' · ')}
+            </p>
+          </div>
+        ))}
+      </section>
+
+      <section className="about-section">
+        <h2 className="about-h2">Experience</h2>
+        {experience.map((e, i) => (
+          <div key={i} className="about-exp">
+            <div className="about-row">
+              <strong>{e.title}</strong>
+              <span className="muted">{e.dates}</span>
+            </div>
+            <div className="about-row">
+              <em>{e.org}</em>
+              <span className="muted">{e.location}</span>
+            </div>
+            <ul className="about-bullets">
+              {e.bullets.map((b, j) => (
+                <li key={j}>{b}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+
+      <section className="about-section">
         <h2 className="about-h2">Awards</h2>
         <ul className="award-list">
           {profile.awards.map((a, i) => (
@@ -43,8 +83,9 @@ export function About() {
         <p className="about-p">{profile.tagline}</p>
         <ul className="contact-mini">
           <li>📧 <a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-          <li>🐱 <a href={contact.github} target="_blank" rel="noreferrer">{contact.github}</a></li>
-          <li>💼 <a href={contact.linkedin} target="_blank" rel="noreferrer">{contact.linkedin}</a></li>
+          <li>📞 {contact.phone}</li>
+          <li>🐱 <a href={contact.github} target="_blank" rel="noreferrer">github.com/aditya-harsh11</a></li>
+          <li>💼 <a href={contact.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/aditya-harshavardhan11</a></li>
         </ul>
       </section>
     </div>

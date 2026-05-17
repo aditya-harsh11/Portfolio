@@ -1,5 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { profile, projects, skills, contact } from '../../data/content';
+import {
+  FS,
+  ROOT_PATH,
+  resolveNode,
+  parentPath,
+  joinChild,
+  buildTree,
+  splitPath,
+} from '../../data/fileSystem';
+import { useDesktopStore } from '../../store/useDesktopStore';
 import './Terminal.css';
 
 const THEMES = {
@@ -18,7 +28,7 @@ const BANNER = String.raw`
  / ___ |/ /_/ / // /_/ / / ___ / ___ |/ /|  // _, _/
 /_/  |_|/_____/\___//_/ /_/  |_/_/  |_/_/ |_//_/ |_|
 
-  type 'help' for commands · 'theme amber' to change colors
+  type 'help' for commands · 'tree' for file system · 'matrix' to wake up
 `;
 
 const BOOT = [
@@ -26,6 +36,53 @@ const BOOT = [
   '(c) 2026 Aditya Harshavardhan. All rights reserved.',
   '',
 ];
+
+const FORTUNES = [
+  'The best code is the code you don\'t have to write.',
+  'A 4.0 GPA is not a personality. (But it does help.)',
+  'Latency is the silent killer of UX.',
+  'Real-time means real-time. Not "after the GC pauses."',
+  'Ship it, then iterate. Or iterate forever and never ship.',
+  'Edge inference > round trip to a GPU farm — when you can swing it.',
+];
+
+function (msg) {
+  const top = ' ' + '_'.repeat(msg.length + 2);
+  const bottom = ' ' + '-'.repeat(msg.length + 2);
+  return [
+    top,
+    `< ${msg} >`,
+    bottom,
+    '        \\   ^__^',
+    '         \\  (oo)\\_______',
+    '            (__)\\       )\\/\\',
+    '                ||----w |',
+    '                ||     ||',
+  ];
+}
+
+function resolveRelative(cwd, target) {
+  if (!target) return cwd;
+  // Absolute path?
+  if (/^[A-Za-z]:/.test(target)) return target;
+  if (target.startsWith('\\') || target.startsWith('/')) {
+    return 'C:' + target.replace(/\//g, '\\');
+  }
+  // Relative
+  const parts = splitPath(cwd);
+  target
+    .replace(/\//g, '\\')
+    .split('\\')
+    .filter(Boolean)
+    .forEach((seg) => {
+      if (seg === '..') {
+        if (parts.length > 1) parts.pop();
+      } else if (seg !== '.') {
+        parts.push(seg);
+      }
+    });
+  return parts[0] + (parts.length > 1 ? '\\' + parts.slice(1).join('\\') : '\\');
+}
 
 export function Terminal() {
   const [lines, setLines] = useState([...BOOT, BANNER]);
@@ -36,6 +93,9 @@ export function Terminal() {
   const [cwd, setCwd] = useState('C:\\PORTFOLIO');
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
+
+  const triggerBSOD = useDesktopStore((s) => s.triggerBSOD);
+  const triggerMatrix = useDesktopStore((s) => s.triggerMatrix);
 
   const theme = THEMES[themeName];
 
@@ -49,15 +109,20 @@ export function Terminal() {
     inputRef.current?.focus();
   }, []);
 
-  const print = (...rows) => {
-    setLines((prev) => [...prev, ...rows.flat()]);
+  const print = (...rows) => setLines((prev) => [...prev, ...rows.flat()]);
+
+  const printAnimated = async (rows, delayMs = 40) => {
+    for (const r of rows) {
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+      setLines((prev) => [...prev, r]);
+    }
   };
 
-  const runCommand = (raw) => {
+  const runCommand = async (raw) => {
     const trimmed = raw.trim();
     print(`${cwd}> ${trimmed}`);
     if (!trimmed) return;
-
     const [cmd, ...args] = trimmed.split(/\s+/);
     const c = cmd.toLowerCase();
 
@@ -67,18 +132,26 @@ export function Terminal() {
         print([
           'Available commands:',
           '  help, ?              show this list',
-          '  whoami               show profile summary',
-          '  about                show bio',
+          '  whoami               profile summary',
+          '  about                bio',
           '  projects             list projects',
           '  skills               list skills by category',
           '  contact              contact info',
-          '  ls, dir              list files in cwd',
-          '  cat <file>           print file',
+          '  ls, dir [path]       list directory',
+          '  cd <path>            change directory (.. for parent)',
+          '  cat, type <file>     print file',
+          '  tree                 directory tree from cwd',
+          '  pwd                  print working directory',
           '  clear, cls           clear screen',
           '  theme <name>         green, amber, blue, white, red, purple',
-          '  date                 print current date/time',
+          '  date                 current date/time',
           '  echo <text>          print text',
-          '  neofetch             fancy system info',
+          '  neofetch             system info',
+          '  banner               show banner',
+          '  fortune              random quip',
+          '   <text>        a cow says something',
+          '  matrix               enter the matrix',
+          '  bsod                 simulate windows crash',
           '  exit                 print exit message',
           '',
         ]);
@@ -86,9 +159,9 @@ export function Terminal() {
 
       case 'whoami':
         print([
-          `${profile.name}`,
-          `${profile.role}`,
-          `${profile.school}`,
+          profile.name,
+          profile.role,
+          profile.school,
           `tagline: ${profile.tagline}`,
           '',
         ]);
@@ -101,7 +174,7 @@ export function Terminal() {
       case 'projects':
         print(
           projects.flatMap((p) => [
-            `> ${p.title}`,
+            `> ${p.title}${p.tagline ? `   [${p.tagline}]` : ''}`,
             `  ${p.blurb}`,
             `  stack: ${p.stack.join(', ')}`,
             `  link:  ${p.link}`,
@@ -123,6 +196,7 @@ export function Terminal() {
       case 'contact':
         print([
           `email:    ${contact.email}`,
+          `phone:    ${contact.phone}`,
           `github:   ${contact.github}`,
           `linkedin: ${contact.linkedin}`,
           `location: ${contact.location}`,
@@ -130,44 +204,81 @@ export function Terminal() {
         ]);
         break;
 
-      case 'ls':
-      case 'dir':
-        print([
-          ' Directory of ' + cwd,
-          '',
-          ' <DIR>   PROJECTS',
-          ' <DIR>   AWARDS',
-          '         README.txt',
-          '         resume.pdf',
-          '         contact.txt',
-          '',
-        ]);
+      case 'pwd':
+        print([cwd, '']);
         break;
 
-      case 'cat':
-      case 'type': {
-        const file = args[0]?.toLowerCase();
-        if (!file) return print(['Usage: cat <file>', '']);
-        if (file === 'readme.txt') {
-          print([
-            `Hi, I'm ${profile.name}.`,
-            profile.tagline,
-            '',
-            'Type "about" for bio or "projects" to see what I\'ve built.',
-            '',
-          ]);
-        } else if (file === 'contact.txt') {
-          print([
-            `email:    ${contact.email}`,
-            `github:   ${contact.github}`,
-            `linkedin: ${contact.linkedin}`,
-            '',
-          ]);
+      case 'ls':
+      case 'dir': {
+        const target = args[0] ? resolveRelative(cwd, args[0]) : cwd;
+        const node = resolveNode(target);
+        if (!node) {
+          print([`${args[0] ?? target}: not found`, '']);
+          break;
+        }
+        if (node.type !== 'dir') {
+          print([node.name, '']);
+          break;
+        }
+        const rows = [` Directory of ${target}`, ''];
+        Object.values(node.children).forEach((child) => {
+          if (child.type === 'dir') rows.push(` <DIR>   ${child.name}`);
+          else rows.push(`         ${child.name}`);
+        });
+        rows.push('');
+        print(rows);
+        break;
+      }
+
+      case 'cd': {
+        if (!args[0]) {
+          print([cwd, '']);
+          break;
+        }
+        if (args[0] === '..') {
+          setCwd(parentPath(cwd));
+          print(['']);
+          break;
+        }
+        if (args[0] === '\\' || args[0] === '/') {
+          setCwd(ROOT_PATH.replace(/\\$/, ''));
+          print(['']);
+          break;
+        }
+        const target = resolveRelative(cwd, args[0]);
+        const node = resolveNode(target);
+        if (!node) {
+          print([`The system cannot find the path specified: ${args[0]}`, '']);
+        } else if (node.type !== 'dir') {
+          print([`Not a directory: ${args[0]}`, '']);
         } else {
-          print([`cat: ${file}: file not found`, '']);
+          setCwd(target.replace(/\\$/, '') || ROOT_PATH);
+          print(['']);
         }
         break;
       }
+
+      case 'cat':
+      case 'type': {
+        if (!args[0]) {
+          print(['Usage: cat <file>', '']);
+          break;
+        }
+        const target = resolveRelative(cwd, args[0]);
+        const node = resolveNode(target);
+        if (!node) {
+          print([`${args[0]}: file not found`, '']);
+        } else if (node.type !== 'file') {
+          print([`${args[0]}: is a directory`, '']);
+        } else {
+          print([...node.content.split('\n'), '']);
+        }
+        break;
+      }
+
+      case 'tree':
+        print([...buildTree(cwd), '']);
+        break;
 
       case 'clear':
       case 'cls':
@@ -195,10 +306,22 @@ export function Terminal() {
         print([args.join(' '), '']);
         break;
 
+      case 'banner':
+        print([BANNER]);
+        break;
+
+      case 'fortune':
+        print([FORTUNES[Math.floor(Math.random() * FORTUNES.length)], '']);
+        break;
+
+      case '':
+        print([...(args.join(' ') || 'moo.'), '']);
+        break;
+
       case 'neofetch':
         print([
           '       .-""-.',
-          `      / .--. \\     ${profile.name}@AdityaOS`,
+          `      / .--. \\     ${profile.handle}@AdityaOS`,
           `     | |    | |    -----------`,
           '     | |.-""-.|    OS: AdityaOS 1.0',
           `     |//      \\|    Host: Browser`,
@@ -209,18 +332,42 @@ export function Terminal() {
         ]);
         break;
 
-      case 'cd':
-        // accept any path silently — no real fs yet
-        if (!args[0]) print([cwd, '']);
-        else if (args[0] === '..') {
-          const parts = cwd.split('\\');
-          if (parts.length > 1) parts.pop();
-          setCwd(parts.join('\\') || 'C:');
-          print(['']);
-        } else {
-          setCwd(`${cwd}\\${args[0].toUpperCase()}`);
-          print(['']);
-        }
+      case 'matrix':
+        print(['Wake up, Neo…', '']);
+        triggerMatrix();
+        break;
+
+      case 'bsod':
+        print(['Simulating critical system error…', '']);
+        await new Promise((r) => setTimeout(r, 600));
+        triggerBSOD();
+        break;
+
+      case 'hack':
+        print(['INITIATING HACK SEQUENCE…', '']);
+        // eslint-disable-next-line no-await-in-loop
+        await printAnimated(
+          [
+            '> Bypassing firewall…',
+            '> Cracking passwords…  done.',
+            '> Pivoting through router…',
+            '> Reading mainframe…',
+            '> Locating target node…',
+            '> Decrypting Aditya.zip…',
+            '> ACCESS GRANTED.',
+            '(Disclaimer: this was theater.)',
+            '',
+          ],
+          200
+        );
+        break;
+
+      case 'sudo':
+        print(['Nice try. This isn\'t Linux.', '']);
+        break;
+
+      case 'rm':
+        print([`rm: cannot remove '${args.join(' ')}': everything is sacred`, '']);
         break;
 
       case 'exit':
@@ -229,6 +376,29 @@ export function Terminal() {
 
       default:
         print([`'${cmd}' is not recognized. Type 'help'.`, '']);
+    }
+  };
+
+  const tabComplete = () => {
+    const m = input.match(/^(\S+\s+)(\S*)$/);
+    if (!m) return;
+    const prefix = m[1];
+    const partial = m[2];
+    const sepIdx = Math.max(partial.lastIndexOf('\\'), partial.lastIndexOf('/'));
+    const baseRel = sepIdx >= 0 ? partial.slice(0, sepIdx + 1) : '';
+    const stem = sepIdx >= 0 ? partial.slice(sepIdx + 1) : partial;
+    const dirPath = baseRel ? resolveRelative(cwd, baseRel) : cwd;
+    const node = resolveNode(dirPath);
+    if (!node || node.type !== 'dir') return;
+    const candidates = Object.values(node.children).filter((c) =>
+      c.name.toLowerCase().startsWith(stem.toLowerCase())
+    );
+    if (candidates.length === 1) {
+      const c = candidates[0];
+      const suffix = c.type === 'dir' ? '\\' : '';
+      setInput(`${prefix}${baseRel}${c.name}${suffix}`);
+    } else if (candidates.length > 1) {
+      print([candidates.map((c) => c.name).join('  '), '']);
     }
   };
 
@@ -256,6 +426,12 @@ export function Terminal() {
         setHistIdx(nextIdx);
         setInput(history[nextIdx]);
       }
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      tabComplete();
+    } else if (e.key === 'l' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      setLines([]);
     }
   };
 
@@ -287,3 +463,6 @@ export function Terminal() {
     </div>
   );
 }
+
+// keep FS import alive even if unused in some branches
+void FS;

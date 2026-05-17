@@ -1,0 +1,133 @@
+.explorer-window {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #c0c0c0;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  font-size: 12px;
+}
+
+.explorer-toolbar {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 6px;
+  border-bottom: 1px solid #808080;
+  box-shadow: 0 1px 0 #ffffff;
+}
+
+.explorer-toolbar .win95-button {
+  height: 22px;
+  padding: 1px 8px;
+}
+
+.explorer-address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+}
+
+.explorer-address input {
+  flex: 1 1 auto;
+  font-size: 12px;
+  padding: 2px 5px;
+  background: #ffffff;
+  color: #000;
+}
+
+.explorer-body {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+}
+
+.explorer-tree {
+  width: 200px;
+  background: #ffffff;
+  padding: 4px;
+  overflow: auto;
+}
+
+.tree-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tree-node {
+  background: none;
+  border: none;
+  padding: 1px 4px;
+  font: inherit;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  color: #000;
+}
+
+.tree-node.active {
+  background: #000080;
+  color: #fff;
+}
+
+.tree-node:hover {
+  background: #e0e0e0;
+}
+
+.tree-node.active:hover {
+  background: #000080;
+}
+
+.explorer-grid {
+  flex: 1 1 auto;
+  background: #ffffff;
+  padding: 6px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+  gap: 6px;
+  align-content: start;
+  overflow: auto;
+}
+
+.explorer-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #404040;
+  padding: 20px 0;
+}
+
+.explorer-item {
+  background: none;
+  border: 1px dashed transparent;
+  padding: 4px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  color: #000;
+}
+
+.explorer-item:hover,
+.explorer-item:focus {
+  border-color: #000080;
+  background: #cce0ff;
+  outline: none;
+}
+
+.explorer-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.explorer-label {
+  text-align: center;
+  word-break: break-word;
+  max-width: 80px;
+  line-height: 1.2;
+}
