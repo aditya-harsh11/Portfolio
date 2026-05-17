@@ -6,15 +6,18 @@ import './Desktop.css';
 
 const GRID_X = 16;
 const GRID_Y = 16;
-const COL = 88;
-const ROW = 96;
+const COL_W = 90;
+const ROW_H = 92;
+const PER_COL = 5;
 
 function defaultLayout() {
   const out = {};
   desktopIcons.forEach((icon, i) => {
+    const col = Math.floor(i / PER_COL);
+    const row = i % PER_COL;
     out[icon.id] = {
-      x: GRID_X,
-      y: GRID_Y + i * ROW,
+      x: GRID_X + col * COL_W,
+      y: GRID_Y + row * ROW_H,
     };
   });
   return out;
@@ -23,9 +26,12 @@ function defaultLayout() {
 export function Desktop() {
   const wallpaper = useDesktopStore((s) => s.wallpaper);
   const openWindow = useDesktopStore((s) => s.openWindow);
+  const recycleBinCount = useDesktopStore((s) => s.recycleBin.length);
+  // v2: 2-column layout. If older saved layout exists, discard so the new
+  // arrangement shows up correctly.
   const [positions, setPositions] = useState(() => {
     try {
-      const raw = localStorage.getItem('iconPositions');
+      const raw = localStorage.getItem('iconPositions.v2');
       return raw ? JSON.parse(raw) : defaultLayout();
     } catch {
       return defaultLayout();
@@ -36,7 +42,7 @@ export function Desktop() {
     const next = { ...positions, [id]: pos };
     setPositions(next);
     try {
-      localStorage.setItem('iconPositions', JSON.stringify(next));
+      localStorage.setItem('iconPositions.v2', JSON.stringify(next));
     } catch {
       /* ignore */
     }
@@ -66,15 +72,28 @@ export function Desktop() {
   return (
     <div className="desktop-root" style={bgStyle}>
       <div className="desktop-icons">
-        {desktopIcons.map((icon) => (
-          <DesktopIcon
-            key={icon.id}
-            icon={icon}
-            position={positions[icon.id] ?? { x: GRID_X, y: GRID_Y }}
-            onDrop={(pos) => updatePos(icon.id, pos)}
-            onOpen={() => launchIcon(icon)}
-          />
-        ))}
+        {desktopIcons.map((icon) => {
+          // Recycle bin icon switches between empty and full
+          const display =
+            icon.id === 'recycle'
+              ? {
+                  ...icon,
+                  emoji: recycleBinCount > 0 ? '🗑️📄' : '🗑',
+                  label: recycleBinCount > 0
+                    ? `Recycle Bin (${recycleBinCount})`
+                    : 'Recycle Bin',
+                }
+              : icon;
+          return (
+            <DesktopIcon
+              key={icon.id}
+              icon={display}
+              position={positions[icon.id] ?? { x: GRID_X, y: GRID_Y }}
+              onDrop={(pos) => updatePos(icon.id, pos)}
+              onOpen={() => launchIcon(icon)}
+            />
+          );
+        })}
       </div>
     </div>
   );

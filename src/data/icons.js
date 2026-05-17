@@ -44,7 +44,7 @@ export const desktopIcons = [
   {
     id: 'terminal',
     label: 'Terminal',
-    emoji: '🖳',
+    emoji: '>_',
     component: 'Terminal',
     title: 'Terminal — cmd.exe',
     width: 720,
@@ -109,7 +109,7 @@ export const startMenuItems = [
   { id: 'about', label: 'About Me', emoji: '👤' },
   { id: 'projects', label: 'Projects', emoji: '📁' },
   { id: 'computer', label: 'My Computer', emoji: '🖥️' },
-  { id: 'terminal', label: 'Terminal', emoji: '🖳' },
+  { id: 'terminal', label: 'Terminal', emoji: '>_' },
   { id: 'contact', label: 'Contact', emoji: '✉️' },
   { id: 'games', label: 'Games', emoji: '🎮' },
   { id: 'music', label: 'Music', emoji: '🎵' },

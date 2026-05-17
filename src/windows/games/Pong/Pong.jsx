@@ -5,15 +5,18 @@ const W = 520;
 const H = 360;
 const PADDLE_W = 8;
 const PADDLE_H = 64;
-const PADDLE_SPEED = 6;
+const PADDLE_SPEED = 5;
 const BALL_R = 6;
+const BALL_VX = 2.5;
+const BALL_VY = 2;
+const AI_SPEED = 2.6;
 
 export function Pong() {
   const canvasRef = useRef(null);
   const stateRef = useRef({
     playerY: H / 2 - PADDLE_H / 2,
     aiY: H / 2 - PADDLE_H / 2,
-    ball: { x: W / 2, y: H / 2, vx: 4, vy: 3 },
+    ball: { x: W / 2, y: H / 2, vx: BALL_VX, vy: BALL_VY },
     keys: { up: false, down: false },
     paused: false,
   });
@@ -23,8 +26,8 @@ export function Pong() {
     const s = stateRef.current;
     s.ball.x = W / 2;
     s.ball.y = H / 2;
-    s.ball.vx = (winner === 'player' ? -1 : 1) * 4;
-    s.ball.vy = (Math.random() - 0.5) * 6;
+    s.ball.vx = (winner === 'player' ? -1 : 1) * BALL_VX;
+    s.ball.vy = (Math.random() - 0.5) * (BALL_VY * 1.5);
   };
 
   useEffect(() => {
@@ -57,8 +60,8 @@ export function Pong() {
         if (s.keys.down) s.playerY = Math.min(H - PADDLE_H, s.playerY + PADDLE_SPEED);
         // ai movement: chase ball y
         const center = s.aiY + PADDLE_H / 2;
-        if (s.ball.y < center - 10) s.aiY -= 4;
-        else if (s.ball.y > center + 10) s.aiY += 4;
+        if (s.ball.y < center - 10) s.aiY -= AI_SPEED;
+        else if (s.ball.y > center + 10) s.aiY += AI_SPEED;
         s.aiY = Math.max(0, Math.min(H - PADDLE_H, s.aiY));
         // ball
         s.ball.x += s.ball.vx;
@@ -79,7 +82,7 @@ export function Pong() {
           s.ball.y <= s.playerY + PADDLE_H
         ) {
           s.ball.x = PADDLE_W + BALL_R;
-          s.ball.vx = -s.ball.vx * 1.04;
+          s.ball.vx = -s.ball.vx * 1.025;
           s.ball.vy += ((s.ball.y - (s.playerY + PADDLE_H / 2)) / PADDLE_H) * 4;
         }
         // paddle bounce — AI (right)
@@ -89,7 +92,7 @@ export function Pong() {
           s.ball.y <= s.aiY + PADDLE_H
         ) {
           s.ball.x = W - PADDLE_W - BALL_R;
-          s.ball.vx = -s.ball.vx * 1.04;
+          s.ball.vx = -s.ball.vx * 1.025;
           s.ball.vy += ((s.ball.y - (s.aiY + PADDLE_H / 2)) / PADDLE_H) * 4;
         }
         // scoring

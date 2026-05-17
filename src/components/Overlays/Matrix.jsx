@@ -10,9 +10,9 @@ export function Matrix() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active) return undefined;
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) return undefined;
     const ctx = canvas.getContext('2d');
     const fontSize = 16;
     let cols = 0;
@@ -25,6 +25,10 @@ export function Matrix() {
       drops = new Array(cols).fill(0).map(() => Math.random() * -canvas.height);
     };
     resize();
+    // Fill initial black background so we don't see desktop bleed through.
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     window.addEventListener('resize', resize);
 
     let raf;
@@ -51,14 +55,21 @@ export function Matrix() {
     };
     raf = requestAnimationFrame(tick);
 
+    // Auto exit after 10s
     const auto = setTimeout(dismiss, 10000);
+
+    // Grace period before listening for dismiss — otherwise the keypress/click
+    // that triggered the matrix call closes it immediately.
     const onDismiss = () => dismiss();
-    document.addEventListener('keydown', onDismiss);
-    document.addEventListener('mousedown', onDismiss);
+    const armId = setTimeout(() => {
+      document.addEventListener('keydown', onDismiss);
+      document.addEventListener('mousedown', onDismiss);
+    }, 400);
 
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(auto);
+      clearTimeout(armId);
       window.removeEventListener('resize', resize);
       document.removeEventListener('keydown', onDismiss);
       document.removeEventListener('mousedown', onDismiss);

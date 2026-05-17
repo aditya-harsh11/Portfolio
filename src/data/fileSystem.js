@@ -149,7 +149,15 @@ export const FS = dir('C:', {
     ),
   }),
   GAMES: dir('GAMES', {
-    'snake.exe': file('snake.exe', '<binary> — double-click to play', 'exe'),
+    'snake.exe': file('snake.exe', '<binary> — open Games to play', 'exe'),
+    'minesweeper.exe': file('minesweeper.exe', '<binary> — open Games to play', 'exe'),
+    'tetris.exe': file('tetris.exe', '<binary> — open Games to play', 'exe'),
+    '2048.exe': file('2048.exe', '<binary> — open Games to play', 'exe'),
+    'pong.exe': file('pong.exe', '<binary> — open Games to play', 'exe'),
+    'breakout.exe': file('breakout.exe', '<binary> — open Games to play', 'exe'),
+    'memory.exe': file('memory.exe', '<binary> — open Games to play', 'exe'),
+    'gomoku.exe': file('gomoku.exe', '<binary> — open Games to play', 'exe'),
+    'lightsout.exe': file('lightsout.exe', '<binary> — open Games to play', 'exe'),
   }),
 });
 

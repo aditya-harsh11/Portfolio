@@ -6,7 +6,6 @@
   cursor: pointer;
   user-select: none;
   pointer-events: auto;
-  transition: transform 200ms ease;
 }
 
 .pet-glyph {
@@ -14,6 +13,7 @@
   line-height: 1;
   filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.4));
   animation: pet-bob 0.6s ease-in-out infinite alternate;
+  transform-origin: center;
 }
 
 @keyframes pet-bob {
@@ -21,19 +21,40 @@
   to { transform: translateY(-3px); }
 }
 
-.pet-reaction {
+.pet-bubble {
   position: absolute;
-  top: -16px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(-1);
-  font-weight: 700;
-  color: #ffeb3b;
-  text-shadow: 1px 1px 0 #000;
-  animation: pet-pop 0.6s ease;
+  left: 30px;
+  bottom: 48px;
+  width: 180px;
+  background: #ffffe1;
+  padding: 6px 8px;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  font-size: 12px;
+  color: #000;
+  z-index: 6;
+  animation: pet-bubble-pop 200ms ease;
 }
 
-@keyframes pet-pop {
-  0% { opacity: 0; transform: translate(-50%, 6px) scaleX(-1); }
-  30% { opacity: 1; transform: translate(-50%, -4px) scaleX(-1); }
-  100% { opacity: 0; transform: translate(-50%, -14px) scaleX(-1); }
+.pet-bubble::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  bottom: 6px;
+  border: 6px solid transparent;
+  border-right-color: #000;
+}
+
+.pet-bubble-text {
+  line-height: 1.35;
+}
+
+@keyframes pet-bubble-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

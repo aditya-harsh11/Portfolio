@@ -28,8 +28,10 @@ export function Notepad({ path }) {
         readOnly
         value={content}
       />
-      <div className="win95-statusbar">
-        <div className="win95-statusbar-cell">{currentPath}</div>
+      <div className="win95-statusbar notepad-statusbar">
+        <div className="win95-statusbar-cell notepad-path" title={currentPath}>
+          {currentPath}
+        </div>
         <div className="win95-statusbar-cell">Lines: {lines.length}</div>
         <div className="win95-statusbar-cell">Words: {words}</div>
         <div className="win95-statusbar-cell">Chars: {chars}</div>

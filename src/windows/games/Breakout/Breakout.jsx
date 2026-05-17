@@ -13,6 +13,9 @@ const BRICK_H = 18;
 const BRICK_PAD = 2;
 const COLORS = ['#ff3838', '#ff9933', '#ffd83d', '#33d978', '#3399ff'];
 
+const BALL_SPEED = 2.2;
+const PADDLE_SPEED = 5;
+
 function newBricks() {
   const out = [];
   for (let r = 0; r < BRICK_ROWS; r++) {
@@ -27,7 +30,7 @@ export function Breakout() {
   const canvasRef = useRef(null);
   const stateRef = useRef({
     paddleX: W / 2 - PADDLE_W / 2,
-    ball: { x: W / 2, y: H - 40, vx: 3, vy: -3 },
+    ball: { x: W / 2, y: H - 40, vx: BALL_SPEED, vy: -BALL_SPEED },
     bricks: newBricks(),
     lives: 3,
     over: false,
@@ -41,7 +44,7 @@ export function Breakout() {
   const reset = () => {
     stateRef.current = {
       paddleX: W / 2 - PADDLE_W / 2,
-      ball: { x: W / 2, y: H - 40, vx: 3, vy: -3 },
+      ball: { x: W / 2, y: H - 40, vx: BALL_SPEED, vy: -BALL_SPEED },
       bricks: newBricks(),
       lives: 3,
       over: false,
@@ -78,8 +81,8 @@ export function Breakout() {
     const loop = () => {
       const s = stateRef.current;
       if (!s.over && !s.won) {
-        if (s.keys.left) s.paddleX = Math.max(0, s.paddleX - 6);
-        if (s.keys.right) s.paddleX = Math.min(W - PADDLE_W, s.paddleX + 6);
+        if (s.keys.left) s.paddleX = Math.max(0, s.paddleX - PADDLE_SPEED);
+        if (s.keys.right) s.paddleX = Math.min(W - PADDLE_W, s.paddleX + PADDLE_SPEED);
         const b = s.ball;
         b.x += b.vx;
         b.y += b.vy;
@@ -93,7 +96,11 @@ export function Breakout() {
           b.vy > 0
         ) {
           b.vy = -b.vy;
-          b.vx += ((b.x - (s.paddleX + PADDLE_W / 2)) / PADDLE_W) * 2;
+          b.vx += ((b.x - (s.paddleX + PADDLE_W / 2)) / PADDLE_W) * 1.4;
+          // cap vx so it doesn't spiral out of control
+          if (Math.abs(b.vx) > BALL_SPEED * 1.6) {
+            b.vx = Math.sign(b.vx) * BALL_SPEED * 1.6;
+          }
         }
         if (b.y > H + BALL_R) {
           s.lives -= 1;
@@ -104,8 +111,8 @@ export function Breakout() {
           } else {
             b.x = W / 2;
             b.y = H - 40;
-            b.vx = 3 * (Math.random() < 0.5 ? -1 : 1);
-            b.vy = -3;
+            b.vx = BALL_SPEED * (Math.random() < 0.5 ? -1 : 1);
+            b.vy = -BALL_SPEED;
           }
         }
         // bricks

@@ -19,6 +19,23 @@
   filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
 }
 
+/* Make ">_" terminal glyph look like a console prompt */
+.desktop-icon .glyph.text-glyph {
+  display: inline-block;
+  font-family: 'Courier New', Consolas, monospace;
+  font-weight: 700;
+  background: #000;
+  color: #00ff66;
+  padding: 4px 8px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #c0c0c0;
+  border-bottom: 2px solid #c0c0c0;
+  filter: none;
+}
+
 .desktop-icon img {
   width: 36px;
   height: 36px;

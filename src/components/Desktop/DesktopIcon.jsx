@@ -90,7 +90,11 @@ export function DesktopIcon({ icon, position, onDrop, onOpen }) {
       role="button"
       aria-label={icon.label}
     >
-      <div className="glyph">{icon.emoji}</div>
+      <div
+        className={`glyph${/^[\x20-\x7E]+$/.test(icon.emoji) ? ' text-glyph' : ''}`}
+      >
+        {icon.emoji}
+      </div>
       <div className="label">{icon.label}</div>
     </div>
   );

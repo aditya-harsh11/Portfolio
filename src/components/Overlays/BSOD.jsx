@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDesktopStore } from '../../store/useDesktopStore';
 import './BSOD.css';
 
@@ -20,29 +20,45 @@ export function BSOD() {
     [active]
   );
 
+  // Track the timer in a ref so we don't blow it away every time `rebooting`
+  // changes — the older effect deps caused the auto-dismiss to never fire.
+  const timerRef = useRef(null);
+
   useEffect(() => {
     if (!active) {
       setRebooting(false);
-      return;
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+      return undefined;
     }
-    const onKey = () => start();
-    const onClick = () => start();
-    let timer;
+
     const start = () => {
-      if (rebooting) return;
+      if (timerRef.current) return;
       setRebooting(true);
-      timer = setTimeout(() => {
+      timerRef.current = setTimeout(() => {
+        timerRef.current = null;
         dismiss();
       }, 1500);
     };
-    document.addEventListener('keydown', onKey);
-    document.addEventListener('mousedown', onClick);
+
+    // Small grace period so the triggering keypress/click doesn't insta-reboot
+    const armId = setTimeout(() => {
+      document.addEventListener('keydown', start);
+      document.addEventListener('mousedown', start);
+    }, 250);
+
     return () => {
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('mousedown', onClick);
-      if (timer) clearTimeout(timer);
+      clearTimeout(armId);
+      document.removeEventListener('keydown', start);
+      document.removeEventListener('mousedown', start);
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
     };
-  }, [active, rebooting, dismiss]);
+  }, [active, dismiss]);
 
   if (!active) return null;
 

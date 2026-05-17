@@ -182,13 +182,14 @@ export function Snake() {
       s.snake = newSnake;
       if (ate) {
         s.food = randCell(newSnake);
-        s.score += 10;
+        s.score += 1;
         setScore(s.score);
         if (s.score > high) {
           setHigh(s.score);
           localStorage.setItem('snakeHigh', String(s.score));
         }
-        tickMs = Math.max(SPEED_FLOOR, BASE_SPEED - Math.floor(s.score / 40) * 8);
+        // speed up every 4 food eaten
+        tickMs = Math.max(SPEED_FLOOR, BASE_SPEED - Math.floor(s.score / 4) * 8);
       }
     };
 
