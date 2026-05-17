@@ -1,0 +1,35 @@
+.terminal-window {
+  width: 100%;
+  height: 100%;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.35;
+  padding: 6px 8px;
+  overflow: hidden;
+}
+
+.terminal-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.terminal-line {
+  min-height: 1.2em;
+}
+
+.terminal-prompt {
+  display: flex;
+  align-items: center;
+  white-space: pre;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+}

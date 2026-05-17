@@ -1,0 +1,143 @@
+.taskbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 2px 2px 2px 2px;
+  gap: 4px;
+  z-index: 10000;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  font-weight: 700;
+  min-width: 64px;
+}
+
+.start-flag {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.task-divider {
+  width: 1px;
+  height: 22px;
+  background: #808080;
+  box-shadow: 1px 0 0 #ffffff;
+  margin: 0 2px;
+}
+
+.taskbar-windows {
+  flex: 1 1 0;
+  display: flex;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.taskbar-window-btn {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  max-width: 180px;
+  text-align: left;
+  font-weight: 400;
+  padding: 1px 6px;
+  overflow: hidden;
+}
+
+.taskbar-window-btn .truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 140px;
+}
+
+.clock {
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  padding: 2px 8px;
+  font-size: 11px;
+  min-width: 72px;
+  text-align: center;
+}
+
+/* Start menu */
+.start-menu {
+  position: absolute;
+  left: 2px;
+  bottom: 32px;
+  width: 200px;
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  box-shadow: 2px 2px 0 0 #000;
+  display: flex;
+  z-index: 10001;
+  padding: 2px;
+}
+
+.start-menu-sidebar {
+  width: 24px;
+  background: linear-gradient(180deg, #808080 0%, #000080 100%);
+  color: #fff;
+  font-weight: 700;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px 2px;
+  letter-spacing: 2px;
+}
+
+.start-menu-items {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0;
+}
+
+.start-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  text-align: left;
+  color: #000;
+  font-family: inherit;
+}
+
+.start-menu-item:hover {
+  background: #000080;
+  color: #fff;
+}
+
+.start-menu-item .emoji {
+  font-size: 16px;
+  width: 18px;
+  text-align: center;
+}
+
+.start-menu-separator {
+  height: 1px;
+  background: #808080;
+  border-bottom: 1px solid #ffffff;
+  margin: 3px 4px;
+}
