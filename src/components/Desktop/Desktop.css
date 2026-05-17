@@ -1,0 +1,42 @@
+.desktop-icon {
+  position: absolute;
+  width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 2px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.desktop-icon .glyph {
+  font-size: 32px;
+  line-height: 1;
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
+}
+
+.desktop-icon img {
+  width: 36px;
+  height: 36px;
+  image-rendering: pixelated;
+}
+
+.desktop-icon .label {
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 1px 3px;
+  line-height: 1.2;
+  max-width: 72px;
+  word-wrap: break-word;
+}
+
+.desktop-icon.selected .label {
+  background: #000080;
+  color: #fff;
+  outline: 1px dotted #fff;
+}

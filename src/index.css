@@ -1,0 +1,55 @@
+@import './assets/fonts/fonts.css';
+@import './components/win95/win95.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'MS Sans Serif', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  color: #000;
+  background: #008080;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #000080;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: #c0c0c0;
+}
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+::-webkit-scrollbar-corner {
+  background: #c0c0c0;
+}
+
+button {
+  font-family: inherit;
+}

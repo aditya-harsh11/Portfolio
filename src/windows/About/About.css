@@ -1,0 +1,103 @@
+.about-window {
+  padding: 14px 16px;
+  background: #c0c0c0;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  font-size: 12px;
+  color: #000;
+}
+
+.about-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #808080;
+  box-shadow: 0 1px 0 #ffffff;
+  margin-bottom: 12px;
+}
+
+.about-avatar {
+  width: 60px;
+  height: 60px;
+  background: #000080;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+
+.about-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.about-role {
+  margin: 2px 0 0;
+  font-size: 12px;
+}
+
+.about-school {
+  margin: 0;
+  font-size: 11px;
+  color: #404040;
+}
+
+.about-section {
+  margin: 10px 0;
+}
+
+.about-h2 {
+  margin: 6px 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  border-bottom: 1px solid #808080;
+  padding-bottom: 2px;
+}
+
+.about-p {
+  margin: 4px 0;
+  line-height: 1.45;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 4px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  padding: 2px 6px;
+  font-size: 11px;
+}
+
+.award-list,
+.contact-mini {
+  list-style: none;
+  padding-left: 0;
+  margin: 4px 0;
+}
+
+.award-list li,
+.contact-mini li {
+  padding: 2px 0;
+}
+
+.contact-mini a {
+  color: #0000aa;
+  text-decoration: underline;
+}
