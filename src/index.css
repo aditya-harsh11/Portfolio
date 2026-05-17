@@ -53,3 +53,31 @@ body {
 button {
   font-family: inherit;
 }
+
+/* Keyboard focus rings (only when keyboard, not mouse) */
+:focus-visible {
+  outline: 2px dotted #000;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+.win95-button:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 1px solid #000080;
+  outline-offset: -1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

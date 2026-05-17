@@ -1,6 +1,8 @@
 # Aditya — Portfolio 95
 
-A Windows 95–themed portfolio site. Draggable windows, a fake terminal, click sounds, Snake.
+A Windows 95–themed portfolio site. Draggable windows, a working terminal with a
+fake file system, click sounds, 9 mini-games, a desktop pet, BSOD, and
+a Konami-code easter egg.
 
 ## Run
 
@@ -8,7 +10,20 @@ A Windows 95–themed portfolio site. Draggable windows, a fake terminal, click 
 npm install
 npm run dev      # http://localhost:5173
 npm run build    # production bundle into dist/
+npm run preview  # serve the production build locally
 ```
+
+## Deploy to Vercel
+
+```bash
+npm i -g vercel       # one-time
+vercel                # first deploy — preview URL
+vercel --prod         # promote to production
+```
+
+`vercel.json` is committed; Vercel auto-detects Vite and uses
+`npm run build` → `dist/`. SPA rewrites are configured so deep links
+resolve to `index.html`.
 
 ## Stack
 
@@ -21,27 +36,53 @@ npm run build    # production bundle into dist/
 
 | What | Path |
 | --- | --- |
-| Your content (bio, projects, skills, contact) | `src/data/content.js` |
+| Your content (bio, projects, skills, education, experience) | `src/data/content.js` |
 | Desktop icons + start menu items | `src/data/icons.js` |
+| Games catalog | `src/data/games.js` |
+| Fake file system (auto-generated from content.js) | `src/data/fileSystem.js` |
 | App shell | `src/App.jsx` |
-| Window store | `src/store/useDesktopStore.js` |
+| Window store (Zustand) | `src/store/useDesktopStore.js` |
 | Win95 visual primitives | `src/components/win95/win95.css` |
 | Window chrome (drag/resize/title bar) | `src/components/Window/` |
 | Desktop + icon drag | `src/components/Desktop/` |
-| Taskbar + Start menu + clock | `src/components/Taskbar/` |
-| Individual windows | `src/windows/<Name>/` |
-| Snake | `src/windows/games/Snake/` |
+| Taskbar + Start menu + clock + visitor counter | `src/components/Taskbar/` |
+| Overlay components (BSOD, Matrix, Confetti, Pet, Wizard) | `src/components/Overlays/` |
+| Mobile fallback (<768px) | `src/components/Mobile/` |
+| Standard windows (About, Projects, Contact, Terminal, Explorer, Notepad, Settings, Recycle Bin, Music) | `src/windows/<Name>/` |
+| Games launcher | `src/windows/GamesHub/` |
+| Game implementations | `src/windows/games/<Name>/` |
 | Fonts + audio | `src/assets/fonts/`, `public/audio/` |
 
-## Phases
+## Keyboard shortcuts
 
-Phase 1 (current): desktop, taskbar, About / Projects / Contact / Terminal / Snake.
-Phase 2: fake file system, Explorer, Notepad, Settings, Recycle Bin, easter eggs.
-Phase 3: more games, music player, desktop pet, install wizard.
-Phase 4: responsive, accessibility, lazy-loading, SEO.
+| Key | Action |
+| --- | --- |
+| `Esc` | Close active window |
+| `Alt + Tab` | Cycle through open windows |
+| `Ctrl + M` | Minimize active window |
+| `↑ ↑ ↓ ↓ ← → ← → B A` | Confetti rain |
 
-## TODO before sharing
+In Terminal: arrow keys browse history, `Tab` completes paths, `Ctrl+L` clears.
 
-- Replace placeholder text in `src/data/content.js` (your bio, projects, contact links).
-- Replace `https://github.com/yourhandle` / LinkedIn URLs in `content.js` and `icons.js`.
-- Drop a real profile photo into `public/images/` and reference it from `About.jsx`.
+## Phases (all done)
+
+1. **Phase 1** — desktop, taskbar, About / Projects / Contact / Terminal / Snake.
+2. **Phase 2** — fake file system, Explorer, Notepad, Settings, Recycle Bin, BSOD/Matrix/Konami.
+3. **Phase 3** — 8 more games, music player, desktop pet, install wizard, visitor counter.
+4. **Phase 4** — responsive mobile fallback, keyboard accessibility, code-split games via `React.lazy`, SEO meta, Vercel deploy config.
+
+## Customizing
+
+Everything user-facing lives in `src/data/content.js`. Replace bio paragraphs,
+projects, skills, education, experience, and contact fields there — the fake
+file system, About / Projects / Contact windows, and Terminal commands all
+read from this one file.
+
+Wallpaper goes in `public/images/wallpapers/`. Profile photo in `public/images/`.
+The Settings window already supports both image URLs and solid color
+wallpapers (the `color:#hex` sentinel).
+
+## License
+
+Personal portfolio code. Win95 fonts (MS Sans Serif Bold, Jersey 10) are
+included for personal use only — replace if redistributing.
