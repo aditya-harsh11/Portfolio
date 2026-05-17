@@ -1,0 +1,95 @@
+.games-window {
+  height: 100%;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: #c0c0c0;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  font-size: 12px;
+}
+
+.games-list {
+  width: 180px;
+  background: #ffffff;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: auto;
+}
+
+.games-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  background: none;
+  border: 1px dashed transparent;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: #000;
+}
+
+.games-item:hover {
+  background: #cce0ff;
+  border-color: #000080;
+}
+
+.games-item.active {
+  background: #000080;
+  color: #fff;
+  border-color: #000080;
+}
+
+.games-emoji {
+  width: 20px;
+  text-align: center;
+}
+
+.games-detail {
+  flex: 1;
+  background: #c0c0c0;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.games-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.games-blurb {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.games-section {
+  margin-top: 6px;
+}
+
+.games-section-h {
+  font-weight: 700;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #808080;
+  padding-bottom: 2px;
+}
+
+.games-controls {
+  background: #ffffff;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  padding: 6px 8px;
+  font-family: 'Courier New', Consolas, monospace;
+  font-size: 11px;
+}
+
+.games-launch {
+  align-self: flex-start;
+  margin-top: auto;
+}

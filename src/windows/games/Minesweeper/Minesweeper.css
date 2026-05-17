@@ -1,0 +1,58 @@
+.ms-counter {
+  background: #000;
+  color: #ff0000;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 2px 6px;
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  min-width: 48px;
+  text-align: center;
+}
+
+.ms-face {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  padding: 0 !important;
+  min-width: 0;
+}
+
+.ms-grid {
+  display: grid;
+  background: #808080;
+  padding: 4px;
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.ms-cell {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  user-select: none;
+}
+
+.ms-cell.revealed {
+  background: #bdbdbd;
+  border: 1px solid #7a7a7a;
+}
+
+.ms-cell.revealed.mine {
+  background: #ff5050;
+}

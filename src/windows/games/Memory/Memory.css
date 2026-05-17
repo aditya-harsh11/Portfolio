@@ -1,0 +1,56 @@
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 64px);
+  grid-template-rows: repeat(4, 64px);
+  gap: 6px;
+}
+
+.memory-card {
+  width: 64px;
+  height: 64px;
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+
+.memory-card .memory-front,
+.memory-card .memory-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-card .memory-back {
+  display: none;
+}
+
+.memory-card.flipped .memory-front {
+  display: none;
+}
+
+.memory-card.flipped .memory-back {
+  display: flex;
+}
+
+.memory-card.matched {
+  background: #b6f0b6;
+  cursor: default;
+}
+
+.memory-win {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #006400;
+}

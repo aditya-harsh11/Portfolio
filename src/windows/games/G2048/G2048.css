@@ -1,0 +1,19 @@
+.g2048-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  grid-template-rows: repeat(4, 70px);
+  gap: 8px;
+  background: #bbada0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.g2048-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-weight: 700;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  user-select: none;
+}
