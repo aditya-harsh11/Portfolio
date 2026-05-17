@@ -39,3 +39,20 @@
   outline: none;
   white-space: pre;
 }
+
+.notepad-statusbar {
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.notepad-statusbar .notepad-path {
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notepad-statusbar .win95-statusbar-cell {
+  flex: 0 0 auto;
+}

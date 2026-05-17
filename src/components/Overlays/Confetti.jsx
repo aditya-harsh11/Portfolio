@@ -10,20 +10,20 @@ export function Confetti() {
 
   const pieces = useMemo(() => {
     if (!active) return [];
-    return Array.from({ length: 80 }).map((_, i) => ({
+    return Array.from({ length: 220 }).map((_, i) => ({
       id: i,
       left: Math.random() * 100,
-      duration: 2 + Math.random() * 3,
-      delay: Math.random() * 0.5,
+      duration: 2.5 + Math.random() * 4,
+      delay: Math.random() * 1.5,
       color: COLORS[i % COLORS.length],
       rotate: Math.random() * 360,
-      size: 6 + Math.random() * 8,
+      size: 5 + Math.random() * 10,
     }));
   }, [active]);
 
   useEffect(() => {
     if (!active) return;
-    const t = setTimeout(dismiss, 5000);
+    const t = setTimeout(dismiss, 7000);
     return () => clearTimeout(t);
   }, [active, dismiss]);
 

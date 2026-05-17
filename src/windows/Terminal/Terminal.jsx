@@ -22,11 +22,11 @@ const THEMES = {
 };
 
 const BANNER = String.raw`
-    ___    ____  ___ _________  ___    _   __ ____
-   /   |  / __ \/ _ /_  __/   \/   |  / | / // __ \
-  / /| | / / / / // / / / / /| / /| | /  |/ // /_/ /
- / ___ |/ /_/ / // /_/ / / ___ / ___ |/ /|  // _, _/
-/_/  |_|/_____/\___//_/ /_/  |_/_/  |_/_/ |_//_/ |_|
+    _    ____ ___ _______   ___
+   / \  |  _ \_ _|_   _\ \ / / \
+  / _ \ | | | | |  | |  \ V / _ \
+ / ___ \| |_| | |  | |   | |/ ___ \
+/_/   \_\____/___| |_|   |_/_/   \_\
 
   type 'help' for commands · 'tree' for file system · 'matrix' to wake up
 `;
@@ -43,7 +43,24 @@ const FORTUNES = [
   'Latency is the silent killer of UX.',
   'Real-time means real-time. Not "after the GC pauses."',
   'Ship it, then iterate. Or iterate forever and never ship.',
-  'Edge inference > round trip to a GPU farm — when you can swing it.',
+  'Edge inference beats a round trip to a GPU farm — when you can swing it.',
+  '60 FPS or it didn\'t happen.',
+  'Every line of CUDA you write costs sleep. Plan accordingly.',
+  'On-device > on-someone-else\'s-device.',
+  'Wisconsin Autonomous: where lane segmentation is a contact sport.',
+  'A bad benchmark is worse than no benchmark.',
+  'Hackathons: sleep is for the deployed.',
+  'Read the paper. Then read the citations. Then read the code.',
+  'Compute is cheap. Data is expensive. Labels are catastrophic.',
+  '"It works on my laptop" — every demo, 30 seconds before it doesn\'t.',
+  'AI safety isn\'t a vibe; it\'s an ablation.',
+  'If your loss isn\'t going down, your code probably is.',
+  '`git push --force` is a personality test.',
+  'There are 10 types of people: those who index from 0 and those who are wrong.',
+  'Bird\'s Eye View, where every obstacle becomes a colorful blob.',
+  'The Qualcomm NPU does not care about your feelings, only your INT8.',
+  'Madison winters are great for compile times. The compiler runs hot.',
+  '"This is fine" — the dog, while the model overfits.',
 ];
 
 function (msg) {

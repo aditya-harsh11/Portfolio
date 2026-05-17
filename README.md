@@ -57,12 +57,12 @@ resolve to `index.html`.
 
 | Key | Action |
 | --- | --- |
-| `Esc` | Close active window |
-| `Alt + Tab` | Cycle through open windows |
-| `Ctrl + M` | Minimize active window |
+| `Esc` | Close active window (skips when typing in an input) |
 | `↑ ↑ ↓ ↓ ← → ← → B A` | Confetti rain |
 
 In Terminal: arrow keys browse history, `Tab` completes paths, `Ctrl+L` clears.
+
+(Window cycling is best done via the taskbar — `Alt+Tab` is owned by your OS, and `Ctrl+M` is mute in some browsers.)
 
 ## Phases (all done)
 

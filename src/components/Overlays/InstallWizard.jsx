@@ -12,7 +12,7 @@ const STEPS = [
         <h2>Welcome to AdityaOS Setup</h2>
         <p>
           This wizard will install <strong>AdityaOS 1.0</strong> (the portfolio
-          you\u2019re looking at) on this browser tab.
+          you're looking at) on this browser tab.
         </p>
         <p>
           Estimated install time: about 8 seconds. Click <strong>Next</strong>
@@ -116,6 +116,10 @@ export function InstallWizard() {
   };
 
   const skip = () => {
+    const ok = window.confirm(
+      'Cancel setup? You can run it again from the Start menu.'
+    );
+    if (!ok) return;
     localStorage.setItem(KEY, '1');
     setOpen(false);
   };
@@ -160,12 +164,12 @@ export function InstallWizard() {
             {progress < 30
               ? 'Unpacking desktop primitives…'
               : progress < 55
-              ? 'Generating fake file system…'
+              ? 'Generating Fake File System…'
               : progress < 80
               ? 'Wiring up easter eggs…'
               : progress < 100
-              ? 'Calibrating the duck\u2026'
-              : 'Finalizing\u2026'}
+              ? 'Calibrating the duck…'
+              : 'Finalizing…'}
           </p>
           <div className="wiz-progress win95-inset-thin">
             <div
