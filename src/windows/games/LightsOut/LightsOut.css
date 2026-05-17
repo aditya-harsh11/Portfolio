@@ -1,0 +1,27 @@
+.lo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 56px);
+  grid-template-rows: repeat(5, 56px);
+  gap: 4px;
+  background: #404040;
+  padding: 6px;
+  border-top: 2px solid #202020;
+  border-left: 2px solid #202020;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+
+.lo-cell {
+  background: #2a2a2a;
+  border-top: 2px solid #1a1a1a;
+  border-left: 2px solid #1a1a1a;
+  border-right: 2px solid #5a5a5a;
+  border-bottom: 2px solid #5a5a5a;
+  cursor: pointer;
+  transition: background 80ms ease;
+}
+
+.lo-cell.on {
+  background: #ffd64d;
+  box-shadow: 0 0 12px rgba(255, 214, 77, 0.7) inset;
+}

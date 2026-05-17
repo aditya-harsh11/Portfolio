@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDesktopStore } from '../../store/useDesktopStore';
 import { StartMenu } from './StartMenu';
 import { Clock } from './Clock';
+import { VisitorCounter } from './VisitorCounter';
 import './Taskbar.css';
 
 export function Taskbar() {
@@ -64,6 +65,7 @@ export function Taskbar() {
         ))}
       </div>
 
+      <VisitorCounter />
       <Clock />
 
       {startOpen ? (
