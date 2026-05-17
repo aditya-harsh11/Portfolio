@@ -1,0 +1,175 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[margin=0.42in]{geometry}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small #1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small #1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%%%%%% RESUME STARTS HERE %%%%%%%
+\begin{document}
+
+%---------- HEADING ----------
+\begin{center}
+    \textbf{\Huge \scshape Aditya Harshavardhan} \\ \vspace{1pt}
+    \small
+    \href{tel:6082091711}{(608)-209-1711} $|$
+    \href{mailto:harshavardha@wisc.edu}{harshavardha@wisc.edu} $|$
+    \href{https://linkedin.com/in/aditya-harshavardhan11}{linkedin.com/in/aditya-harshavardhan11} $|$
+    \href{https://github.com/aditya-harsh11}{github.com/aditya-harsh11}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+    \resumeSubheading
+        {University of Wisconsin-Madison}{Expected Graduation: May 2028}
+        {Bachelor of Science, Computer Science}{\textbf{GPA: 4.0/4.0}}
+        \resumeItemListStart
+        \resumeItem{\textbf{Relevant Coursework:} Data Structures \& Algorithms, Object-Oriented Programming, Computer Architecture, Discrete Mathematics, Calculus}
+      \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%----------- EXPERIENCE -----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+        {Perception \& Infrastructure Engineer}{February 2026 -- Present}
+        {Wisconsin Autonomous}{Madison, WI}
+    \resumeItemListStart
+        \resumeItem{Optimized a lane segmentation model to sustain 60 FPS inference and built a 3D geometry-based stop bar detection algorithm for precise vehicle positioning at intersections.}
+        \resumeItem{Developed ego-trajectory estimation and Bird's Eye View obstacle mapping from RGB and depth sequences, using color-based detection to classify dynamic and static objects in real time.}
+        \resumeItem{Integrated legacy V2X modules into a new codebase and built a UDP-based simulation node for real-time vehicle beacon processing and nearest-neighbor tracking.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+        {Technical Scholar}{March 2026 -- Present}
+        {Wisconsin AI Safety Initiative}{Madison, WI}
+    \resumeItemListStart
+        \resumeItem{Completed ARENA and BlueDot based curricula, implementing core deep learning architectures from scratch and studying deceptive alignment, reward misspecification, adversarial evaluations, interpretability, and AI control.}
+        \resumeItem{Analyzed 8+ AI safety research papers spanning mechanistic interpretability, scalable oversight, alignment, and evals as part of a structured cohort program.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+        {Data Engineer}{February 2026 -- May 2026}
+        {Biokind Analytics}{Madison, WI}
+    \resumeItemListStart
+        \resumeItem{Analyzed 92,000+ attendance and 33,000+ membership records across multiple years to build disengagement profiles for 10,000+ children at Boys \& Girls Clubs of Dane County.}
+        \resumeItem{Built a 3-factor risk score model that identified high-risk youth subgroups with disengagement rates above 78\%, enabling organizational leadership to shift from reactive tracking to proactive early intervention.}
+        \resumeItem{Modeled 4+ years of time-series attendance data to find seasonal dropout patterns and behavioral consistency, delivering stakeholder-ready visualizations to organizational leadership.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+%----------- PROJECTS -----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+    \resumeProjectHeading
+        {\textbf{ArcFlow} $|$ \emph{Next.js, React Flow, FastAPI, Python, Electron, ONNX, Nexa SDK}}{}
+    \resumeItemListStart
+        \resumeItem{Won 1st Place at a Qualcomm-sponsored hackathon (MadData 26); selected to present at the 2026 Qualcomm University Developer Symposium and UW--Madison N+1 Symposium.}
+        \resumeItem{Built a node-based AI pipeline editor for designing multimodal workflows via drag-and-drop or natural language prompts, streaming real-time video and audio between a Next.js/React Flow frontend and FastAPI backend.}
+        \resumeItem{Deployed YOLOv8, YamNet, and OmniNeural-4B to the Qualcomm NPU via ONNX Runtime and Nexa SDK, enabling fully on-device inference with no external API calls or internet dependency.}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+        {\textbf{Unsilenced} $|$ \emph{Next.js, Flask, TypeScript, MediaPipe, Face API, Fish Audio}}{}
+    \resumeItemListStart
+        \resumeItem{1st Place Winner, Fish Audio Track at the Midwest's largest collegiate hackathon (MadHacks 2025); built a hands-free AAC tool to restore vocal identity for non-verbal users.}
+        \resumeItem{Engineered a 30+ FPS nose-tracking interface using MediaPipe Face Mesh and a 2,800+ word autocomplete dictionary, reducing sentence generation time by over 50\% compared to existing synthesizers.}
+        \resumeItem{Achieved 85\% emotion detection accuracy by integrating Face API CNNs with Fish Audio via a Flask proxy, dynamically matching synthetic voice tone and pitch to the user's facial expressions in real time.}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+        {\textbf{Centralized Event Dashboard} $|$ \emph{TypeScript, SvelteKit, Python, Flask, SQLite, AWS EC2, Gemini}}{}
+    \resumeItemListStart
+        \resumeItem{Built a campus event dashboard with SvelteKit and TypeScript, consolidating 50+ events from emails, Discord, and flyers into a single searchable calendar for 1000+ university students.}
+        \resumeItem{Architected an automated data ingestion pipeline using Python and IMAP that monitors a shared inbox 24/7, processing 70+ emails/week through Google Gemini for structured extraction and database population.}
+        \resumeItem{Developed a REST API with Flask and SQLite to manage event records and a Discord bot serving 10+ channels for real-time event notifications, both deployed on AWS EC2.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%----------- SKILLS -----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+\small{
+    \item{
+        \textbf{Languages:} Python, JavaScript, Java, SQL, Dart, HTML, CSS \\
+        \textbf{Frameworks \& Libraries (SWE):} React, Next.js, FastAPI, Flask, Flutter, JavaFX, JUnit \\
+        \textbf{Frameworks \& Libraries (AI/ML):} PyTorch, NumPy, Pandas, Matplotlib \\
+        \textbf{Developer Tools:} Git, GitHub, Docker, Firebase \\
+    }
+}
+\end{itemize}
+
+\end{document}

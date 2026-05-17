@@ -101,3 +101,37 @@
   color: #0000aa;
   text-decoration: underline;
 }
+
+.about-edu,
+.about-exp {
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px dotted #808080;
+}
+
+.about-edu:last-child,
+.about-exp:last-child {
+  border-bottom: none;
+}
+
+.about-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.muted {
+  color: #404040;
+  font-size: 11px;
+}
+
+.about-bullets {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.about-bullets li {
+  padding: 2px 0;
+  line-height: 1.4;
+}
