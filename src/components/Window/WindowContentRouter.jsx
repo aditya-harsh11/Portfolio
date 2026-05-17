@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { About } from '../../windows/About/About';
 import { Projects } from '../../windows/Projects/Projects';
 import { Contact } from '../../windows/Contact/Contact';
@@ -7,17 +8,41 @@ import { Notepad } from '../../windows/Notepad/Notepad';
 import { Settings } from '../../windows/Settings/Settings';
 import { RecycleBin } from '../../windows/RecycleBin/RecycleBin';
 import { Games } from '../../windows/GamesHub/Games';
-import { MusicPlayer } from '../../windows/MusicPlayer/MusicPlayer';
 
-import { Snake } from '../../windows/games/Snake/Snake';
-import { Minesweeper } from '../../windows/games/Minesweeper/Minesweeper';
-import { Tetris } from '../../windows/games/Tetris/Tetris';
-import { G2048 } from '../../windows/games/G2048/G2048';
-import { Pong } from '../../windows/games/Pong/Pong';
-import { Breakout } from '../../windows/games/Breakout/Breakout';
-import { Memory } from '../../windows/games/Memory/Memory';
-import { Gomoku } from '../../windows/games/Gomoku/Gomoku';
-import { LightsOut } from '../../windows/games/LightsOut/LightsOut';
+// Lazy-loaded — split into separate chunks so the initial page load doesn't
+// pull in canvas-heavy game code or the music player.
+const MusicPlayer = lazy(() =>
+  import('../../windows/MusicPlayer/MusicPlayer').then((m) => ({ default: m.MusicPlayer }))
+);
+const Snake = lazy(() =>
+  import('../../windows/games/Snake/Snake').then((m) => ({ default: m.Snake }))
+);
+const Minesweeper = lazy(() =>
+  import('../../windows/games/Minesweeper/Minesweeper').then((m) => ({
+    default: m.Minesweeper,
+  }))
+);
+const Tetris = lazy(() =>
+  import('../../windows/games/Tetris/Tetris').then((m) => ({ default: m.Tetris }))
+);
+const G2048 = lazy(() =>
+  import('../../windows/games/G2048/G2048').then((m) => ({ default: m.G2048 }))
+);
+const Pong = lazy(() =>
+  import('../../windows/games/Pong/Pong').then((m) => ({ default: m.Pong }))
+);
+const Breakout = lazy(() =>
+  import('../../windows/games/Breakout/Breakout').then((m) => ({ default: m.Breakout }))
+);
+const MemoryGame = lazy(() =>
+  import('../../windows/games/Memory/Memory').then((m) => ({ default: m.Memory }))
+);
+const Gomoku = lazy(() =>
+  import('../../windows/games/Gomoku/Gomoku').then((m) => ({ default: m.Gomoku }))
+);
+const LightsOut = lazy(() =>
+  import('../../windows/games/LightsOut/LightsOut').then((m) => ({ default: m.LightsOut }))
+);
 
 const REGISTRY = {
   About,
@@ -30,17 +55,35 @@ const REGISTRY = {
   RecycleBin,
   Games,
   MusicPlayer,
-  // games
   Snake,
   Minesweeper,
   Tetris,
   G2048,
   Pong,
   Breakout,
-  Memory,
+  Memory: MemoryGame,
   Gomoku,
   LightsOut,
 };
+
+function LoadingPane() {
+  return (
+    <div
+      style={{
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'MS Sans Serif, Tahoma, sans-serif',
+        fontSize: 12,
+        color: '#404040',
+        background: '#c0c0c0',
+      }}
+    >
+      Loading…
+    </div>
+  );
+}
 
 export function WindowContentRouter({ win }) {
   const Component = REGISTRY[win.component];
@@ -51,5 +94,9 @@ export function WindowContentRouter({ win }) {
       </div>
     );
   }
-  return <Component {...(win.props || {})} winId={win.id} />;
+  return (
+    <Suspense fallback={<LoadingPane />}>
+      <Component {...(win.props || {})} winId={win.id} />
+    </Suspense>
+  );
 }
