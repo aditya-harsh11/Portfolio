@@ -69,14 +69,16 @@ export function About() {
         ))}
       </section>
 
-      <section className="about-section">
-        <h2 className="about-h2">Awards</h2>
-        <ul className="award-list">
-          {profile.awards.map((a, i) => (
-            <li key={i}>★ {a}</li>
-          ))}
-        </ul>
-      </section>
+      {profile.awards && profile.awards.length > 0 ? (
+        <section className="about-section">
+          <h2 className="about-h2">Awards</h2>
+          <ul className="award-list">
+            {profile.awards.map((a, i) => (
+              <li key={i}>★ {a}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <section className="about-section">
         <h2 className="about-h2">Contact</h2>

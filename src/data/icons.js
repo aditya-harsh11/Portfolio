@@ -95,12 +95,14 @@ export const desktopIcons = [
     id: 'github',
     label: 'GitHub',
     emoji: '🐱',
+    image: '/images/icons/github.gif',
     link: 'https://github.com/aditya-harsh11',
   },
   {
     id: 'linkedin',
     label: 'LinkedIn',
     emoji: '💼',
+    image: '/images/icons/linkedin.png',
     link: 'https://linkedin.com/in/aditya-harshavardhan11',
   },
 ];

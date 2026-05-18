@@ -107,13 +107,17 @@ export const FS = dir('C:', {
         })
       )
     ),
-    AWARDS: dir('AWARDS', {
-      'awards.txt': file(
-        'awards.txt',
-        lines(...profile.awards.map((a) => `★ ${a}`)),
-        'txt'
-      ),
-    }),
+    ...(profile.awards && profile.awards.length > 0
+      ? {
+          AWARDS: dir('AWARDS', {
+            'awards.txt': file(
+              'awards.txt',
+              lines(...profile.awards.map((a) => `★ ${a}`)),
+              'txt'
+            ),
+          }),
+        }
+      : {}),
     SKILLS: dir('SKILLS', {
       'skills.txt': file(
         'skills.txt',
@@ -130,10 +134,31 @@ export const FS = dir('C:', {
   }),
   WINDOWS: dir('WINDOWS', {
     SYSTEM32: dir('SYSTEM32', {
-      'config.sys': file('config.sys', '# legacy config, do not edit', 'sys'),
+      'config.sys': file(
+        'config.sys',
+        lines(
+          'DEVICE=C:\\WINDOWS\\HIMEM.SYS',
+          'DEVICE=C:\\WINDOWS\\EMM386.EXE NOEMS',
+          'DOS=HIGH,UMB',
+          'FILES=30',
+          'BUFFERS=20',
+          'LASTDRIVE=Z',
+          'SHELL=C:\\COMMAND.COM /P /E:512'
+        ),
+        'sys'
+      ),
       'definitely_not_a_virus.exe': file(
         'definitely_not_a_virus.exe',
-        '<binary>',
+        lines(
+          'THIS FILE IS DEFINITELY NOT A VIRUS.',
+          '',
+          'It contains zero malicious payloads, zero crypto miners,',
+          'and zero attempts to exfiltrate your browser history.',
+          '',
+          'If you ran it: too late. Your free trial of personality has expired.',
+          '',
+          '(joking. this is just a text file. you cannot run .exe in a browser.)'
+        ),
         'exe'
       ),
     }),

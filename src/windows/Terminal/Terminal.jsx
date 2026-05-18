@@ -28,7 +28,7 @@ const BANNER = String.raw`
  / ___ \| |_| | |  | |   | |/ ___ \
 /_/   \_\____/___| |_|   |_/_/   \_\
 
-  type 'help' for commands · 'tree' for file system · 'matrix' to wake up
+  type 'help' for commands
 `;
 
 const BOOT = [
@@ -38,29 +38,51 @@ const BOOT = [
 ];
 
 const FORTUNES = [
-  'The best code is the code you don\'t have to write.',
-  'A 4.0 GPA is not a personality. (But it does help.)',
-  'Latency is the silent killer of UX.',
-  'Real-time means real-time. Not "after the GC pauses."',
-  'Ship it, then iterate. Or iterate forever and never ship.',
-  'Edge inference beats a round trip to a GPU farm — when you can swing it.',
-  '60 FPS or it didn\'t happen.',
-  'Every line of CUDA you write costs sleep. Plan accordingly.',
-  'On-device > on-someone-else\'s-device.',
-  'Wisconsin Autonomous: where lane segmentation is a contact sport.',
-  'A bad benchmark is worse than no benchmark.',
-  'Hackathons: sleep is for the deployed.',
-  'Read the paper. Then read the citations. Then read the code.',
-  'Compute is cheap. Data is expensive. Labels are catastrophic.',
-  '"It works on my laptop" — every demo, 30 seconds before it doesn\'t.',
-  'AI safety isn\'t a vibe; it\'s an ablation.',
-  'If your loss isn\'t going down, your code probably is.',
-  '`git push --force` is a personality test.',
-  'There are 10 types of people: those who index from 0 and those who are wrong.',
-  'Bird\'s Eye View, where every obstacle becomes a colorful blob.',
-  'The Qualcomm NPU does not care about your feelings, only your INT8.',
-  'Madison winters are great for compile times. The compiler runs hot.',
-  '"This is fine" — the dog, while the model overfits.',
+  'Most things become easier once you start.',
+  'The bug was obvious in hindsight.',
+  'Good ideas usually start as side projects.',
+  'If it works and nobody complains, ship it.',
+  'Coffee first. Architecture later.',
+  'The hardest part is usually getting started.',
+  'Somehow, it works better at 2 AM.',
+  'Perfect is very expensive.',
+  'Every project has one file nobody wants to touch.',
+  'A surprisingly large amount of life is debugging.',
+  'Nothing motivates like a deadline you ignored.',
+  'There\'s always one more tiny fix.',
+  'The README is a work of fiction.',
+  'Simple scales better than clever.',
+  'Today\'s shortcut is tomorrow\'s technical debt.',
+  'Good software feels invisible.',
+  'The first version is supposed to be rough.',
+  'If you\'re stuck, go for a walk.',
+  'Everything is temporary except legacy code.',
+  'The best projects are built out of curiosity.',
+  'Some problems disappear after restarting everything.',
+  'People care about things that feel fast.',
+  'The second monitor is emotional support.',
+  'Most breakthroughs happen after confusion.',
+  'You probably don\'t need another framework.',
+  'Small improvements compound quickly.',
+  'Behind every clean demo is mild panic.',
+  'Sleep is an underrated optimization.',
+  'Building things > talking about building things.',
+  'Future you will appreciate the comments.',
+  'Madison winters are ideal for staying inside and coding.',
+  'Hackathons are just caffeine-powered group projects.',
+  'Real-time systems are only fun after they finally work.',
+  'There\'s a 90% chance the issue is one missing line.',
+  'The demo always works better in rehearsal.',
+  '4.0 GPA, questionable sleep schedule.',
+  'Turning random ideas into projects is the fun part.',
+  'The best learning happens when you build something slightly too ambitious.',
+  'Nothing builds character like debugging five minutes before a presentation.',
+  'Every side project starts with "this should be simple."',
+  'The best UI is the one nobody has to think about.',
+  'Fast is a feature.',
+  'Somehow the smallest bug takes the longest to find.',
+  'Most of engineering is trial, error, and Stack Overflow.',
+  'The project that almost broke you usually teaches the most.',
 ];
 
 function (msg) {

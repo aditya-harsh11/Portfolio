@@ -5,22 +5,55 @@ const SPEED = 50; // px per second
 const STATES = ['walk', 'walk', 'idle', 'sleep'];
 
 const SAYINGS = [
-  'meow.',
-  'i live in your taskbar.',
-  'try typing "matrix" in the terminal.',
-  'aditya feeds me CUDA cores.',
-  '*purrs in binary*',
+  'quack.',
+  'tell me about your bug.',
+  'have you tried turning it off and on again?',
+  'i am a rubber duck. talk to me.',
+  '*judges your code silently*',
+  'try the Konami code.',
+  'press Esc to close the active window.',
   'have you tried Minesweeper yet?',
-  'the Konami code does something.',
-  'i\'ve seen the BSOD. it\'s beautiful.',
-  'i nap. i wander. i judge your wallpaper.',
+  '*nods sympathetically at your stack trace*',
   '404: motivation not found.',
   'hire aditya. (he didn\'t pay me to say this. mostly.)',
-  'right-click on Minesweeper to flag tiles.',
-  'lane segmentation? more like *line* segmentation. *winks*',
+  'rubber duck > stack overflow.',
+  'i float in your debugger.',
+  'tip: ask your problem out loud.',
   'i hold strong opinions on tabs vs spaces.',
-  'tip: press Esc to close the active window.',
+  'the bug is on line 47. trust me.',
 ];
+
+function RubberDuck() {
+  // Classic yellow bath-toy rubber duck, ~36px tall.
+  return (
+    <svg
+      viewBox="0 0 44 40"
+      width="40"
+      height="36"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {/* body */}
+      <ellipse cx="24" cy="26" rx="16" ry="11" fill="#ffd84d" stroke="#000" strokeWidth="1.5" />
+      {/* tail */}
+      <path d="M9 22 L4 18 L8 23 Z" fill="#ffd84d" stroke="#000" strokeWidth="1.5" strokeLinejoin="miter" />
+      {/* head */}
+      <circle cx="14" cy="14" r="10" fill="#ffd84d" stroke="#000" strokeWidth="1.5" />
+      {/* hair tuft */}
+      <path d="M13 4 Q14 1 16 4" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" />
+      {/* beak */}
+      <path d="M4 14 Q-1 16 4 19 L9 18 Q9 15 9 13 Z" fill="#ff9b1c" stroke="#000" strokeWidth="1.4" strokeLinejoin="miter" />
+      <line x1="3" y1="17" x2="9" y2="16.5" stroke="#000" strokeWidth="0.8" />
+      {/* eye */}
+      <circle cx="12" cy="12" r="2" fill="#fff" stroke="#000" strokeWidth="0.8" />
+      <circle cx="12.4" cy="12.4" r="1" fill="#000" />
+      {/* wing */}
+      <path d="M22 22 Q28 22 32 27" fill="none" stroke="#000" strokeWidth="1.2" strokeLinecap="round" />
+      {/* highlight */}
+      <path d="M18 8 Q21 7 23 9" fill="none" stroke="#fff7c0" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export function DesktopPet() {
   const [pos, setPos] = useState({ x: 200, y: 200 });
@@ -86,23 +119,22 @@ export function DesktopPet() {
 
   const onClick = (e) => {
     e.stopPropagation();
-    // pop a speech bubble; stop the pet briefly so it doesn't run off
     const saying = SAYINGS[Math.floor(Math.random() * SAYINGS.length)];
     setBubble(saying);
     stateRef.current.mode = 'idle';
     setMode('idle');
     if (bubbleTimer.current) clearTimeout(bubbleTimer.current);
-    bubbleTimer.current = setTimeout(() => setBubble(null), 3500);
+    bubbleTimer.current = setTimeout(() => setBubble(null), 1800);
   };
 
-  const glyph = mode === 'sleep' ? '😴' : '🐈';
+  const sleeping = mode === 'sleep';
 
   return (
     <div
       className="desktop-pet"
       style={{ left: pos.x, top: pos.y }}
       onMouseDown={onClick}
-      title="A friendly desktop pet"
+      title="A friendly rubber duck. Click me."
     >
       {bubble ? (
         <div className="pet-bubble win95-outset">
@@ -110,7 +142,7 @@ export function DesktopPet() {
         </div>
       ) : null}
       <div className="pet-glyph" style={{ transform: `scaleX(${dir})` }}>
-        {glyph}
+        {sleeping ? <span className="pet-sleep">😴</span> : <RubberDuck />}
       </div>
     </div>
   );

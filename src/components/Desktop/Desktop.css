@@ -1,10 +1,10 @@
 .desktop-icon {
   position: absolute;
-  width: 72px;
+  width: 84px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   padding: 4px 2px;
   cursor: pointer;
   user-select: none;
@@ -14,20 +14,26 @@
 }
 
 .desktop-icon .glyph {
-  font-size: 32px;
+  font-size: 44px;
   line-height: 1;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
 }
 
 /* Make ">_" terminal glyph look like a console prompt */
 .desktop-icon .glyph.text-glyph {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-family: 'Courier New', Consolas, monospace;
   font-weight: 700;
   background: #000;
   color: #00ff66;
-  padding: 4px 8px;
-  font-size: 18px;
+  padding: 5px 10px;
+  font-size: 22px;
+  height: auto;
   letter-spacing: 1px;
   border-top: 2px solid #404040;
   border-left: 2px solid #404040;
@@ -36,19 +42,21 @@
   filter: none;
 }
 
-.desktop-icon img {
-  width: 36px;
-  height: 36px;
-  image-rendering: pixelated;
+.desktop-icon .glyph-img {
+  width: 48px;
+  height: 48px;
+  image-rendering: auto;
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.55));
+  pointer-events: none;
 }
 
 .desktop-icon .label {
   font-family: 'MS Sans Serif', Tahoma, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   padding: 1px 3px;
   line-height: 1.2;
-  max-width: 72px;
+  max-width: 82px;
   word-wrap: break-word;
 }
 

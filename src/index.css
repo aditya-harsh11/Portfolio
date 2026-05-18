@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Old Windows cursors */
+:root {
+  --cursor-arrow: url('/cursors/arrow.svg') 2 2;
+  --cursor-hand: url('/cursors/pointer.svg') 8 1;
+}
+
 html,
 body,
 #root {
@@ -14,6 +20,11 @@ body,
   padding: 0;
 }
 
+html,
+body {
+  cursor: var(--cursor-arrow), default;
+}
+
 body {
   font-family: 'MS Sans Serif', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 12px;
@@ -21,6 +32,51 @@ body {
   background: #008080;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Anything clickable gets the old-Windows hand pointer */
+a,
+button,
+[role='button'],
+.win95-button,
+.win95-titlebar-button,
+.start-button,
+.taskbar-window-btn,
+.start-menu-item,
+.desktop-icon,
+.notepad-menu,
+.settings-tab,
+.settings-wall,
+.tree-node,
+.explorer-item,
+.ms-cell,
+.ms-face,
+.amp-track,
+.games-item,
+.gomoku-cell:not(:disabled),
+.lo-cell,
+.memory-card,
+
+.pet-glyph,
+.mobile-link,
+.amp-seek {
+  cursor: var(--cursor-hand), pointer;
+}
+
+button:disabled,
+.gomoku-cell:disabled,
+.win95-button:disabled {
+  cursor: var(--cursor-arrow), not-allowed;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input:not([type]),
+textarea,
+.terminal-input,
+.notepad-area {
+  cursor: text;
 }
 
 * {
