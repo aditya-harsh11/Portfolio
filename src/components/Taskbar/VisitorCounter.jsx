@@ -3,42 +3,45 @@ import './VisitorCounter.css';
 
 const KEY = 'visitorCount';
 const SESSION_FLAG = 'visitCounted';
+const ENDPOINT = 'https://api.counterapi.dev/v1/aditya-portfolio/visits';
 
 function pad(n, len) {
   return n.toString().padStart(len, '0');
 }
 
-// Local-only visit counter. Increments once per browser session.
-// Swap for a real counter API later if you want a global count — keep this
-// pure-local so the site has zero third-party dependencies by default.
+// Global visit counter via counterapi.dev (free, no auth).
+// Increments once per browser session (sessionStorage de-dupes refreshes).
+// Falls back to last cached value if the API is unreachable.
 export function VisitorCounter() {
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState(() => {
+    const cached = Number(localStorage.getItem(KEY));
+    return Number.isFinite(cached) && cached > 0 ? cached : null;
+  });
 
   useEffect(() => {
-    let raw = Number(localStorage.getItem(KEY)) || 0;
-    if (sessionStorage.getItem(SESSION_FLAG) !== '1') {
-      raw += 1;
-      localStorage.setItem(KEY, String(raw));
-      sessionStorage.setItem(SESSION_FLAG, '1');
-    }
-    setCount(raw);
+    const shouldIncrement = sessionStorage.getItem(SESSION_FLAG) !== '1';
+    const url = shouldIncrement ? `${ENDPOINT}/up` : `${ENDPOINT}/`;
+    fetch(url)
+      .then((r) => r.json())
+      .then((j) => {
+        const n = j?.count;
+        if (typeof n !== 'number') return;
+        setCount(n);
+        localStorage.setItem(KEY, String(n));
+        if (shouldIncrement) sessionStorage.setItem(SESSION_FLAG, '1');
+      })
+      .catch(() => {});
   }, []);
 
+  const digits = (count === null ? '------' : pad(count, 6)).split('');
+
   return (
-    <div className="visitor-counter" title="Local visit count (this browser)">
-      {count === null
-        ? '------'.split('').map((d, i) => (
-            <span key={i} className="vc-digit">
-              {d}
-            </span>
-          ))
-        : pad(count, 6)
-            .split('')
-            .map((d, i) => (
-              <span key={i} className="vc-digit">
-                {d}
-              </span>
-            ))}
+    <div className="visitor-counter" title="Global visit count">
+      {digits.map((d, i) => (
+        <span key={i} className="vc-digit">
+          {d}
+        </span>
+      ))}
     </div>
   );
 }

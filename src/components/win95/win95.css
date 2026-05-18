@@ -40,6 +40,9 @@
   color: #000;
   cursor: pointer;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
   min-width: 70px;
 }
 
