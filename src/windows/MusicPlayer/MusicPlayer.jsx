@@ -9,7 +9,6 @@ const TRACKS = [
   { title: 'final_final_v2_REAL.mp3', artist: 'Last Minute Fixes', duration: 196 },
   { title: 'forgot_to_commit_changes.ogg', artist: 'Git Panic', duration: 273 },
   { title: 'works_on_my_machine.mp3', artist: 'Local Environment', duration: 201 },
-  { title: 'deadline_driven_development.wav', artist: 'Sprint Weekend', duration: 233 },
   { title: 'one_more_small_fix.flac', artist: 'Scope Creep', duration: 178 },
   { title: 'meeting_that_could_have_been_an_email.mp3', artist: 'Corporate Core', duration: 259 },
   { title: 'compile_and_pray.wav', artist: 'The Build System', duration: 214 },
@@ -71,7 +70,7 @@ export function MusicPlayer() {
 
   return (
     <div className="amp-window">
-      <div className="amp-title">AdityaAMP v1.337 (mock playback)</div>
+      <div className="amp-title">AdityaAMP v1.345</div>
 
       <div className="amp-lcd">
         <div className="amp-marquee">
