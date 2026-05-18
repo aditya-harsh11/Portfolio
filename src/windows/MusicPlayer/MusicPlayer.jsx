@@ -2,14 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 import './MusicPlayer.css';
 
 const TRACKS = [
-  { title: 'lofi_beats_to_debug_to.mp3', artist: 'Aditya', duration: 184 },
-  { title: 'Snowfall.mp3', artist: 'øneheart & reidenshi', duration: 156 },
-  { title: 'late_night_side_project.wav', artist: 'Campus WiFi', duration: 212 },
-  { title: 'After Dark.flac', artist: 'Mr.Kitty', duration: 287 },
-  { title: '2am_debug_session.mp3', artist: 'The Stack Traces', duration: 167 },
-  { title: 'Resonance.mp3', artist: 'HOME', duration: 242 },
-  { title: 'running_on_coffee.ogg', artist: 'Sprint Weekend', duration: 198 },
-  { title: 'Sunset Lover.mp3', artist: 'Petit Biscuit', duration: 223 },
+  { title: 'late_night_side_project.mp3', artist: 'Aditya', duration: 184 },
+  { title: 'running_on_coffee.wav', artist: 'Campus WiFi', duration: 212 },
+  { title: '2am_debug_session.flac', artist: 'The Stack Traces', duration: 167 },
+  { title: 'probably_needs_refactoring.mp3', artist: 'Technical Debt', duration: 248 },
+  { title: 'final_final_v2_REAL.mp3', artist: 'Last Minute Fixes', duration: 196 },
+  { title: 'forgot_to_commit_changes.ogg', artist: 'Git Panic', duration: 273 },
+  { title: 'works_on_my_machine.mp3', artist: 'Local Environment', duration: 201 },
+  { title: 'deadline_driven_development.wav', artist: 'Sprint Weekend', duration: 233 },
+  { title: 'one_more_small_fix.flac', artist: 'Scope Creep', duration: 178 },
+  { title: 'meeting_that_could_have_been_an_email.mp3', artist: 'Corporate Core', duration: 259 },
+  { title: 'compile_and_pray.wav', artist: 'The Build System', duration: 214 },
+  { title: 'ship_it_anyway.mp3', artist: 'Continuous Deployment', duration: 192 },
 ];
 
 function fmt(seconds) {

@@ -8,7 +8,7 @@ const GRID_X = 16;
 const GRID_Y = 16;
 const COL_W = 90;
 const ROW_H = 92;
-const PER_COL = 5;
+const PER_COL = 4;
 
 function defaultLayout() {
   const out = {};
@@ -26,11 +26,10 @@ function defaultLayout() {
 export function Desktop() {
   const wallpaper = useDesktopStore((s) => s.wallpaper);
   const openWindow = useDesktopStore((s) => s.openWindow);
-  // v2: 2-column layout. If older saved layout exists, discard so the new
-  // arrangement shows up correctly.
+  // v3: 3-column grouped layout (me / fun / system).
   const [positions, setPositions] = useState(() => {
     try {
-      const raw = localStorage.getItem('iconPositions.v2');
+      const raw = localStorage.getItem('iconPositions.v3');
       return raw ? JSON.parse(raw) : defaultLayout();
     } catch {
       return defaultLayout();
@@ -41,7 +40,7 @@ export function Desktop() {
     const next = { ...positions, [id]: pos };
     setPositions(next);
     try {
-      localStorage.setItem('iconPositions.v2', JSON.stringify(next));
+      localStorage.setItem('iconPositions.v3', JSON.stringify(next));
     } catch {
       /* ignore */
     }

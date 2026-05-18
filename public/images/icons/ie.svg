@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <ellipse cx="16" cy="18" rx="14" ry="5" fill="none" stroke="#ffcc00" stroke-width="3"
+           transform="rotate(-22 16 18)"/>
+  <text x="16" y="26" font-family="Arial Black, Helvetica, sans-serif" font-size="26"
+        font-weight="900" font-style="italic" fill="#0050d0" stroke="#003088" stroke-width="0.6"
+        text-anchor="middle">e</text>
+</svg>

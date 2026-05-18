@@ -14,6 +14,11 @@ import { Games } from '../../windows/GamesHub/Games';
 const MusicPlayer = lazy(() =>
   import('../../windows/MusicPlayer/MusicPlayer').then((m) => ({ default: m.MusicPlayer }))
 );
+const InternetExplorer = lazy(() =>
+  import('../../windows/InternetExplorer/InternetExplorer').then((m) => ({
+    default: m.InternetExplorer,
+  }))
+);
 const Snake = lazy(() =>
   import('../../windows/games/Snake/Snake').then((m) => ({ default: m.Snake }))
 );
@@ -55,6 +60,7 @@ const REGISTRY = {
   RecycleBin,
   Games,
   MusicPlayer,
+  InternetExplorer,
   Snake,
   Minesweeper,
   Tetris,
