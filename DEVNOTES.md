@@ -12,7 +12,7 @@ up, start here.
 
 - **Stack:** Vite 8 + React 19 + Tailwind 3 + Zustand + react-rnd. No router.
 - **Path:** `C:\Projects\Portfolio-Website-Aditya\`.
-- **State on `main`:** 10 commits, 8 phases. Pushed to
+- **State on `main`:** 9 phases. Pushed to
   https://github.com/aditya-harsh11/Portfolio.git, deployed via Vercel.
 - **Run:** `npm install && npm run dev` → http://localhost:5173 (or
   next free port — Vite auto-increments if something's already there).
@@ -66,7 +66,7 @@ src/
 │   │   ├── BSOD.jsx
 │   │   ├── Matrix.jsx
 │   │   ├── Confetti.jsx
-│   │   ├── DesktopPet.jsx  Renders /images/duck.png (pixel-art)
+│   │   ├── Clippy.jsx      Pinned bottom-right assistant; localStorage-disable
 │   │   └── InstallWizard.jsx
 │   └── Mobile/MobileView.jsx   <768px fallback
 │
@@ -184,7 +184,7 @@ to the 2-column layout).
    or via a hook.
 
 ### Add personality strings without code changes
-- Pet sayings: `src/components/Overlays/DesktopPet.jsx` → `SAYINGS`
+- Clippy sayings: `src/components/Overlays/Clippy.jsx` → `SAYINGS`
 - BSOD error codes: `src/components/Overlays/BSOD.jsx` → `ERRORS`
 - Terminal fortunes / banner / boot: `src/windows/Terminal/Terminal.jsx`
 - Install Wizard copy: `src/components/Overlays/InstallWizard.jsx` → `STEPS`
@@ -429,6 +429,49 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
 - **Skills:** added `Supabase` and `Vercel` to Developer Tools in
   `content.js`.
 
+### Phase 9: Clippy returns, icon cleanup, Recycle Bin polish
+
+- **Duck → Clippy.** Replaced `DesktopPet.jsx` (wandering pixel duck) with
+  a new `Clippy.jsx` overlay pinned to the bottom-right corner
+  (`right: 16px; bottom: 48px`). Doesn't move. Renders only when it has
+  something to say.
+  - **Lifecycle:** first appearance 5s after load (`FIRST_DELAY_MS`); after
+    Dismiss, reschedules a new appearance 30–40s later (`REAPPEAR_MIN_MS` /
+    `REAPPEAR_MAX_MS`).
+  - **Two buttons** in the bubble: **Dismiss** (hide + schedule next) and
+    **Don't show again** (persists `clippy:disabled=1` to localStorage,
+    component returns `null` on every future load). To re-enable while
+    testing: `localStorage.removeItem('clippy:disabled')` + reload.
+  - **Sayings list** in `Clippy.jsx` → `SAYINGS`. ~44 lines, mix of classic
+    Clippy openers, debugging humor, and site tips. Picks avoid repeating
+    the previous saying.
+  - **Caveat:** if the user never clicks Dismiss, the bubble stays with the
+    same saying — rotation is dismiss-triggered, not auto.
+  - Deleted `src/components/Overlays/DesktopPet.{jsx,css}` and
+    `public/images/duck.png`.
+- **Projects icon = folder.** `src/data/icons.js` Projects entry (desktop +
+  start menu) now points to `/images/icons/folder.png` so it matches the
+  folder icon used inside the Explorer grid.
+- **Recycle Bin empty state** uses `/images/icons/recycle-bin.png` instead
+  of the `🗑` emoji. `.recycle-empty-icon` switched from `font-size: 48px`
+  to width/height 48 + `image-rendering: pixelated`.
+- **Icon assets cleaned up.** Deleted unused `public/images/icons/ie.svg`
+  (replaced by `internet-explorer.png` in Phase 7) and
+  `public/images/icons/projects.png` (replaced by the shared folder PNG).
+  Swapped in new uploaded `about-me.png` and `contact.png`.
+- **Contact window width** bumped 480 → 1000 (single edit by user in
+  `icons.js`).
+- **DesktopPet flip bug discovery (post-mortem).** Before deletion, the
+  duck's facing-direction logic looked correct (inline
+  `transform: scaleX(${dir})`) but never rendered: the `.pet-glyph`
+  selector had a CSS keyframe animation animating `transform: translateY`,
+  which won over the inline style for the `transform` property. Lesson for
+  next time: **don't put a CSS keyframe animation that touches `transform`
+  on the same element that needs an inline `transform` for a different
+  axis.** Wrap with a separate element so they animate independent
+  properties. Moot now that Clippy is static, but flagged for any future
+  animated overlay.
+
 ---
 
 ## 4. Gotchas
@@ -498,6 +541,16 @@ We bumped icon positions to `iconPositions.v2` when switching to the
 persist to localStorage, bump the storage key version so existing users
 don't see broken-looking layouts from the old values.
 
+### CSS keyframe `transform` silently overrides inline `transform`
+The duck was supposed to flip via `<div style={{ transform: 'scaleX(-1)' }}>`,
+but it never did — its parent had `animation: pet-bob` whose keyframes set
+`transform: translateY(...)`. Same property name, so the animation won and
+the inline style was discarded. The two transforms didn't compose. **Fix
+pattern:** put the animated transform on a wrapper element and the inline
+transform on a child element so they animate independent properties on
+separate nodes. Hit this if you ever add a bobbing/floating animated
+overlay that also needs to flip or scale.
+
 ---
 
 ## 5. User preferences (what to do without asking)
@@ -549,7 +602,7 @@ to apply without re-asking:
 | Desktop icon labels, emojis, images | `src/data/icons.js` |
 | Game catalog (Games hub) | `src/data/games.js` |
 | Fake FS structure | `src/data/fileSystem.js` |
-| Rubber duck SVG + sayings | `src/components/Overlays/DesktopPet.jsx` |
+| Clippy sayings + show/dismiss timing | `src/components/Overlays/Clippy.jsx` |
 | BSOD error codes | `src/components/Overlays/BSOD.jsx` → `ERRORS` |
 | Install Wizard copy / flow | `src/components/Overlays/InstallWizard.jsx` |
 | Terminal commands + banner + fortunes | `src/windows/Terminal/Terminal.jsx` |

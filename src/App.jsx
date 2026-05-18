@@ -4,7 +4,7 @@ import { Taskbar } from './components/Taskbar/Taskbar';
 import { BSOD } from './components/Overlays/BSOD';
 import { Matrix } from './components/Overlays/Matrix';
 import { Confetti } from './components/Overlays/Confetti';
-import { DesktopPet } from './components/Overlays/DesktopPet';
+import { Clippy } from './components/Overlays/Clippy';
 import { InstallWizard } from './components/Overlays/InstallWizard';
 import { MobileView } from './components/Mobile/MobileView';
 import { useClickSounds } from './hooks/useClickSounds';
@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <Desktop />
-      <DesktopPet />
+      <Clippy />
       <WindowManager />
       <Taskbar />
       <BSOD />
