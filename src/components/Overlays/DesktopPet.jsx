@@ -51,34 +51,15 @@ const SAYINGS = [
 ];
 
 function RubberDuck() {
-  // Classic yellow bath-toy rubber duck, ~36px tall.
   return (
-    <svg
-      viewBox="0 0 44 40"
-      width="40"
-      height="36"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      {/* body */}
-      <ellipse cx="24" cy="26" rx="16" ry="11" fill="#ffd84d" stroke="#000" strokeWidth="1.5" />
-      {/* tail */}
-      <path d="M9 22 L4 18 L8 23 Z" fill="#ffd84d" stroke="#000" strokeWidth="1.5" strokeLinejoin="miter" />
-      {/* head */}
-      <circle cx="14" cy="14" r="10" fill="#ffd84d" stroke="#000" strokeWidth="1.5" />
-      {/* hair tuft */}
-      <path d="M13 4 Q14 1 16 4" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" />
-      {/* beak */}
-      <path d="M4 14 Q-1 16 4 19 L9 18 Q9 15 9 13 Z" fill="#ff9b1c" stroke="#000" strokeWidth="1.4" strokeLinejoin="miter" />
-      <line x1="3" y1="17" x2="9" y2="16.5" stroke="#000" strokeWidth="0.8" />
-      {/* eye */}
-      <circle cx="12" cy="12" r="2" fill="#fff" stroke="#000" strokeWidth="0.8" />
-      <circle cx="12.4" cy="12.4" r="1" fill="#000" />
-      {/* wing */}
-      <path d="M22 22 Q28 22 32 27" fill="none" stroke="#000" strokeWidth="1.2" strokeLinecap="round" />
-      {/* highlight */}
-      <path d="M18 8 Q21 7 23 9" fill="none" stroke="#fff7c0" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
+    <img
+      src="/images/duck.png"
+      width={44}
+      height={44}
+      alt=""
+      draggable={false}
+      style={{ imageRendering: 'pixelated', display: 'block' }}
+    />
   );
 }
 

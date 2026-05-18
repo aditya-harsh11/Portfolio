@@ -12,13 +12,14 @@ up, start here.
 
 - **Stack:** Vite 8 + React 19 + Tailwind 3 + Zustand + react-rnd. No router.
 - **Path:** `C:\Projects\Portfolio-Website-Aditya\`.
-- **State on `main`:** 5 commits delivered in 4 phases + 1 test-fix round.
-  After commit `c679c56` there's a working set of uncommitted tweaks
-  (rubber duck, real GH/LI icons, bigger icons, install-wizard tightening,
-  field guards, cursors). User wants to keep testing before the next commit.
+- **State on `main`:** 7 commits, 6 phases. Working tree clean, ready to deploy.
 - **Run:** `npm install && npm run dev` → http://localhost:5173 (or
   next free port — Vite auto-increments if something's already there).
-- **Deploy:** `npm i -g vercel && vercel` (config already in `vercel.json`).
+- **Deploy:** `npm i -g vercel && vercel` (config already in `vercel.json`;
+  SPA rewrite + long-cache headers for `/assets`, `/audio`, `/images`).
+- **Note:** git history was rewritten via `filter-branch` to scrub a couple
+  of names. Don't trust SHAs from before — commits have new hashes. Don't
+  force-push to anything that's already shared.
 
 ---
 
@@ -63,7 +64,8 @@ src/
 │   ├── Overlays/           Full-screen overlays mounted from App.jsx
 │   │   ├── BSOD.jsx
 │   │   ├── Matrix.jsx
-│   │   ├── Confetti.jsx│   │   ├── DesktopPet.jsx  Includes inline RubberDuck SVG
+│   │   ├── Confetti.jsx
+│   │   ├── DesktopPet.jsx  Renders /images/duck.png (pixel-art)
 │   │   └── InstallWizard.jsx
 │   └── Mobile/MobileView.jsx   <768px fallback
 │
@@ -77,6 +79,7 @@ src/
 │   ├── Settings/
 │   ├── RecycleBin/
 │   ├── MusicPlayer/
+│   ├── InternetExplorer/   IE parody — chrome + URL bar + multi-page + dino game
 │   ├── GamesHub/Games.jsx  Game launcher (NOT to be confused with games/ below)
 │   └── games/              Each game in its own subfolder
 │       ├── games.css       Shared HUD/stage styling
@@ -237,12 +240,15 @@ styling (console-prompt look); presence of `image` swaps to `<img>`.
 
 ## 3. Phase + change log
 
-### `d79aa01` — Phase 1: MVP scaffold
+> Note: SHAs below are pre-rewrite. Real commit hashes changed; `git log` is
+> the source of truth.
+
+### Phase 1: MVP scaffold
 Vite + React + Tailwind + Zustand + react-rnd. Desktop + draggable icons,
 taskbar with start menu + clock, 5 windows (About, Projects, Contact,
 Terminal, Snake). Click sounds. Initial commit.
 
-### `9f11af5` — Phase 2: depth
+### Phase 2: depth
 Real resume in `content.js`. Fake FS generated from it. Explorer + Notepad
 (double-click file → opens in Notepad). Settings window (wallpaper picker
 supporting both image URLs and `color:#hex`; sound toggle/volume). Recycle
@@ -250,7 +256,7 @@ Bin window. Terminal expanded to ~25 commands with real FS-aware
 `ls`/`cd`/`cat`/`tree`/`pwd` + tab completion + 6 themes + matrix/hack/bsod
 effects. Overlays: BSOD, Matrix canvas rain, Konami → Confetti.
 
-### `9de049e` — Phase 3: personality
+### Phase 3: personality
 8 more games (Minesweeper, Tetris, G2048, Pong, Breakout, Memory, Gomoku,
 LightsOut). Games hub launcher at `windows/GamesHub/` (case-distinct from
 `games/` — see Gotchas). MusicPlayer Winamp-mock. DesktopPet
@@ -259,7 +265,7 @@ overlays. Install Wizard (5 phases gated by localStorage; re-run via
 because the sandbox blocked the third-party `counterapi.dev` fetch
 (deliberate: no external dependencies by default).
 
-### `08b0da4` — Phase 4: polish
+### Phase 4: polish
 Games + MusicPlayer wrapped in `React.lazy` + Suspense — each game ships as
 a 1-4 KB on-demand chunk; main bundle dropped to ~94 KB gzipped. Global
 keyboard shortcuts hook. Focus rings via `:focus-visible`. `prefers-reduced-motion`
@@ -267,7 +273,7 @@ honored globally. Real SEO meta tags + SVG favicon + robots.txt. MobileView
 component renders at <768px with a sessionStorage "load desktop view
 anyway" escape hatch. `vercel.json` with SPA rewrite + long-cache headers.
 
-### `c679c56` — Test-round fixes
+### Test-round fixes
 - Install Wizard: literal `\u2019` / `\u2026` sequences rendering as text
   (JSX text nodes don't process those escapes — use real characters).
   "Fake File System" capitalized.
@@ -299,9 +305,9 @@ anyway" escape hatch. `vercel.json` with SPA rewrite + long-cache headers.
 - Dropped `Alt+Tab` and `Ctrl+M` shortcuts — OS/browser conflicts. Kept
   only `Esc` closes active window.
 
-### Uncommitted in-session tweaks (after `c679c56`)
+### Polish round (now committed)
 
-User wanted to keep testing before the next commit. Apply on next commit:
+Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
 
 - **Reverted Recycle Bin filled-state indicator** — back to static `🗑`.
 - **Pet is now a rubber duck.** First with `🦆` emoji, then user wanted yellow
@@ -344,6 +350,45 @@ User wanted to keep testing before the next commit. Apply on next commit:
   - `MusicPlayer.jsx` TRACKS replaced with real song titles (Snowfall,
     After Dark, Resonance, Sunset Lover, etc.).
   - `DesktopPet.jsx` SAYINGS later refreshed (separately) to duck theme.
+
+### Phase 5: Internet Explorer + dino + real photo
+
+- **New IE window** (lazy chunk, ~33 KB JS / ~10 KB CSS). Win95 chrome:
+  decorative menubar, toolbar (Back / Forward / Stop / Refresh / Home /
+  Favorites / History / Print), editable address bar with Go + spinner,
+  status bar, real history stack (Clear History supported).
+- **Pages**: Home (marquee, hit counter sourced from `visitorCount`,
+  awards, web ring), About (parody), The Wall (formerly Guestbook;
+  localStorage key `ie:wall`), Cool Links (mix of parody + real GH/LI/email),
+  Easter Eggs hub, AltaVista/Yahoo search, archived-site gravestone, 404.
+- **URL-bar easter eggs:** `bsod.com` triggers BSOD overlay, `matrix.com`
+  triggers Matrix, `chrome://dino` / `dino.com` / `about:offline` loads the
+  dino game.
+- **Dino game**: real chrome-dino sprite (was: hand-drawn pixel bitmap),
+  varied cactus clusters (1/2/3), taller canvas so dino head stays in frame,
+  tighter hitbox.
+- **Real photo on About** — `/images/aditya.jpg`.
+- **Desktop**: 3-column grouped layout (me / fun / system); position-storage
+  key bumped to `iconPositions.v3`.
+- **Removed Clippy entirely**. The duck now speaks both its own lines and
+  the old Clippy site tips (~41 sayings).
+- Terminal: hack sequence with progress bars; `format` / `rmrf system32`
+  joke chain that ends in BSOD; help output regrouped; `education` +
+  `experience` commands added.
+- Recycle bin emoji uses `🗑️` (U+FE0F) for consistent color rendering.
+
+### Phase 6: Pixel duck PNG + Request Resume + cleanup
+
+- **Pet sprite**: `public/images/duck.png` rendered via `<img>` with
+  `image-rendering: pixelated`. Replaces the inline SVG.
+- **Contact window**: new "Request Resume" `mailto:` button (subject and
+  body pre-filled). Lives under a separate "Resume" header in the Direct
+  column.
+- **MusicPlayer**: track list trimmed, version string updated.
+- Terminal command list pruned.
+- **Git history rewritten** (filter-branch) to scrub a couple of names and
+  references. All commit SHAs changed. Don't force-push to anything that's
+  shared.
 
 ---
 

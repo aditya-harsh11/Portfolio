@@ -30,6 +30,14 @@ export function Contact() {
             <li>💼 <a href={contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
             <li>📍 {contact.location}</li>
           </ul>
+
+          <h2 className="contact-h2" style={{ marginTop: 14 }}>Resume</h2>
+          <a
+            className="win95-button contact-resume-btn"
+            href={`mailto:${contact.email}?subject=${encodeURIComponent('Resume request')}&body=${encodeURIComponent("Hi Aditya — could you send me a copy of your resume? Thanks!")}`}
+          >
+            📄 Request Resume
+          </a>
         </div>
 
         <form className="contact-form" onSubmit={submit}>

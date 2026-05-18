@@ -188,7 +188,6 @@ export function Terminal() {
         print([
           'Available commands:',
           '',
-          '  whoami               profile summary',
           '  about                bio',
           '  education            schools and coursework',
           '  experience           work history',
@@ -205,7 +204,6 @@ export function Terminal() {
           '  clear, cls           clear screen',
           '  theme <name>         green, amber, blue, white, red, purple',
           '  banner               show banner',
-          '  date                 current date/time',
           '  echo <text>          print text',
           '',
           '  neofetch             system info',
@@ -218,16 +216,6 @@ export function Terminal() {
           '',
           '  help, ?              show this list',
           '  exit                 print exit message',
-          '',
-        ]);
-        break;
-
-      case 'whoami':
-        print([
-          profile.name,
-          profile.role,
-          profile.school,
-          `tagline: ${profile.tagline}`,
           '',
         ]);
         break;
@@ -385,10 +373,6 @@ export function Terminal() {
         }
         break;
       }
-
-      case 'date':
-        print([new Date().toString(), '']);
-        break;
 
       case 'echo':
         print([args.join(' '), '']);
