@@ -12,7 +12,7 @@ up, start here.
 
 - **Stack:** Vite 8 + React 19 + Tailwind 3 + Zustand + react-rnd. No router.
 - **Path:** `C:\Projects\Portfolio-Website-Aditya\`.
-- **State on `main`:** 9 phases. Pushed to
+- **State on `main`:** 10 phases. Pushed to
   https://github.com/aditya-harsh11/Portfolio.git, deployed via Vercel.
 - **Run:** `npm install && npm run dev` → http://localhost:5173 (or
   next free port — Vite auto-increments if something's already there).
@@ -262,9 +262,9 @@ effects. Overlays: BSOD, Matrix canvas rain, Konami → Confetti.
 LightsOut). Games hub launcher at `windows/GamesHub/` (case-distinct from
 `games/` — see Gotchas). MusicPlayer Winamp-mock. DesktopPet
 overlays. Install Wizard (5 phases gated by localStorage; re-run via
-`runInstallWizard` custom event). VisitorCounter — localStorage-only
-because the sandbox blocked the third-party `counterapi.dev` fetch
-(deliberate: no external dependencies by default).
+`runInstallWizard` custom event). VisitorCounter — originally
+localStorage-only (Claude sandbox refused the third-party fetch); now
+wired to `counterapi.dev` for a global count (see Phase 10).
 
 ### Phase 4: polish
 Games + MusicPlayer wrapped in `React.lazy` + Suspense — each game ships as
@@ -472,6 +472,30 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
   properties. Moot now that Clippy is static, but flagged for any future
   animated overlay.
 
+### Phase 10: Global visitor counter
+
+- **VisitorCounter wired to counterapi.dev.** First load per browser
+  session calls `GET https://api.counterapi.dev/v2/aditya-portfolio/visits/up`
+  (increment + return); subsequent reloads in the same tab call the bare
+  endpoint (read-only). Last successful count cached to `localStorage` so
+  the taskbar shows the last known value if the API is unreachable instead
+  of dashes. Endpoint constant lives at the top of `VisitorCounter.jsx` —
+  change `aditya-portfolio/visits` to rename or reset.
+- **First authorized third-party fetch** in the project. Default
+  no-external-API policy still stands; updated the Sandbox gotcha to note
+  this is the lone exception.
+- **Caveat:** trivially gameable (clear sessionStorage + refresh ad
+  infinitum). It's a hit counter, not analytics. Upgrade path if real
+  numbers matter: Vercel KV with an IP+UA hash.
+- Tooltip changed "Local visit count (this browser)" → "Global visit
+  count".
+
+### Phase 10b: README cleanup
+
+- Removed the "Keyboard shortcuts" section from README. It was minimal
+  (just Esc + Konami) and duplicated information the user discovers
+  organically.
+
 ---
 
 ## 4. Gotchas
@@ -497,12 +521,12 @@ sibling folders that differ only by case — Linux (Vercel) treats them as
 distinct but Windows merges them.
 
 ### Sandbox blocks third-party fetches
-When we tried to wire the visitor counter to `api.counterapi.dev`, the
-sandbox refused the edit because it adds an unauthorized external
-endpoint. **Default policy:** no third-party API calls without explicit
-user authorization. VisitorCounter is therefore localStorage-only — it
-counts visits per browser, not globally. If user wants global, they have
-to explicitly authorize the endpoint.
+When we first tried to wire the visitor counter to `api.counterapi.dev`,
+the sandbox refused the edit because it adds an unauthorized external
+endpoint. **Default policy still stands:** no third-party API calls
+without explicit user authorization. The visitor counter was eventually
+authorized in Phase 10 — that's the only outbound endpoint in the
+project. Anything else needs the same explicit OK before being added.
 
 ### content.js field removals can crash render
 Removing a field (e.g. `profile.awards`) without grepping for references
