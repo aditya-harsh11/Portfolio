@@ -78,7 +78,7 @@ export function BSOD() {
         <br />
         <p>The current application will be terminated.</p>
         <p>* Press any key to terminate the application.</p>
-        <p>* Press any key to continue _</p>
+        <p>* Press CTRL+ALT+DEL again to restart your computer. You will lose any unsaved information in all applications.</p>
         <br />
         <p className="bsod-prompt">Press any key to continue _</p>
       </div>

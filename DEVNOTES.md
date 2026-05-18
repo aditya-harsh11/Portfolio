@@ -12,7 +12,7 @@ up, start here.
 
 - **Stack:** Vite 8 + React 19 + Tailwind 3 + Zustand + react-rnd. No router.
 - **Path:** `C:\Projects\Portfolio-Website-Aditya\`.
-- **State on `main`:** 9 commits, 7 phases. Pushed to
+- **State on `main`:** 10 commits, 8 phases. Pushed to
   https://github.com/aditya-harsh11/Portfolio.git, deployed via Vercel.
 - **Run:** `npm install && npm run dev` → http://localhost:5173 (or
   next free port — Vite auto-increments if something's already there).
@@ -409,6 +409,25 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
   `Aditya's Portfolio` (was `Aditya Harshavardhan — Portfolio 95`).
 - GitHub and LinkedIn icons unchanged (already used real images).
 - Pushed to GitHub remote at `aditya-harsh11/Portfolio`.
+
+### Phase 8: Explorer icons + BSOD copy + small polish
+
+- **Explorer icons → real PNGs.** Tree pane uses `folder.png` (closed) and
+  `filled_folder.png` (open) at 16px. Grid uses `folder.png` for dirs and
+  `windows_icon.png` for `.exe` files at 32px. `.txt` / `.sys` / `.ini`
+  still render as `📄` emoji (no document PNG in the project yet — drop
+  one in `public/images/icons/` if a consistent cross-platform doc icon is
+  wanted later). New `.tree-icon` and `.explorer-icon img` styles in
+  `Explorer.css` use `image-rendering: pixelated`.
+- **BSOD copy fix.** The mock previously rendered "Press any key to
+  continue" twice (once in the bullet list, once as the bottom prompt).
+  Replaced the duplicate bullet with the authentic Win95 line:
+  "* Press CTRL+ALT+DEL again to restart your computer. You will lose any
+  unsaved information in all applications."
+- **Duck speech bubble timer**: 1800 ms → 2500 ms. The tips were
+  disappearing before they could be read.
+- **Skills:** added `Supabase` and `Vercel` to Developer Tools in
+  `content.js`.
 
 ---
 

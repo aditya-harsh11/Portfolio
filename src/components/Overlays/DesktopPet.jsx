@@ -132,7 +132,7 @@ export function DesktopPet() {
     stateRef.current.mode = 'idle';
     setMode('idle');
     if (bubbleTimer.current) clearTimeout(bubbleTimer.current);
-    bubbleTimer.current = setTimeout(() => setBubble(null), 1800);
+    bubbleTimer.current = setTimeout(() => setBubble(null), 2500);
   };
 
   const sleeping = mode === 'sleep';
