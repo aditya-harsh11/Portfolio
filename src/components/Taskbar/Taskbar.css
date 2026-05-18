@@ -135,6 +135,13 @@
   text-align: center;
 }
 
+.start-menu-icon {
+  width: 18px;
+  height: 18px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
 .start-menu-separator {
   height: 1px;
   background: #808080;
