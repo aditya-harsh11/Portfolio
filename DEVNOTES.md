@@ -12,7 +12,8 @@ up, start here.
 
 - **Stack:** Vite 8 + React 19 + Tailwind 3 + Zustand + react-rnd. No router.
 - **Path:** `C:\Projects\Portfolio-Website-Aditya\`.
-- **State on `main`:** 7 commits, 6 phases. Working tree clean, ready to deploy.
+- **State on `main`:** 9 commits, 7 phases. Pushed to
+  https://github.com/aditya-harsh11/Portfolio.git, deployed via Vercel.
 - **Run:** `npm install && npm run dev` → http://localhost:5173 (or
   next free port — Vite auto-increments if something's already there).
 - **Deploy:** `npm i -g vercel && vercel` (config already in `vercel.json`;
@@ -390,9 +391,40 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
   references. All commit SHAs changed. Don't force-push to anything that's
   shared.
 
+### Phase 7: Cross-platform icons + deploy
+
+- **Discovered after first Vercel deploy:** desktop icons looked completely
+  different on Mac vs Windows because they were emoji codepoints rendered
+  by the OS-level emoji font (Apple Color Emoji vs Segoe UI Emoji). Not a
+  bug — just how emoji work. See Gotchas.
+- **Fix:** added 10 real PNG icons under `public/images/icons/`
+  (`my-computer`, `about-me`, `projects`, `contact`, `internet-explorer`,
+  `games`, `music`, `terminal`, `recycle-bin`, `settings`). Wired through
+  the existing `icon.image` field, which `DesktopIcon.jsx` already
+  supported. `StartMenu.jsx` updated to render images too.
+- **New optional `imageSize` field** on icon schema; per-icon override of
+  the default 48px. Used to bump Games to 56px since the PNG has internal
+  padding.
+- **Page title** `<title>` + `og:title` + `twitter:title` changed to
+  `Aditya's Portfolio` (was `Aditya Harshavardhan — Portfolio 95`).
+- GitHub and LinkedIn icons unchanged (already used real images).
+- Pushed to GitHub remote at `aditya-harsh11/Portfolio`.
+
 ---
 
 ## 4. Gotchas
+
+### Emoji = OS-rendered, not portable
+
+Emoji codepoints render via the visitor's OS emoji font (Apple Color Emoji
+on Mac, Segoe UI Emoji on Windows, Noto Color Emoji on Linux/Android). Same
+codepoint can look dramatically different across platforms — `🖥️` is a
+sleek silver iMac on Mac but a chunky beige monitor on Windows. **Rule:**
+if you need a consistent visual (especially for the desktop chrome which
+is the whole point of the site), use real PNG/SVG assets via the
+`icon.image` field, not emoji. Title bars and the taskbar still use the
+`emoji` string today; not visible enough to matter yet but flag it if
+visitors complain.
 
 ### Windows folder case-insensitivity → `GamesHub/` vs `games/`
 Windows treats `Games/` and `games/` as the same path. We initially put the
