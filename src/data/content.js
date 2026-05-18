@@ -141,5 +141,5 @@ export const skills = {
   Languages: ['Python', 'JavaScript', 'Java', 'SQL', 'Dart', 'HTML', 'CSS'],
   'Frameworks (SWE)': ['React', 'Next.js', 'FastAPI', 'Flask', 'Flutter', 'JavaFX', 'JUnit'],
   'Frameworks (AI/ML)': ['PyTorch', 'NumPy', 'Pandas', 'Matplotlib'],
-  'Developer Tools': ['Git', 'GitHub', 'Docker', 'Firebase'],
+  'Developer Tools': ['Git', 'GitHub', 'Docker', 'Firebase', 'Supabase', 'Vercel'],
 };

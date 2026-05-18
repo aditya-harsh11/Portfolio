@@ -19,7 +19,12 @@ function buildTreeJSX(node, path, currentPath, navigate, depth = 0) {
           className={`tree-node ${currentPath === path ? 'active' : ''}`}
           onClick={() => navigate(path)}
         >
-          {isOpen ? '📂' : '📁'} {node.name}
+          <img
+            src={isOpen ? '/images/icons/filled_folder.png' : '/images/icons/folder.png'}
+            alt=""
+            className="tree-icon"
+          />
+          {node.name}
         </button>
         {isOpen
           ? Object.values(node.children)
@@ -134,7 +139,13 @@ export function Explorer({ path: initialPath }) {
                 title={child.name}
               >
                 <div className="explorer-icon">
-                  {child.type === 'dir' ? '📁' : child.ext === 'exe' ? '🖥️' : '📄'}
+                  {child.type === 'dir' ? (
+                    <img src="/images/icons/folder.png" alt="" />
+                  ) : child.ext === 'exe' ? (
+                    <img src="/images/icons/windows_icon.png" alt="" />
+                  ) : (
+                    '📄'
+                  )}
                 </div>
                 <div className="explorer-label">{child.name}</div>
               </button>
