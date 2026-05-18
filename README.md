@@ -53,17 +53,6 @@ resolve to `index.html`.
 | Game implementations | `src/windows/games/<Name>/` |
 | Fonts + audio | `src/assets/fonts/`, `public/audio/` |
 
-## Keyboard shortcuts
-
-| Key | Action |
-| --- | --- |
-| `Esc` | Close active window (skips when typing in an input) |
-| `↑ ↑ ↓ ↓ ← → ← → B A` | Confetti rain |
-
-In Terminal: arrow keys browse history, `Tab` completes paths, `Ctrl+L` clears.
-
-(Window cycling is best done via the taskbar — `Alt+Tab` is owned by your OS, and `Ctrl+M` is mute in some browsers.)
-
 ## Phases (all done)
 
 1. **Phase 1** — desktop, taskbar, About / Projects / Contact / Terminal / Snake.

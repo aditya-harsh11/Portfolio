@@ -27,7 +27,7 @@ export const desktopIcons = [
     id: 'projects',
     label: 'Projects',
     emoji: '📁',
-    image: '/images/icons/projects.png',
+    image: '/images/icons/folder.png',
     component: 'Projects',
     title: 'Projects',
     width: 800,
@@ -41,8 +41,8 @@ export const desktopIcons = [
     image: '/images/icons/contact.png',
     component: 'Contact',
     title: 'Contact',
-    width: 480,
-    height: 420,
+    width: 1000,
+    height: 520,
     singleton: true,
   },
   {
@@ -130,7 +130,7 @@ export const desktopIcons = [
 
 export const startMenuItems = [
   { id: 'about', label: 'About Me', emoji: '👤', image: '/images/icons/about-me.png' },
-  { id: 'projects', label: 'Projects', emoji: '📁', image: '/images/icons/projects.png' },
+  { id: 'projects', label: 'Projects', emoji: '📁', image: '/images/icons/folder.png' },
   { id: 'computer', label: 'My Computer', emoji: '🖥️', image: '/images/icons/my-computer.png' },
   { id: 'terminal', label: 'Terminal', emoji: '>_', image: '/images/icons/terminal.png' },
   { id: 'contact', label: 'Contact', emoji: '✉️', image: '/images/icons/contact.png' },

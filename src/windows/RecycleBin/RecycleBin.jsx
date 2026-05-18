@@ -35,7 +35,11 @@ export function RecycleBin() {
       <div className="recycle-grid win95-inset win95-scrollbar">
         {items.length === 0 ? (
           <div className="recycle-empty">
-            <div className="recycle-empty-icon">🗑</div>
+            <img
+              className="recycle-empty-icon"
+              src="/images/icons/recycle-bin.png"
+              alt=""
+            />
             <div>The Recycle Bin is empty.</div>
             <div className="muted">Closed windows appear here.</div>
           </div>
