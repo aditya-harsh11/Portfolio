@@ -11,11 +11,11 @@ const STEPS = [
       <>
         <h2>Welcome to AdityaOS Setup</h2>
         <p>
-          This wizard will install <strong>AdityaOS 1.0</strong> (the portfolio
+          - This wizard will install <strong>AdityaOS 1.0</strong> (the portfolio
           you're looking at) on this browser tab.
         </p>
         <p>
-          Estimated install time: about 8 seconds. Click <strong>Next</strong>
+          - Estimated install time: about 8 seconds. Click <strong>Next</strong>
           {' '}to continue.
         </p>
       </>
@@ -30,14 +30,14 @@ const STEPS = [
         <div className="wiz-eula win95-inset-thin">
           <p>By installing AdityaOS, you agree to the following terms:</p>
           <ol>
-            <li>You will not write code without using version control.</li>
-            <li>You will respect tab vs. spaces conventions of any repo you join.</li>
+            <li>1. You will not write code without using version control.</li>
+            <li>2. You will respect tab vs. spaces conventions of any repo you join.</li>
             <li>
-              You acknowledge that the recruiter reading this is encouraged to
+              3. You acknowledge that the recruiter reading this is encouraged to
               consider Aditya for interesting roles.
             </li>
-            <li>No warranty. No refunds. Just vibes.</li>
-            <li>Effective immediately, until you close this tab.</li>
+            <li>4. No warranty. No refunds. Just vibes.</li>
+            <li>5. Effective immediately, until you close this tab.</li>
           </ol>
         </div>
       </>
@@ -52,9 +52,9 @@ const STEPS = [
         <p>All components are required for a complete experience.</p>
         <ul className="wiz-checklist">
           <li><input type="checkbox" defaultChecked disabled /> Desktop &amp; Windows</li>
-          <li><input type="checkbox" defaultChecked disabled /> Terminal + fake FS</li>
+          <li><input type="checkbox" defaultChecked disabled /> Terminal + File System</li>
           <li><input type="checkbox" defaultChecked disabled /> 9 mini-games</li>
-          <li><input type="checkbox" defaultChecked disabled /> Music Player (mock)</li>
+          <li><input type="checkbox" defaultChecked disabled /> Music Player</li>
           <li><input type="checkbox" defaultChecked disabled /> Easter eggs (Konami, BSOD, Matrix)</li>
           <li><input type="checkbox" defaultChecked disabled /> Desktop Pet</li>
         </ul>
@@ -157,12 +157,12 @@ export function InstallWizard() {
             {progress < 30
               ? 'Unpacking desktop primitives…'
               : progress < 55
-              ? 'Generating Fake File System…'
-              : progress < 80
-              ? 'Wiring up easter eggs…'
-              : progress < 100
-              ? 'Calibrating the duck…'
-              : 'Finalizing…'}
+                ? 'Generating File System…'
+                : progress < 80
+                  ? 'Wiring up easter eggs…'
+                  : progress < 100
+                    ? 'Calibrating the duck…'
+                    : 'Finalizing…'}
           </p>
           <div className="wiz-progress win95-inset-thin">
             <div
@@ -190,7 +190,7 @@ export function InstallWizard() {
           <h2>All done!</h2>
           <p>AdityaOS 1.0 has been installed successfully.</p>
           <p>Have a look around. Try the Terminal, Settings, and Games icons.</p>
-          <p style={{ marginTop: 8 }}><strong>Tip:</strong> the Konami code does something.</p>
+
         </div>
       </div>
       <div className="wiz-buttons">
@@ -208,8 +208,8 @@ export function InstallWizard() {
         {phase === 'config'
           ? renderConfig()
           : phase === 'installing'
-          ? renderInstalling()
-          : renderDone()}
+            ? renderInstalling()
+            : renderDone()}
       </div>
     </div>
   );

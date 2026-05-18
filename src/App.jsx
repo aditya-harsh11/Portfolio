@@ -22,7 +22,8 @@ function App() {
       <Desktop />
       <DesktopPet />
       <WindowManager />
-      <Taskbar /><BSOD />
+      <Taskbar />
+      <BSOD />
       <Matrix />
       <Confetti />
       <InstallWizard />

@@ -5,6 +5,7 @@ const SPEED = 50; // px per second
 const STATES = ['walk', 'walk', 'idle', 'sleep'];
 
 const SAYINGS = [
+  // duck-debugging staples
   'quack.',
   'tell me about your bug.',
   'have you tried turning it off and on again?',
@@ -21,6 +22,32 @@ const SAYINGS = [
   'tip: ask your problem out loud.',
   'i hold strong opinions on tabs vs spaces.',
   'the bug is on line 47. trust me.',
+  // site tips
+  'browsing a portfolio? open Projects.',
+  'try typing "tree" in the Terminal — there\'s a whole file system in there.',
+  'Konami code: ↑ ↑ ↓ ↓ ← → ← → B A. just saying.',
+  'recruiters: aditya loves coffee and 4.0 GPAs equally.',
+  'Settings lets you change the wallpaper.',
+  'try "matrix" in the Terminal. or "bsod" if you\'re feeling brave.',
+  'drag any desktop icon to a new spot — positions persist.',
+  'right-click a Minesweeper tile to flag it.',
+  'nine games in here. find them all in the Games folder.',
+  'you can resize any window from the edges or corners.',
+  'aditya pulled a 4.0/4.0 once. it stuck.',
+  'hire him. (the duck made me say that.)',
+  'the Recycle Bin remembers windows you\'ve closed.',
+  'in the Terminal, hit Tab to autocomplete paths.',
+  'type "neofetch" in the Terminal. you won\'t regret it.',
+  'try " anything" in the Terminal.',
+  'type "theme amber" in the Terminal to swap colors.',
+  'open Settings to mute the click sounds.',
+  'My Computer → PORTFOLIO has the full resume as files. try cat on any of them.',
+  'looking for a software engineer? let\'s talk.',
+  'GitHub: aditya-harsh11. stars and follows accepted as currency.',
+  'CS @ UW-Madison, class of 2028. available for summer 2026 internships.',
+  '90% of aditya\'s code is asserts. the other 10% trips them.',
+  'type "hack" in the Terminal. enjoy.',
+  'try the Internet icon. there\'s a dino in there.',
 ];
 
 function RubberDuck() {

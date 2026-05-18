@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { profile, projects, skills, contact } from '../../data/content';
+import { profile, projects, skills, contact, education, experience } from '../../data/content';
 import {
   FS,
   ROOT_PATH,
@@ -158,6 +158,23 @@ export function Terminal() {
     }
   };
 
+  const printProgress = async (label, totalMs = 1800) => {
+    const width = 24;
+    const steps = 20;
+    const render = (i) => {
+      const filled = Math.round((i / steps) * width);
+      const pct = Math.round((i / steps) * 100);
+      return `${label} [${'█'.repeat(filled)}${'░'.repeat(width - filled)}] ${String(pct).padStart(3)}%`;
+    };
+    setLines((prev) => [...prev, render(0)]);
+    for (let i = 1; i <= steps; i++) {
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((resolve) => setTimeout(resolve, totalMs / steps));
+      const next = render(i);
+      setLines((prev) => [...prev.slice(0, -1), next]);
+    }
+  };
+
   const runCommand = async (raw) => {
     const trimmed = raw.trim();
     print(`${cwd}> ${trimmed}`);
@@ -170,27 +187,36 @@ export function Terminal() {
       case '?':
         print([
           'Available commands:',
-          '  help, ?              show this list',
+          '',
           '  whoami               profile summary',
           '  about                bio',
-          '  projects             list projects',
+          '  education            schools and coursework',
+          '  experience           work history',
           '  skills               list skills by category',
+          '  projects             list projects',
           '  contact              contact info',
+          '',
           '  ls, dir [path]       list directory',
           '  cd <path>            change directory (.. for parent)',
           '  cat, type <file>     print file',
           '  tree                 directory tree from cwd',
           '  pwd                  print working directory',
+          '',
           '  clear, cls           clear screen',
           '  theme <name>         green, amber, blue, white, red, purple',
+          '  banner               show banner',
           '  date                 current date/time',
           '  echo <text>          print text',
+          '',
           '  neofetch             system info',
-          '  banner               show banner',
           '  fortune              random quip',
           '   <text>        a cow says something',
           '  matrix               enter the matrix',
           '  bsod                 simulate windows crash',
+          '  hack                 become a hacker',
+          '  format               delete system32 (don\'t)',
+          '',
+          '  help, ?              show this list',
           '  exit                 print exit message',
           '',
         ]);
@@ -208,6 +234,29 @@ export function Terminal() {
 
       case 'about':
         print([...profile.bio, '']);
+        break;
+
+      case 'education':
+        print(
+          education.flatMap((ed) => [
+            ed.school,
+            `  ${ed.degree}`,
+            `  ${ed.dates}   GPA: ${ed.gpa}`,
+            `  coursework: ${ed.coursework.join(', ')}`,
+            '',
+          ])
+        );
+        break;
+
+      case 'experience':
+        print(
+          experience.flatMap((e) => [
+            `> ${e.title} — ${e.org}`,
+            `  ${e.location} · ${e.dates}`,
+            ...e.bullets.map((b) => `  • ${b}`),
+            '',
+          ])
+        );
         break;
 
       case 'projects':
@@ -383,29 +432,108 @@ export function Terminal() {
         break;
 
       case 'hack':
-        print(['INITIATING HACK SEQUENCE…', '']);
-        // eslint-disable-next-line no-await-in-loop
+        print(['[ INITIATING HACK SEQUENCE ]', '']);
         await printAnimated(
           [
-            '> Bypassing firewall…',
-            '> Cracking passwords…  done.',
-            '> Pivoting through router…',
-            '> Reading mainframe…',
-            '> Locating target node…',
-            '> Decrypting Aditya.zip…',
-            '> ACCESS GRANTED.',
-            '(Disclaimer: this was theater.)',
+            '[*] Scanning network 192.168.1.0/24…',
+            '[*] Port scan in progress…',
+            '[+] Found host: TARGET-MAINFRAME (192.168.1.42)',
+            '[+] Open ports: 22, 80, 443, 3389',
+            '[*] Probing for vulnerabilities…',
+            '[+] CVE-1995-PORTFOLIO detected.',
+            '[*] Breaking in…',
+          ],
+          180
+        );
+        await printProgress('    Cracking root password   ', 1800);
+        await printAnimated(
+          [
+            '[+] Authentication bypassed.',
+            '[*] Establishing reverse shell…',
+            '[+] Shell acquired.',
+            '[*] Exfiltrating files…',
+          ],
+          180
+        );
+        await printProgress('    Downloading aditya.zip   ', 1800);
+        await printAnimated(
+          [
+            '[+] Transfer complete: 3.7 GB',
+            '[*] Clearing logs…',
+            '[+] Logs wiped.',
+            '',
+            '  ╔════════════════════════════════╗',
+            '  ║     A C C E S S   G R A N T E D     ║',
+            '  ╚════════════════════════════════╝',
+            '',
+            '(Disclaimer: this was theater. No mainframes were harmed.)',
             '',
           ],
-          200
+          120
         );
         break;
 
-      case 'sudo':
+      case 'format':
+      case 'rmrf': {
+        const wantsSystem32 =
+          c === 'rmrf' || args.join(' ').toLowerCase().includes('system32');
+        print([
+          wantsSystem32
+            ? 'sudo rm -rf C:\\WINDOWS\\SYSTEM32'
+            : 'format C:',
+          '',
+          'WARNING: this will permanently erase C:\\WINDOWS\\SYSTEM32',
+          'Proceed with deletion? [Y/n] Y',
+          '',
+        ]);
+        await printAnimated(
+          [
+            '> Unmounting volume…',
+            '> Acquiring exclusive lock…',
+            '> Removing critical system files…',
+          ],
+          200
+        );
+        await printProgress('    Deleting SYSTEM32        ', 2200);
+        await printAnimated(
+          [
+            '  removed: kernel32.dll',
+            '  removed: user32.dll',
+            '  removed: ntoskrnl.exe',
+            '  removed: explorer.exe',
+            '  removed: every important thing',
+            '',
+            'Format complete. 0 bytes free.',
+            '',
+            'A critical system error has occurred…',
+            '',
+          ],
+          140
+        );
+        await new Promise((r) => setTimeout(r, 600));
+        triggerBSOD();
+        break;
+      }
+
+      case 'sudo': {
+        const sub = args.join(' ').toLowerCase();
+        if (sub.startsWith('rm') && sub.includes('system32')) {
+          await runCommand('rmrf system32');
+          break;
+        }
+        if (sub === 'hack' || sub === 'become a hacker' || sub.startsWith('hack')) {
+          await runCommand('hack');
+          break;
+        }
         print(['Nice try. This isn\'t Linux.', '']);
         break;
+      }
 
       case 'rm':
+        if (args.join(' ').toLowerCase().includes('system32')) {
+          await runCommand('rmrf system32');
+          break;
+        }
         print([`rm: cannot remove '${args.join(' ')}': everything is sacred`, '']);
         break;
 

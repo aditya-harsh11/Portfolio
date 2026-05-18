@@ -5,7 +5,11 @@ export function About() {
   return (
     <div className="about-window win95-scrollbar">
       <header className="about-header">
-        <div className="about-avatar">{profile.name[0]}</div>
+        <img
+          className="about-avatar"
+          src="/images/aditya.jpg"
+          alt={profile.name}
+        />
         <div>
           <h1 className="about-name">{profile.name}</h1>
           <p className="about-role">{profile.role}</p>
