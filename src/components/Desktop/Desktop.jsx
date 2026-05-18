@@ -26,7 +26,6 @@ function defaultLayout() {
 export function Desktop() {
   const wallpaper = useDesktopStore((s) => s.wallpaper);
   const openWindow = useDesktopStore((s) => s.openWindow);
-  const recycleBinCount = useDesktopStore((s) => s.recycleBin.length);
   // v2: 2-column layout. If older saved layout exists, discard so the new
   // arrangement shows up correctly.
   const [positions, setPositions] = useState(() => {
@@ -72,28 +71,15 @@ export function Desktop() {
   return (
     <div className="desktop-root" style={bgStyle}>
       <div className="desktop-icons">
-        {desktopIcons.map((icon) => {
-          // Recycle bin icon switches between empty and full
-          const display =
-            icon.id === 'recycle'
-              ? {
-                  ...icon,
-                  emoji: recycleBinCount > 0 ? '🗑️📄' : '🗑',
-                  label: recycleBinCount > 0
-                    ? `Recycle Bin (${recycleBinCount})`
-                    : 'Recycle Bin',
-                }
-              : icon;
-          return (
-            <DesktopIcon
-              key={icon.id}
-              icon={display}
-              position={positions[icon.id] ?? { x: GRID_X, y: GRID_Y }}
-              onDrop={(pos) => updatePos(icon.id, pos)}
-              onOpen={() => launchIcon(icon)}
-            />
-          );
-        })}
+        {desktopIcons.map((icon) => (
+          <DesktopIcon
+            key={icon.id}
+            icon={icon}
+            position={positions[icon.id] ?? { x: GRID_X, y: GRID_Y }}
+            onDrop={(pos) => updatePos(icon.id, pos)}
+            onOpen={() => launchIcon(icon)}
+          />
+        ))}
       </div>
     </div>
   );

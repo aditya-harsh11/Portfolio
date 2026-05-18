@@ -3,11 +3,13 @@ import './MusicPlayer.css';
 
 const TRACKS = [
   { title: 'lofi_beats_to_debug_to.mp3', artist: 'Aditya', duration: 184 },
-  { title: 'kernel_panic_blues.flac', artist: 'CPU & The Cycles', duration: 212 },
-  { title: 'lane_segmentation_anthem.ogg', artist: 'Wisconsin Autonomous', duration: 167 },
-  { title: 'four_point_oh.wav', artist: 'GPA Records', duration: 248 },
-  { title: 'koopman_dream.mp3', artist: 'Latent Space', duration: 196 },
-  { title: 'on_device_inference.mp3', artist: 'NPU Sessions', duration: 273 },
+  { title: 'Snowfall.mp3', artist: 'øneheart & reidenshi', duration: 156 },
+  { title: 'late_night_side_project.wav', artist: 'Campus WiFi', duration: 212 },
+  { title: 'After Dark.flac', artist: 'Mr.Kitty', duration: 287 },
+  { title: '2am_debug_session.mp3', artist: 'The Stack Traces', duration: 167 },
+  { title: 'Resonance.mp3', artist: 'HOME', duration: 242 },
+  { title: 'running_on_coffee.ogg', artist: 'Sprint Weekend', duration: 198 },
+  { title: 'Sunset Lover.mp3', artist: 'Petit Biscuit', duration: 223 },
 ];
 
 function fmt(seconds) {

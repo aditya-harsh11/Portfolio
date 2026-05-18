@@ -115,17 +115,11 @@ export function InstallWizard() {
     setOpen(false);
   };
 
-  const skip = () => {
-    const ok = window.confirm(
-      'Cancel setup? You can run it again from the Start menu.'
-    );
-    if (!ok) return;
-    localStorage.setItem(KEY, '1');
-    setOpen(false);
-  };
-
   const renderConfig = () => {
     const s = STEPS[step];
+    // No Cancel anywhere. Back only appears once the user is past Welcome AND
+    // EULA — i.e. on the Components step (step 2).
+    const showBack = step >= 2;
     return (
       <>
         <div className="wiz-titlebar win95-titlebar">
@@ -136,13 +130,12 @@ export function InstallWizard() {
           <div className="wiz-main">{s.body()}</div>
         </div>
         <div className="wiz-buttons">
-          <button className="win95-button" onClick={skip}>
-            Cancel
-          </button>
           <div style={{ flex: 1 }} />
-          <button className="win95-button" onClick={back} disabled={step === 0}>
-            &lt; Back
-          </button>
+          {showBack ? (
+            <button className="win95-button" onClick={back}>
+              &lt; Back
+            </button>
+          ) : null}
           <button className="win95-button" onClick={next}>
             {step === STEPS.length - 1 ? 'Install' : 'Next >'}
           </button>
@@ -181,9 +174,7 @@ export function InstallWizard() {
         </div>
       </div>
       <div className="wiz-buttons">
-        <button className="win95-button" disabled>
-          Cancel
-        </button>
+        <div style={{ flex: 1 }} />
       </div>
     </>
   );
