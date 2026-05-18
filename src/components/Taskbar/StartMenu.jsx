@@ -39,7 +39,11 @@ export function StartMenu({ onClose }) {
               className="start-menu-item"
               onClick={() => handleClick(item)}
             >
-              <span className="emoji">{item.emoji}</span>
+              {item.image ? (
+                <img className="start-menu-icon" src={item.image} alt="" draggable={false} />
+              ) : (
+                <span className="emoji">{item.emoji}</span>
+              )}
               <span>{item.label}</span>
             </button>
           )

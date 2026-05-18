@@ -91,7 +91,13 @@ export function DesktopIcon({ icon, position, onDrop, onOpen }) {
       aria-label={icon.label}
     >
       {icon.image ? (
-        <img src={icon.image} alt="" className="glyph-img" draggable={false} />
+        <img
+          src={icon.image}
+          alt=""
+          className="glyph-img"
+          draggable={false}
+          style={icon.imageSize ? { width: icon.imageSize, height: icon.imageSize } : undefined}
+        />
       ) : (
         <div
           className={`glyph${/^[\x20-\x7E]+$/.test(icon.emoji) ? ' text-glyph' : ''}`}
