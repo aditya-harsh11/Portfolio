@@ -364,7 +364,6 @@ export function EasterEggsPage({ navigate }) {
       <h2 className="ie-h2">Keyboard</h2>
       <ul className="ie-nav-list">
         <li><strong>Konami code</strong> (↑ ↑ ↓ ↓ ← → ← → B A) — triggers a confetti shower</li>
-        <li><strong>Esc</strong> — closes the active window</li>
       </ul>
 
       <h2 className="ie-h2">Terminal commands (the hidden ones)</h2>
@@ -375,7 +374,6 @@ export function EasterEggsPage({ navigate }) {
         <li><code>format</code> / <code>rmrf system32</code> — deletes SYSTEM32, crashes into BSOD</li>
         <li><code>sudo hack</code> / <code>sudo rm -rf system32</code> — Linux-style shortcuts</li>
         <li><code>neofetch</code> — system info screen</li>
-        <li><code> &lt;text&gt;</code> — a cow says your text</li>
         <li><code>fortune</code> — random one-liner</li>
         <li><code>theme &lt;name&gt;</code> — try amber, blue, white, red, purple</li>
       </ul>
@@ -402,7 +400,6 @@ export function EasterEggsPage({ navigate }) {
 
       <h2 className="ie-h2">Click on…</h2>
       <ul className="ie-nav-list">
-        <li>The <strong>rubber duck</strong> walking around the desktop — click it for debugging advice and site tips</li>
         <li>The <strong>Recycle Bin</strong> — every window you&apos;ve closed is recoverable</li>
         <li>The <strong>Stop</strong> button in this browser — &quot;offline?&quot;</li>
       </ul>
