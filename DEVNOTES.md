@@ -475,12 +475,16 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
 ### Phase 10: Global visitor counter
 
 - **VisitorCounter wired to counterapi.dev.** First load per browser
-  session calls `GET https://api.counterapi.dev/v2/aditya-portfolio/visits/up`
+  session calls `GET https://api.counterapi.dev/v1/aditya-portfolio/visits/up`
   (increment + return); subsequent reloads in the same tab call the bare
-  endpoint (read-only). Last successful count cached to `localStorage` so
-  the taskbar shows the last known value if the API is unreachable instead
-  of dashes. Endpoint constant lives at the top of `VisitorCounter.jsx` —
-  change `aditya-portfolio/visits` to rename or reset.
+  endpoint (read-only). De-dupe is via a `sessionStorage` flag
+  (`visitCounted`), so refreshes/navigation within the same tab don't
+  re-increment, but a new tab/browser does. Last successful count cached to
+  `localStorage` (`visitorCount`) so the taskbar shows the last known value
+  if the API is unreachable instead of dashes. Endpoint constant lives at
+  the top of `VisitorCounter.jsx` — change `aditya-portfolio/visits` to
+  rename or reset. **Note:** the live code uses the **v1** API path, not v2
+  (an earlier draft of this note said v2 — the code is the source of truth).
 - **First authorized third-party fetch** in the project. Default
   no-external-API policy still stands; updated the Sandbox gotcha to note
   this is the lone exception.
@@ -495,6 +499,17 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
 - Removed the "Keyboard shortcuts" section from README. It was minimal
   (just Esc + Konami) and duplicated information the user discovers
   organically.
+
+### Phase 10c: IE Easter Eggs page cleanup
+
+- **Removed two stale/unwanted entries** from the Easter Eggs page
+  (`src/windows/InternetExplorer/pages.jsx` → `EasterEggsPage`):
+  - The **rubber duck** "Click on…" line — stale since Phase 9 replaced
+    the wandering duck pet with the static Clippy overlay.
+  - The **Esc** line under "Keyboard" — at the user's request. The Konami
+    code is now the only entry left in that section.
+- Esc-closes-active-window still works (`useGlobalShortcuts`); it's just no
+  longer advertised on this page.
 
 ---
 

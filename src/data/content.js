@@ -9,10 +9,10 @@ export const profile = {
   gpa: '4.0 / 4.0',
   tagline: 'Building software, AI, and whatever catches my curiosity.',
   bio: [
-    "Hey, I'm Aditya Harshavardhan. I'm a sophomore at the University of Wisconsin-Madison majoring in Computer Science",
-    "I currently work on self-driving tech as a Perception & Infrastructure Engineer for Wisconsin Autonomous. I also study AI safety as a Technical Scholar with the Wisconsin AI Safety Initiative",
-    "Outside of class, I've spent a lot of time building software at hackathons. I've won at MadData 26 (sponsored by Qualcomm), MadHacks (the Midwest's largest collegiate hackathon), Badger Build Fest (my very first hackathon), and Claude hackathon",
-    "I spend most of my free time building stuff, strengthening my technical skills, and going through the ARENA curriculum. When I'm not at a keyboard, you can usually find me playing basketball. Go Lakers!",
+    "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
+    "I currently work on self-driving tech as a Perception & Infrastructure Engineer with Wisconsin Autonomous. I also study AI safety as a Technical Scholar with the Wisconsin AI Safety Initiative.",
+    "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks, Badger Build Fest, and a Claude hackathon.",
+    "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
   focus: [
     'Software Engineering',
@@ -52,8 +52,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Feb 2026 – Present',
     bullets: [
-      'Optimized lane segmentation for 60 fps output, built 3D stop-bar detection',
-      'and, Bird\'s Eye View obstacle mapping, and a UDP-based V2X simulation node for the autonomous vehicle stack.',
+      'Optimized lane segmentation for 60 fps output, built 3D stop-bar detection, Bird\'s Eye View obstacle mapping, and a UDP-based V2X simulation node for the autonomous vehicle.',
     ],
   },
   {
@@ -62,8 +61,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Mar 2026 – Present',
     bullets: [
-      'Completing ARENA and BlueDot curricula and analyzed 8+ papers on mechanistic',
-      'interpretability, scalable oversight, alignment, and evals.',
+      'Completing ARENA and BlueDot based curricula and analyzed 8+ papers on mechanistic interpretability, scalable oversight, alignment, and evals.',
     ],
   },
   {
@@ -72,8 +70,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [
-      'Built a 3-factor risk-score model on 92,000+ attendance records to',
-      'flag high-risk subgroups for 10,000+ children for the Boys & Girls Clubs of Dane County.',
+      'Built a 3-factor risk-score model on 92,000+ attendance records to flag high-risk subgroups for 10,000+ children for the Boys & Girls Clubs of Dane County.',
     ],
   },
 ];
@@ -108,7 +105,7 @@ export const projects = [
     tagline: 'Best Solana Implementation · Most Popular Project · Badger Build Fest 2025',
     blurb:
       'An AI-powered portfolio manager with real-time balances, risk scoring, and on-chain group management.',
-    stack: ['Update this', 'Update this', 'Update this', 'Update this', 'Update this'],
+    stack: ['React', 'Vite', 'Node.js', 'Express', 'Solana Web3.js', 'Anchor', 'Gemini'],
     link: 'https://github.com/aditya-harsh11/Phanta',
   },
   {
@@ -116,7 +113,7 @@ export const projects = [
     tagline: 'Top 5 Finalist · Claude Hackathon',
     blurb:
       'A spatial social app with leaderboards, activity badges, and AI powered icebreakers and games.',
-    stack: ['Update this', 'Update this', 'Update this', 'Update this', 'Update this'],
+    stack: ['React', 'Vite', 'Tailwind', 'Node.js', 'Express', 'Claude API'],
     link: 'https://github.com/aditya-harsh11/Vibe',
   },
   {
@@ -124,16 +121,16 @@ export const projects = [
     tagline: 'Built for Aditi Mallya International School',
     blurb:
       'A cross-platform bus tracking app with real-time updates across 14+ routes.',
-    stack: ['Update this', 'Update this', 'Update this', 'Update this', 'Update this'],
+    stack: ['Flutter', 'Dart', 'Firebase', 'Google Maps'],
     link: 'https://github.com/aditya-harsh11/TrackMyBus',
   },
   {
     title: 'This Portfolio',
     tagline: 'You are here',
     blurb:
-      'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, and a playable games.',
+      'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, and playable games.',
     stack: ['Vite', 'React', 'Zustand', 'react-rnd', 'Tailwind'],
-    link: 'Update this',
+    link: 'https://github.com/aditya-harsh11/Portfolio',
   },
 ];
 

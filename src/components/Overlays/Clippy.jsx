@@ -34,7 +34,6 @@ const SAYINGS = [
   'the Recycle Bin remembers windows you\'ve closed.',
   'in the Terminal, hit Tab to autocomplete paths.',
   'type "neofetch" in the Terminal. you won\'t regret it.',
-  'try " anything" in the Terminal.',
   'type "theme amber" in the Terminal to swap colors.',
   'open Settings to mute the click sounds.',
   'My Computer → PORTFOLIO has the full resume as files. try cat on any of them.',

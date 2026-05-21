@@ -85,21 +85,6 @@ const FORTUNES = [
   'The project that almost broke you usually teaches the most.',
 ];
 
-function (msg) {
-  const top = ' ' + '_'.repeat(msg.length + 2);
-  const bottom = ' ' + '-'.repeat(msg.length + 2);
-  return [
-    top,
-    `< ${msg} >`,
-    bottom,
-    '        \\   ^__^',
-    '         \\  (oo)\\_______',
-    '            (__)\\       )\\/\\',
-    '                ||----w |',
-    '                ||     ||',
-  ];
-}
-
 function resolveRelative(cwd, target) {
   if (!target) return cwd;
   // Absolute path?
@@ -208,7 +193,6 @@ export function Terminal() {
           '',
           '  neofetch             system info',
           '  fortune              random quip',
-          '   <text>        a cow says something',
           '  matrix               enter the matrix',
           '  bsod                 simulate windows crash',
           '  hack                 become a hacker',
@@ -384,10 +368,6 @@ export function Terminal() {
 
       case 'fortune':
         print([FORTUNES[Math.floor(Math.random() * FORTUNES.length)], '']);
-        break;
-
-      case '':
-        print([...(args.join(' ') || 'moo.'), '']);
         break;
 
       case 'neofetch':
