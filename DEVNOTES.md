@@ -12,7 +12,7 @@ up, start here.
 
 - **Stack:** Vite 8 + React 19 + Tailwind 3 + Zustand + react-rnd. No router.
 - **Path:** `C:\Projects\Portfolio-Website-Aditya\`.
-- **State on `main`:** 10 phases. Pushed to
+- **State on `main`:** 11 phases. Pushed to
   https://github.com/aditya-harsh11/Portfolio.git, deployed via Vercel.
 - **Run:** `npm install && npm run dev` → http://localhost:5173 (or
   next free port — Vite auto-increments if something's already there).
@@ -67,7 +67,7 @@ src/
 │   │   ├── Matrix.jsx
 │   │   ├── Confetti.jsx
 │   │   ├── Clippy.jsx      Pinned bottom-right assistant; localStorage-disable
-│   │   └── InstallWizard.jsx
+│   │   └── Login.jsx        Win95 "Welcome to AdityaOS" login gate; shows every visit
 │   └── Mobile/MobileView.jsx   <768px fallback
 │
 ├── windows/                One subfolder per window
@@ -187,7 +187,7 @@ to the 2-column layout).
 - Clippy sayings: `src/components/Overlays/Clippy.jsx` → `SAYINGS`
 - BSOD error codes: `src/components/Overlays/BSOD.jsx` → `ERRORS`
 - Terminal fortunes / banner / boot: `src/windows/Terminal/Terminal.jsx`
-- Install Wizard copy: `src/components/Overlays/InstallWizard.jsx` → `STEPS`
+- Login screen copy: `src/components/Overlays/Login.jsx` (title + prompt strings)
 - Music tracks: `src/windows/MusicPlayer/MusicPlayer.jsx` → `TRACKS`
 - Wallpaper presets: `src/windows/Settings/Settings.jsx` → `WALLPAPERS`
 - All bio/projects/skills/contact: `src/data/content.js`
@@ -261,8 +261,8 @@ effects. Overlays: BSOD, Matrix canvas rain, Konami → Confetti.
 8 more games (Minesweeper, Tetris, G2048, Pong, Breakout, Memory, Gomoku,
 LightsOut). Games hub launcher at `windows/GamesHub/` (case-distinct from
 `games/` — see Gotchas). MusicPlayer Winamp-mock. DesktopPet
-overlays. Install Wizard (5 phases gated by localStorage; re-run via
-`runInstallWizard` custom event). VisitorCounter — originally
+overlays. First-run login gate (the Login overlay — see Phase 11).
+VisitorCounter — originally
 localStorage-only (Claude sandbox refused the third-party fetch); now
 wired to `counterapi.dev` for a global count (see Phase 10).
 
@@ -275,7 +275,7 @@ component renders at <768px with a sessionStorage "load desktop view
 anyway" escape hatch. `vercel.json` with SPA rewrite + long-cache headers.
 
 ### Test-round fixes
-- Install Wizard: literal `\u2019` / `\u2026` sequences rendering as text
+- JSX escape bug: literal `\u2019` / `\u2026` sequences rendering as text
   (JSX text nodes don't process those escapes — use real characters).
   "Fake File System" capitalized.
 - Desktop icons reorganized into 2 columns of 5. Storage key bumped to v2.
@@ -333,11 +333,6 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
   `profile.awards && profile.awards.length > 0 ? ... : null` (object spread
   for the fileSystem dir entry). Apply this guard pattern to any other
   optional profile fields the user might remove.
-- **Install Wizard tightened**:
-  - Cancel button removed entirely (config + installing phases). User
-    cannot dismiss until Finish.
-  - Back button hidden on Welcome (step 0) AND EULA (step 1). Appears
-    starting on Components (step 2).
 - **`config.sys`** content now 7 lines of authentic DOS-era directives
   (HIMEM.SYS, EMM386.EXE, FILES=30, BUFFERS=20, LASTDRIVE=Z, etc.).
 - **`definitely_not_a_virus.exe`** content now 6-line humorous mock
@@ -511,6 +506,39 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
 - Esc-closes-active-window still works (`useGlobalShortcuts`); it's just no
   longer advertised on this page.
 
+### Phase 11: Login screen, project videos, window maximize, IE fixes
+
+- **Login screen replaces the Install Wizard.** New `Login.jsx` overlay — a
+  Win95 "Welcome to AdityaOS" dialog modeled on the classic "Welcome to
+  Windows" login: the gold Windows **key icon** (`public/images/icons/login-key.png`,
+  cropped from the reference), a prompt, empty User name + Password fields,
+  and a single **OK** button (Cancel removed). `?` / `×` title-bar buttons.
+  - **Shows on every visit** — `useState(true)`, no localStorage gate (unlike
+    the old wizard, which persisted once-installed).
+  - Any input logs you in. OK, the `×` button, Enter, and Esc all dismiss it
+    (the classic Win95 Cancel/Esc bypass).
+  - **Removed:** `InstallWizard.{jsx,css}`, the Start-menu "Run Setup Again"
+    entry + its `runInstallWizard` event, and the IE Easter-Eggs wizard line
+    (now advertises the login + its bypass instead).
+- **Projects: embedded demo videos.** New `video` field on a project renders an
+  inline player below the tech chips. `toEmbed()` in `Projects.jsx` auto-detects
+  YouTube / Loom / Vimeo / Google Drive / direct `.mp4` and converts to an
+  embeddable URL — paste any share link. ArcFlow, Unsilenced, Phanta have
+  videos. Also added an optional `image` field (screenshot) and `links` array
+  (extra labeled links), both conditional/unused right now.
+- **About: clickable experience orgs.** New optional `url` on an experience
+  entry turns the org name into a link (Wisconsin Autonomous → wa.wisc.edu,
+  WAISI → waisi.org, Biokind → biokind.org). `.about-org-link` style.
+- **Window maximize/restore.** Third title-bar button (□ / ❐) between minimize
+  and close, on resizable windows only. `toggleMaximize` in the store fills the
+  desktop (viewport minus the 32px taskbar) and stashes `prevRect` to restore.
+  Double-clicking the title bar toggles it; drag + resize are locked while
+  maximized. (Edge case: a maximized window doesn't re-fit on browser resize.)
+- **IE fixes.** The "Favorite snake: the one in Games" link on the IE About
+  page now calls `openWindow` to launch the real Games window (was bouncing to
+  the IE homepage). Tripod web-ring URLs now route to the archived gravestone
+  page instead of a generic 404.
+
 ---
 
 ## 4. Gotchas
@@ -609,7 +637,7 @@ to apply without re-asking:
   those alone unless they explicitly ask for changes.
 - **Game tuning**: Pong / Breakout slow (~30% slower than naive
   defaults). Snake scores 1 per food, not 10.
-- **Install Wizard**: no Cancel button. Back only after step 2.
+- **Login screen**: single OK button, no autofill, shows on every visit.
 - **Cursor**: old-Windows style (white arrow + hand SVGs) globally.
 - **Icon look**: 2-column layout, ~48px glyphs. Real images for GitHub
   (animated gif) and LinkedIn.
@@ -620,9 +648,6 @@ to apply without re-asking:
 
 ## 6. Open follow-ups
 
-- Some user-edited project entries still have `'Update this'` placeholder
-  stacks (Phanta, Vibe, TrackMyBus) — user knows.
-- "This Portfolio" project link is `'Update this'`.
 - No real audio in Music Player — by design (mock). If real audio wanted,
   drop `.mp3`s in `public/audio/` and attach an `<audio>` element to the
   player state.
@@ -643,7 +668,7 @@ to apply without re-asking:
 | Fake FS structure | `src/data/fileSystem.js` |
 | Clippy sayings + show/dismiss timing | `src/components/Overlays/Clippy.jsx` |
 | BSOD error codes | `src/components/Overlays/BSOD.jsx` → `ERRORS` |
-| Install Wizard copy / flow | `src/components/Overlays/InstallWizard.jsx` |
+| Login screen copy / behavior | `src/components/Overlays/Login.jsx` |
 | Terminal commands + banner + fortunes | `src/windows/Terminal/Terminal.jsx` |
 | Music Player tracks | `src/windows/MusicPlayer/MusicPlayer.jsx` → `TRACKS` |
 | Wallpaper presets | `src/windows/Settings/Settings.jsx` → `WALLPAPERS` |

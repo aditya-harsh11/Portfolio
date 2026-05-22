@@ -9,6 +9,7 @@ export function Window({ win }) {
   const minimizeWindow = useDesktopStore((s) => s.minimizeWindow);
   const moveWindow = useDesktopStore((s) => s.moveWindow);
   const resizeWindow = useDesktopStore((s) => s.resizeWindow);
+  const toggleMaximize = useDesktopStore((s) => s.toggleMaximize);
   const activeId = useDesktopStore((s) => s.activeWindowId);
 
   if (win.minimized) return null;
@@ -23,7 +24,8 @@ export function Window({ win }) {
       minHeight={win.minH}
       bounds="parent"
       dragHandleClassName="win95-titlebar"
-      enableResizing={win.resizable}
+      enableResizing={win.resizable && !win.maximized}
+      disableDragging={win.maximized}
       onDragStart={() => focusWindow(win.id)}
       onMouseDown={() => focusWindow(win.id)}
       onDragStop={(_e, d) => moveWindow(win.id, d.x, d.y)}
@@ -41,7 +43,12 @@ export function Window({ win }) {
     >
       <div className="win95-window win95-outset">
         <div className={`win95-titlebar ${active ? '' : 'inactive'}`}>
-          <div className="win95-titlebar-title">
+          <div
+            className="win95-titlebar-title"
+            onDoubleClick={() => {
+              if (win.resizable) toggleMaximize(win.id);
+            }}
+          >
             {win.icon ? <span>{win.icon}</span> : null}
             <span>{win.title}</span>
           </div>
@@ -57,6 +64,19 @@ export function Window({ win }) {
             >
               _
             </button>
+            {win.resizable ? (
+              <button
+                className="win95-titlebar-button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleMaximize(win.id);
+                }}
+                aria-label={win.maximized ? 'Restore' : 'Maximize'}
+                title={win.maximized ? 'Restore' : 'Maximize'}
+              >
+                {win.maximized ? '❐' : '□'}
+              </button>
+            ) : null}
             <button
               className="win95-titlebar-button"
               onClick={(e) => {

@@ -72,7 +72,12 @@ function resolve(raw) {
     return { kind: 'page', component: 'search', host: 'yahoo', displayUrl: 'http://www.yahoo.com/' };
   }
 
-  if (noSlash.startsWith('geocities.com') || noSlash.startsWith('myspace.com') || noSlash.startsWith('angelfire.com')) {
+  if (
+    noSlash.startsWith('geocities.com') ||
+    noSlash.startsWith('myspace.com') ||
+    noSlash.startsWith('angelfire.com') ||
+    noSlash.startsWith('tripod.com')
+  ) {
     const display = original.startsWith('http') ? original : `http://www.${original}`;
     return { kind: 'page', component: 'archived', displayUrl: display };
   }

@@ -3,6 +3,13 @@ import { create } from 'zustand';
 const DEFAULT_WALLPAPER = '/images/wallpapers/win95_bg.jpeg';
 const DEFAULT_W = 640;
 const DEFAULT_H = 440;
+const TASKBAR_H = 32;
+
+// Usable desktop area = viewport minus the taskbar at the bottom.
+const desktopArea = () => {
+  if (typeof window === 'undefined') return { w: DEFAULT_W, h: DEFAULT_H };
+  return { w: window.innerWidth, h: window.innerHeight - TASKBAR_H };
+};
 
 const loadJSON = (key, fallback) => {
   try {
@@ -76,6 +83,8 @@ export const useDesktopStore = create((set, get) => ({
       minW: spec.minW ?? 320,
       minH: spec.minH ?? 240,
       minimized: false,
+      maximized: false,
+      prevRect: null,
       zIndex: zCounter + 1,
       resizable: spec.resizable !== false,
     };
@@ -148,6 +157,31 @@ export const useDesktopStore = create((set, get) => ({
         win.id === id ? { ...win, w, h, x, y } : win
       ),
     });
+  },
+
+  toggleMaximize: (id) => {
+    const { openWindows } = get();
+    set({
+      openWindows: openWindows.map((win) => {
+        if (win.id !== id) return win;
+        if (win.maximized) {
+          // Restore to the geometry saved before maximizing.
+          const r = win.prevRect ?? { x: win.x, y: win.y, w: win.w, h: win.h };
+          return { ...win, maximized: false, prevRect: null, x: r.x, y: r.y, w: r.w, h: r.h };
+        }
+        const area = desktopArea();
+        return {
+          ...win,
+          maximized: true,
+          prevRect: { x: win.x, y: win.y, w: win.w, h: win.h },
+          x: 0,
+          y: 0,
+          w: area.w,
+          h: area.h,
+        };
+      }),
+    });
+    get().focusWindow(id);
   },
 
   setWallpaper: (url) => {

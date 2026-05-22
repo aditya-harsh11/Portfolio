@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { profile, projects, contact } from '../../data/content';
+import { useDesktopStore } from '../../store/useDesktopStore';
 
 function siteVisitors() {
   try {
@@ -94,7 +95,17 @@ export function HomePage({ navigate }) {
   );
 }
 
-export function AboutPage({ navigate }) {
+export function AboutPage() {
+  const openWindow = useDesktopStore((s) => s.openWindow);
+  const openGames = () =>
+    openWindow({
+      component: 'Games',
+      title: 'Games',
+      icon: '🎮',
+      width: 620,
+      height: 440,
+      singleton: true,
+    });
   return (
     <div className="ie-page ie-about">
       <div className="ie-rainbow">ABOUT ME</div>
@@ -121,7 +132,7 @@ export function AboutPage({ navigate }) {
         <li>Favorite team: <strong>Lakers</strong> (sorry, not sorry)</li>
         <li>Favorite language: probably python</li>
         <li>Favorite drink: caffeine in any legal form</li>
-        <li>Favorite snake: the one in <a className="ie-a" onClick={() => navigate('http://www.aditya.com/')}>Games</a></li>
+        <li>Favorite snake: the one in <a className="ie-a" onClick={openGames}>Games</a></li>
       </ul>
 
       <h2 className="ie-h2">Slightly real bio</h2>
@@ -406,7 +417,7 @@ export function EasterEggsPage({ navigate }) {
 
       <h2 className="ie-h2">Other</h2>
       <ul className="ie-nav-list">
-        <li><strong>Install Wizard</strong> — runs on first visit; re-run from <em>Start &rarr; Run Setup Again</em></li>
+        <li><strong>Login screen</strong> — on first visit. Classic Win95 move: the <em>Cancel</em> button logs you in anyway.</li>
         <li><strong>Visitor counter</strong> — in the taskbar, bottom-right</li>
         <li><strong>Popup ads</strong> — show up ~12 seconds after opening this browser</li>
         <li><strong>Web ring buttons</strong> — &quot;Random&quot; might take you somewhere unexpected</li>
