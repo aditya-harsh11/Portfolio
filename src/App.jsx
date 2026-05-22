@@ -5,7 +5,7 @@ import { BSOD } from './components/Overlays/BSOD';
 import { Matrix } from './components/Overlays/Matrix';
 import { Confetti } from './components/Overlays/Confetti';
 import { Clippy } from './components/Overlays/Clippy';
-import { InstallWizard } from './components/Overlays/InstallWizard';
+import { Login } from './components/Overlays/Login';
 import { MobileView } from './components/Mobile/MobileView';
 import { useClickSounds } from './hooks/useClickSounds';
 import { useKonamiCode } from './hooks/useKonamiCode';
@@ -26,7 +26,7 @@ function App() {
       <BSOD />
       <Matrix />
       <Confetti />
-      <InstallWizard />
+      <Login />
       <MobileView />
     </>
   );

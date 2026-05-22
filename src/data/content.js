@@ -49,6 +49,7 @@ export const experience = [
   {
     title: 'Perception & Infrastructure Engineer',
     org: 'Wisconsin Autonomous',
+    url: 'https://wa.wisc.edu/',
     location: 'Madison, WI',
     dates: 'Feb 2026 – Present',
     bullets: [
@@ -58,6 +59,7 @@ export const experience = [
   {
     title: 'Technical Scholar',
     org: 'Wisconsin AI Safety Initiative',
+    url: 'https://waisi.org/',
     location: 'Madison, WI',
     dates: 'Mar 2026 – Present',
     bullets: [
@@ -67,6 +69,7 @@ export const experience = [
   {
     title: 'Data Engineer',
     org: 'Biokind Analytics',
+    url: 'https://www.biokind.org/',
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [
@@ -83,6 +86,7 @@ export const projects = [
       'A node-based AI pipeline editor that runs multimodal models on-device.',
     stack: ['Next.js', 'React Flow', 'FastAPI', 'Python', 'Electron', 'ONNX', 'Nexa SDK'],
     link: 'https://github.com/aditya-harsh11/ArcFlow',
+    video: 'https://youtu.be/ZmeUEur-WIM',
   },
   {
     title: 'Unsilenced',
@@ -91,6 +95,7 @@ export const projects = [
       'A hands-free AAC tool restoring vocal identity for non-verbal users using real-time facial emotion detection.',
     stack: ['Next.js', 'Flask', 'TypeScript', 'MediaPipe', 'Face API', 'Fish Audio'],
     link: 'https://github.com/anishsrinivasa/MadHacks',
+    video: 'https://youtu.be/jfsXk_WrzzQ',
   },
   {
     title: 'Centralized Event Dashboard',
@@ -107,6 +112,7 @@ export const projects = [
       'An AI-powered portfolio manager with real-time balances, risk scoring, and on-chain group management.',
     stack: ['React', 'Vite', 'Node.js', 'Express', 'Solana Web3.js', 'Anchor', 'Gemini'],
     link: 'https://github.com/aditya-harsh11/Phanta',
+    video: 'https://youtu.be/_5oy6BSEJhY',
   },
   {
     title: 'Vibe',

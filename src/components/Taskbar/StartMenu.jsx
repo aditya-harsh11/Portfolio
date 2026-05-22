@@ -6,10 +6,6 @@ export function StartMenu({ onClose }) {
 
   const handleClick = (item) => {
     onClose();
-    if (item.id === 'wizard') {
-      window.dispatchEvent(new CustomEvent('runInstallWizard'));
-      return;
-    }
     const def = desktopIcons.find((i) => i.id === item.id);
     if (!def) return;
     if (def.link) {

@@ -140,8 +140,6 @@ export const startMenuItems = [
   { separator: true },
   { id: 'settings', label: 'Settings', emoji: '🛠', image: '/images/icons/settings.png' },
   { id: 'recycle', label: 'Recycle Bin', emoji: '🗑️', image: '/images/icons/recycle-bin.png' },
-  { separator: true, special: 'wizard' },
-  { id: 'wizard', label: 'Run Setup Again', emoji: '⚙️' },
   { separator: true },
   { id: 'github', label: 'GitHub', emoji: '🐱', image: '/images/icons/github.gif' },
   { id: 'linkedin', label: 'LinkedIn', emoji: '💼', image: '/images/icons/linkedin.png' },
