@@ -75,6 +75,7 @@ export const useDesktopStore = create((set, get) => ({
       component: spec.component,
       title: spec.title ?? spec.component,
       icon: spec.icon ?? null,
+      image: spec.image ?? null,
       props: spec.props ?? {},
       x: spec.x ?? base.x + cascade,
       y: spec.y ?? base.y + cascade,

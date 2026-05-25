@@ -88,6 +88,13 @@
   text-overflow: ellipsis;
 }
 
+.win95-titlebar-icon {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
 .win95-titlebar-buttons {
   display: flex;
   gap: 2px;

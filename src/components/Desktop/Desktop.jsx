@@ -55,6 +55,7 @@ export function Desktop() {
       component: icon.component,
       title: icon.title ?? icon.label,
       icon: icon.emoji,
+      image: icon.image,
       width: icon.width,
       height: icon.height,
       singleton: icon.singleton,

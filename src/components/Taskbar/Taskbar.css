@@ -52,6 +52,14 @@
   overflow: hidden;
 }
 
+.taskbar-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
 .taskbar-window-btn .truncate {
   white-space: nowrap;
   overflow: hidden;

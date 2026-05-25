@@ -59,7 +59,11 @@ export function Taskbar() {
             onClick={() => onTaskClick(w)}
             title={w.title}
           >
-            {w.icon ? <span className="mr-1">{w.icon}</span> : null}
+            {w.image ? (
+              <img className="taskbar-icon" src={w.image} alt="" draggable={false} />
+            ) : w.icon ? (
+              <span className="mr-1">{w.icon}</span>
+            ) : null}
             <span className="truncate">{w.title}</span>
           </button>
         ))}

@@ -16,6 +16,7 @@ export function StartMenu({ onClose }) {
       component: def.component,
       title: def.title ?? def.label,
       icon: def.emoji,
+      image: def.image,
       width: def.width,
       height: def.height,
       singleton: def.singleton,
