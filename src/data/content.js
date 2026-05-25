@@ -84,7 +84,7 @@ export const projects = [
     tagline: '1st Place · MadData 26 (Qualcomm-sponsored)',
     blurb:
       'A node-based AI pipeline editor that runs multimodal models on-device.',
-    stack: ['Next.js', 'React Flow', 'FastAPI', 'Python', 'Electron', 'ONNX', 'Nexa SDK'],
+    stack: ['Next.js', 'React Flow', 'TypeScript', 'FastAPI', 'Python', 'Electron', 'ONNX'],
     link: 'https://github.com/aditya-harsh11/ArcFlow',
     video: 'https://youtu.be/ZmeUEur-WIM',
   },
@@ -93,7 +93,7 @@ export const projects = [
     tagline: '1st Place, Fish Audio Track · MadHacks 2025',
     blurb:
       'A hands-free AAC tool restoring vocal identity for non-verbal users using real-time facial emotion detection.',
-    stack: ['Next.js', 'Flask', 'TypeScript', 'MediaPipe', 'Face API', 'Fish Audio'],
+    stack: ['Next.js', 'TypeScript', 'Flask', 'MediaPipe', 'Face API', 'Fish Audio'],
     link: 'https://github.com/anishsrinivasa/MadHacks',
     video: 'https://youtu.be/jfsXk_WrzzQ',
   },
@@ -102,8 +102,26 @@ export const projects = [
     tagline: '1,000+ student users',
     blurb:
       'An app that collects campus events from emails, discord, and flyers into one easy-to-use calendar.',
-    stack: ['TypeScript', 'SvelteKit', 'Python', 'Flask', 'SQLite', 'AWS EC2', 'Gemini'],
+    stack: ['SvelteKit', 'TypeScript', 'Flask', 'Python', 'SQLite', 'AWS EC2', 'Gemini'],
     link: 'https://github.com/albertw7711/Morgridge-Centralized-Event-Dashboard',
+  },
+  {
+    title: 'Anything Goes Poker',
+    tagline: 'Real-time multiplayer poker',
+    blurb:
+      'A self-hosted poker room where a host shares a link and the server runs dealing, blinds, side pots, and 10+ game variants for up to 8 players.',
+    stack: ['React', 'Vite', 'Tailwind', 'TypeScript', 'Node.js', 'Express', 'Socket.IO'],
+    link: 'https://github.com/aditya-harsh11/Card-Room',
+    links: [{ label: 'Live Demo', url: 'https://anything-goes-poker.onrender.com/' }],
+  },
+  {
+    title: 'This Portfolio',
+    tagline: 'You are here',
+    blurb:
+      'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, and playable games.',
+    stack: ['React', 'Vite', 'JavaScript', 'Zustand', 'react-rnd', 'Tailwind'],
+    link: 'https://github.com/aditya-harsh11/Portfolio',
+    links: [{ label: 'Live Demo', url: 'https://aditya-bio.vercel.app/' }],
   },
   {
     title: 'Phanta',
@@ -129,14 +147,6 @@ export const projects = [
       'A cross-platform bus tracking app with real-time updates across 14+ routes.',
     stack: ['Flutter', 'Dart', 'Firebase', 'Google Maps'],
     link: 'https://github.com/aditya-harsh11/TrackMyBus',
-  },
-  {
-    title: 'This Portfolio',
-    tagline: 'You are here',
-    blurb:
-      'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, and playable games.',
-    stack: ['Vite', 'React', 'Zustand', 'react-rnd', 'Tailwind'],
-    link: 'https://github.com/aditya-harsh11/Portfolio',
   },
 ];
 

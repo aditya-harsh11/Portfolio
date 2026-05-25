@@ -49,7 +49,11 @@ export function Window({ win }) {
               if (win.resizable) toggleMaximize(win.id);
             }}
           >
-            {win.icon ? <span>{win.icon}</span> : null}
+            {win.image ? (
+              <img className="win95-titlebar-icon" src={win.image} alt="" draggable={false} />
+            ) : win.icon ? (
+              <span>{win.icon}</span>
+            ) : null}
             <span>{win.title}</span>
           </div>
           <div className="win95-titlebar-buttons">
