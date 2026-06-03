@@ -7,10 +7,10 @@ export const profile = {
   role: 'CS @ UW-Madison',
   school: 'University of Wisconsin-Madison · BS Computer Science · Expected May 2028',
   gpa: '4.0 / 4.0',
-  tagline: 'Building software, AI, and whatever catches my curiosity.',
+  tagline: 'Building software, intelligent systems, and whatever catches my curiosity.',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
-    "I currently work on self-driving tech as a Perception & Infrastructure Engineer with Wisconsin Autonomous. I also study AI safety as a Technical Scholar with the Wisconsin AI Safety Initiative.",
+    "I currently work on self-driving tech as a Perception Engineer with Wisconsin Autonomous. I also study AI safety as an AI Safety Fellow with the Wisconsin AI Safety Initiative.",
     "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks, Badger Build Fest, and a Claude hackathon.",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
@@ -23,7 +23,6 @@ export const profile = {
 
 export const contact = {
   email: 'harshavardha@wisc.edu',
-  phone: '(608) 209-1711',
   github: 'https://github.com/aditya-harsh11',
   linkedin: 'https://linkedin.com/in/aditya-harshavardhan11',
   location: 'Madison, WI and Bangalore, India',
@@ -47,23 +46,23 @@ export const education = [
 
 export const experience = [
   {
-    title: 'Perception & Infrastructure Engineer',
+    title: 'Perception Engineer',
     org: 'Wisconsin Autonomous',
     url: 'https://wa.wisc.edu/',
     location: 'Madison, WI',
     dates: 'Feb 2026 – Present',
     bullets: [
-      'Optimized lane segmentation for 60 fps output, built 3D stop-bar detection, Bird\'s Eye View obstacle mapping, and a UDP-based V2X simulation node for the autonomous vehicle.',
+      'Optimized lane segmentation for 60 fps output, built 3D stop-bar detection, Bird\'s Eye View obstacle mapping, and UDP-based V2X simulation node for the autonomous vehicle stack.',
     ],
   },
   {
-    title: 'Technical Scholar',
+    title: 'AI Safety Fellow',
     org: 'Wisconsin AI Safety Initiative',
     url: 'https://waisi.org/',
     location: 'Madison, WI',
     dates: 'Mar 2026 – Present',
     bullets: [
-      'Completing ARENA and BlueDot based curricula and analyzed 8+ papers on mechanistic interpretability, scalable oversight, alignment, and evals.',
+      'Completing ARENA and BlueDot based curricula; analyzed 8+ papers on mechanistic interpretability, scalable oversight, alignment, and evals.',
     ],
   },
   {
@@ -73,7 +72,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [
-      'Built a 3-factor risk-score model on 92,000+ attendance records to flag high-risk subgroups for 10,000+ children for the Boys & Girls Clubs of Dane County.',
+      'Built a 3-factor risk-score model on 125,000+ attendance records to flag high-risk subgroups for 10,000+ children for the Boys & Girls Clubs of Dane County.',
     ],
   },
 ];

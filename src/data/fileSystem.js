@@ -53,7 +53,6 @@ export const FS = dir('C:', {
       'CONTACT.txt',
       lines(
         `Email:    ${contact.email}`,
-        `Phone:    ${contact.phone}`,
         `GitHub:   ${contact.github}`,
         `LinkedIn: ${contact.linkedin}`,
         `Location: ${contact.location}`

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { contact, profile } from '../../data/content';
+import { gmailCompose, introBody, resumeBody } from '../../utils/mail';
 import './Contact.css';
 
 export function Contact() {
@@ -8,12 +9,15 @@ export function Contact() {
   const [msg, setMsg] = useState('');
   const [sent, setSent] = useState(false);
 
+  // No backend wired up yet. Open Gmail's web compose in a new tab with the
+  // message pre-filled — works even when no desktop mail client is configured.
   const submit = (e) => {
     e.preventDefault();
-    // No backend wired up yet. Fall back to mailto so it actually does something.
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body = encodeURIComponent(`${msg}\n\nFrom: ${name} <${email}>`);
-    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+    const url = gmailCompose(
+      `Portfolio message from ${name}`,
+      `${msg}\n\nFrom: ${name} <${email}>`,
+    );
+    window.open(url, '_blank', 'noopener,noreferrer');
     setSent(true);
   };
 
@@ -25,7 +29,7 @@ export function Contact() {
         <div className="contact-links">
           <h2 className="contact-h2">Direct</h2>
           <ul>
-            <li>📧 <a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+            <li>📧 <a href={gmailCompose('Hello Aditya', introBody)} target="_blank" rel="noreferrer">{contact.email}</a></li>
             <li>🐱 <a href={contact.github} target="_blank" rel="noreferrer">GitHub</a></li>
             <li>💼 <a href={contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
             <li>📍 {contact.location}</li>
@@ -34,7 +38,9 @@ export function Contact() {
           <h2 className="contact-h2" style={{ marginTop: 14 }}>Resume</h2>
           <a
             className="win95-button contact-resume-btn"
-            href={`mailto:${contact.email}?subject=${encodeURIComponent('Resume request')}&body=${encodeURIComponent("Hi Aditya — could you send me a copy of your resume? Thanks!")}`}
+            href={gmailCompose('Resume request', resumeBody)}
+            target="_blank"
+            rel="noreferrer"
           >
             📄 Request Resume
           </a>

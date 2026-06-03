@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { profile, contact, education, experience, projects, skills } from '../../data/content';
+import { gmailCompose, introBody } from '../../utils/mail';
 import './MobileView.css';
 
 const BREAKPOINT = 768;
@@ -115,8 +116,7 @@ export function MobileView() {
 
       <section className="mobile-section mobile-contact">
         <h2>Contact</h2>
-        <p>📧 <a href={`mailto:${contact.email}`}>{contact.email}</a></p>
-        <p>📞 {contact.phone}</p>
+        <p>📧 <a href={gmailCompose('Hello Aditya', introBody)} target="_blank" rel="noreferrer">{contact.email}</a></p>
         <p>🐱 <a href={contact.github} target="_blank" rel="noreferrer">GitHub</a></p>
         <p>💼 <a href={contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></p>
       </section>

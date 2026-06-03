@@ -1,4 +1,5 @@
 import { profile, contact, education, experience } from '../../data/content';
+import { gmailCompose, introBody } from '../../utils/mail';
 import './About.css';
 
 export function About() {
@@ -101,8 +102,7 @@ export function About() {
         <h2 className="about-h2">Contact</h2>
         <p className="about-p">{profile.tagline}</p>
         <ul className="contact-mini">
-          <li>📧 <a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-          <li>📞 {contact.phone}</li>
+          <li>📧 <a href={gmailCompose('Hello Aditya', introBody)} target="_blank" rel="noreferrer">{contact.email}</a></li>
           <li>🐱 <a href={contact.github} target="_blank" rel="noreferrer">github.com/aditya-harsh11</a></li>
           <li>💼 <a href={contact.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/aditya-harshavardhan11</a></li>
         </ul>

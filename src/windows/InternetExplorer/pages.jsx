@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { profile, projects, contact } from '../../data/content';
+import { gmailCompose, introBody } from '../../utils/mail';
 import { useDesktopStore } from '../../store/useDesktopStore';
 
 function siteVisitors() {
@@ -142,7 +143,7 @@ export function AboutPage() {
 
       <hr className="ie-hr" />
       <p className="ie-best-viewed">
-        wanna talk? email me at <a className="ie-a" href={`mailto:${contact.email}`}>{contact.email}</a><br />
+        wanna talk? email me at <a className="ie-a" href={gmailCompose('Hello Aditya', introBody)} target="_blank" rel="noreferrer">{contact.email}</a><br />
         no spam pls
       </p>
     </div>
@@ -238,7 +239,7 @@ export function LinksPage({ navigate }) {
       <ul className="ie-nav-list">
         <li><a className="ie-a" href="https://github.com/aditya-harsh11" target="_blank" rel="noreferrer">GitHub</a> — my actual code</li>
         <li><a className="ie-a" href="https://linkedin.com/in/aditya-harshavardhan11" target="_blank" rel="noreferrer">LinkedIn</a> — for the recruiters</li>
-        <li><a className="ie-a" href="mailto:harshavardha@wisc.edu">Email</a> — harshavardha@wisc.edu</li>
+        <li><a className="ie-a" href={gmailCompose('Hello Aditya', introBody)} target="_blank" rel="noreferrer">Email</a> — {contact.email}</li>
       </ul>
 
       <h2 className="ie-h2">Web Ring</h2>

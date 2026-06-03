@@ -256,7 +256,6 @@ export function Terminal() {
       case 'contact':
         print([
           `email:    ${contact.email}`,
-          `phone:    ${contact.phone}`,
           `github:   ${contact.github}`,
           `linkedin: ${contact.linkedin}`,
           `location: ${contact.location}`,
