@@ -41,8 +41,8 @@ export const desktopIcons = [
     image: '/images/icons/contact.png',
     component: 'Contact',
     title: 'Contact',
-    width: 1000,
-    height: 520,
+    width: 580,
+    height: 560,
     singleton: true,
   },
   {

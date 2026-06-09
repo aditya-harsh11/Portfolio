@@ -3,14 +3,6 @@ import { profile, projects, contact } from '../../data/content';
 import { gmailCompose, introBody } from '../../utils/mail';
 import { useDesktopStore } from '../../store/useDesktopStore';
 
-function siteVisitors() {
-  try {
-    return Number(localStorage.getItem('visitorCount')) || 0;
-  } catch {
-    return 0;
-  }
-}
-
 const WEBRING_PREV = 'http://www.geocities.com/cs_students/randomStudent123/';
 const WEBRING_NEXT = 'http://www.angelfire.com/cs/randomStudent456/';
 const WEBRING_RANDOM = [
@@ -28,8 +20,6 @@ const pickRandom = () =>
   WEBRING_RANDOM[Math.floor(Math.random() * WEBRING_RANDOM.length)];
 
 export function HomePage({ navigate }) {
-  const [hits] = useState(() => siteVisitors());
-
   return (
     <div className="ie-page ie-home">
       <div className="ie-rainbow">WELCOME TO ADITYA'S HOMEPAGE!</div>
@@ -47,10 +37,6 @@ export function HomePage({ navigate }) {
       </p>
 
       <div className="ie-row">
-        <div className="ie-counter">
-          <span className="ie-counter-label">visitors</span>
-          <span className="ie-counter-num">{String(hits).padStart(7, '0')}</span>
-        </div>
         <div className="ie-construction">
           🚧 <span className="ie-blink">UNDER CONSTRUCTION</span> 🚧
         </div>
