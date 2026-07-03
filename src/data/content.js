@@ -5,20 +5,18 @@ export const profile = {
   name: 'Aditya Harshavardhan',
   handle: 'aditya',
   role: 'CS @ UW-Madison',
-  school: 'University of Wisconsin-Madison · BS Computer Science · Expected May 2028',
+  school:
+    'University of Wisconsin-Madison · BS Computer Science · Expected May 2028',
   gpa: '4.0 / 4.0',
-  tagline: 'Building software, intelligent systems, and whatever catches my curiosity.',
+  tagline:
+    'Building software, intelligent systems, and whatever catches my curiosity.',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
-    "I currently work on self-driving tech as a Perception Engineer with Wisconsin Autonomous. I also study AI safety as an AI Safety Fellow with the Wisconsin AI Safety Initiative.",
+    'I currently work as a Software Engineer Intern at the Carboncopies Foundation and as a Research Assistant at the Niedenthal Emotions Lab.',
     "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks, Badger Build Fest, and a Claude hackathon.",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
-  focus: [
-    'Software Engineering',
-    'AI/ML Engineering',
-    'AI Safety',
-  ],
+  focus: ['Software Engineering', 'AI/ML Engineering', 'AI Safety'],
 };
 
 export const contact = {
@@ -46,13 +44,21 @@ export const education = [
 
 export const experience = [
   {
-    title: 'Perception Engineer',
-    org: 'Wisconsin Autonomous',
-    url: 'https://wa.wisc.edu/',
+    title: 'Software Engineer Intern',
+    org: 'Carboncopies Foundation',
+    url: 'https://carboncopies.org/',
+    location: 'San Fransisco, CA',
+    dates: 'June 2026 – Present',
+    bullets: [''],
+  },
+  {
+    title: 'Research Assistant',
+    org: 'Niedenthal Emotions Lab',
+    url: 'https://www.niedenthalemotionslab.com/',
     location: 'Madison, WI',
-    dates: 'Feb 2026 – Present',
+    dates: 'June 2026 – Present',
     bullets: [
-      'Optimized lane segmentation for 60 fps output, built 3D stop-bar detection, Bird\'s Eye View obstacle mapping, and UDP-based V2X simulation node for the autonomous vehicle stack.',
+      'Built a face- and voice-morphing video conferencing app for facial/vocal synchrony research, architected manual and reactive modes, and developed an admissions-bias research simulator.',
     ],
   },
   {
@@ -60,9 +66,19 @@ export const experience = [
     org: 'Wisconsin AI Safety Initiative',
     url: 'https://waisi.org/',
     location: 'Madison, WI',
-    dates: 'Mar 2026 – Present',
+    dates: 'Mar 2026 – May 2026',
     bullets: [
-      'Completing ARENA and BlueDot based curricula; analyzed 8+ papers on mechanistic interpretability, scalable oversight, alignment, and evals.',
+      'Completed ARENA and BlueDot based curricula amd analyzed 8+ papers on mechanistic interpretability, scalable oversight, alignment, and evals.',
+    ],
+  },
+  {
+    title: 'Perception Engineer',
+    org: 'Wisconsin Autonomous',
+    url: 'https://wa.wisc.edu/',
+    location: 'Madison, WI',
+    dates: 'Feb 2026 – May 2026',
+    bullets: [
+      'Built stop bar detection algorithm and developed BEV obstacle mapping with ego-motion-based static/dynamic classification for an autonomous vehicle.',
     ],
   },
   {
@@ -72,7 +88,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [
-      'Built a 3-factor risk-score model on 125,000+ attendance records to flag high-risk subgroups for 10,000+ children for the Boys & Girls Clubs of Dane County.',
+      'Built data pipelines for 125,000+ records, trained machine learning models to predict youth disengagement, and analyzed 4+ years of attendance data to identify dropout patterns.',
     ],
   },
 ];
@@ -83,7 +99,15 @@ export const projects = [
     tagline: '1st Place · MadData 26 (Qualcomm-sponsored)',
     blurb:
       'A node-based AI pipeline editor that runs multimodal models on-device.',
-    stack: ['Next.js', 'React Flow', 'TypeScript', 'FastAPI', 'Python', 'Electron', 'ONNX'],
+    stack: [
+      'Next.js',
+      'React Flow',
+      'TypeScript',
+      'FastAPI',
+      'Python',
+      'Electron',
+      'ONNX',
+    ],
     link: 'https://github.com/aditya-harsh11/ArcFlow',
     video: 'https://youtu.be/ZmeUEur-WIM',
   },
@@ -92,26 +116,35 @@ export const projects = [
     tagline: '1st Place, Fish Audio Track · MadHacks 2025',
     blurb:
       'A hands-free AAC tool restoring vocal identity for non-verbal users using real-time facial emotion detection.',
-    stack: ['Next.js', 'TypeScript', 'Flask', 'MediaPipe', 'Face API', 'Fish Audio'],
+    stack: [
+      'Next.js',
+      'TypeScript',
+      'Flask',
+      'MediaPipe',
+      'Face API',
+      'Fish Audio',
+    ],
     link: 'https://github.com/anishsrinivasa/MadHacks',
     video: 'https://youtu.be/jfsXk_WrzzQ',
-  },
-  {
-    title: 'Centralized Event Dashboard',
-    tagline: '1,000+ student users',
-    blurb:
-      'An app that collects campus events from emails, discord, and flyers into one easy-to-use calendar.',
-    stack: ['SvelteKit', 'TypeScript', 'Flask', 'Python', 'SQLite', 'AWS EC2', 'Gemini'],
-    link: 'https://github.com/albertw7711/Morgridge-Centralized-Event-Dashboard',
   },
   {
     title: 'Anything Goes Poker',
     tagline: 'Real-time multiplayer poker',
     blurb:
       'A self-hosted poker room where a host shares a link and the server runs dealing, blinds, side pots, and 10+ game variants for up to 8 players.',
-    stack: ['React', 'Vite', 'Tailwind', 'TypeScript', 'Node.js', 'Express', 'Socket.IO'],
+    stack: [
+      'React',
+      'Vite',
+      'Tailwind',
+      'TypeScript',
+      'Node.js',
+      'Express',
+      'Socket.IO',
+    ],
     link: 'https://github.com/aditya-harsh11/Card-Room',
-    links: [{ label: 'Live Demo', url: 'https://anything-goes-poker.onrender.com/' }],
+    links: [
+      { label: 'Live Demo', url: 'https://anything-goes-poker.onrender.com/' },
+    ],
   },
   {
     title: 'This Portfolio',
@@ -123,11 +156,36 @@ export const projects = [
     links: [{ label: 'Live Demo', url: 'https://aditya-bio.vercel.app/' }],
   },
   {
+    title: 'Centralized Event Dashboard',
+    tagline: '1,000+ student users',
+    blurb:
+      'An app that collects campus events from emails, discord, and flyers into one easy-to-use calendar.',
+    stack: [
+      'SvelteKit',
+      'TypeScript',
+      'Flask',
+      'Python',
+      'SQLite',
+      'AWS EC2',
+      'Gemini',
+    ],
+    link: 'https://github.com/albertw7711/Morgridge-Centralized-Event-Dashboard',
+  },
+  {
     title: 'Phanta',
-    tagline: 'Best Solana Implementation · Most Popular Project · Badger Build Fest 2025',
+    tagline:
+      'Best Solana Implementation · Most Popular Project · Badger Build Fest 2025',
     blurb:
       'An AI-powered portfolio manager with real-time balances, risk scoring, and on-chain group management.',
-    stack: ['React', 'Vite', 'Node.js', 'Express', 'Solana Web3.js', 'Anchor', 'Gemini'],
+    stack: [
+      'React',
+      'Vite',
+      'Node.js',
+      'Express',
+      'Solana Web3.js',
+      'Anchor',
+      'Gemini',
+    ],
     link: 'https://github.com/aditya-harsh11/Phanta',
     video: 'https://youtu.be/_5oy6BSEJhY',
   },
@@ -151,7 +209,22 @@ export const projects = [
 
 export const skills = {
   Languages: ['Python', 'JavaScript', 'Java', 'SQL', 'Dart', 'HTML', 'CSS'],
-  'Frameworks (SWE)': ['React', 'Next.js', 'FastAPI', 'Flask', 'Flutter', 'JavaFX', 'JUnit'],
+  'Frameworks (SWE)': [
+    'React',
+    'Next.js',
+    'FastAPI',
+    'Flask',
+    'Flutter',
+    'JavaFX',
+    'JUnit',
+  ],
   'Frameworks (AI/ML)': ['PyTorch', 'NumPy', 'Pandas', 'Matplotlib'],
-  'Developer Tools': ['Git', 'GitHub', 'Docker', 'Firebase', 'Supabase', 'Vercel'],
+  'Developer Tools': [
+    'Git',
+    'GitHub',
+    'Docker',
+    'Firebase',
+    'Supabase',
+    'Vercel',
+  ],
 };
