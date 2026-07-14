@@ -6,19 +6,37 @@
   color: #000;
 }
 
-.about-header {
+.about-intro {
   display: flex;
-  gap: 14px;
-  align-items: center;
+  gap: 16px;
+  align-items: stretch;
   padding-bottom: 10px;
   border-bottom: 1px solid #808080;
   box-shadow: 0 1px 0 #ffffff;
   margin-bottom: 12px;
 }
 
+.about-overview {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Make the photo span exactly from the "Overview" heading to the last bio line
+   by removing the heading's top margin and the final paragraph's bottom margin. */
+.about-overview .about-h2 {
+  margin-top: 0;
+}
+
+.about-overview .about-p:last-child {
+  margin-bottom: 0;
+}
+
 .about-avatar {
-  width: 64px;
-  height: 64px;
+  width: 150px;
+  height: auto;
+  align-self: stretch;
+  flex-shrink: 0;
   object-fit: cover;
   display: block;
   border-top: 2px solid #ffffff;

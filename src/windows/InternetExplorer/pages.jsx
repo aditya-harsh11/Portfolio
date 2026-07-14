@@ -102,7 +102,7 @@ export function AboutPage() {
           <tr><td>Name:</td><td>{profile.name}</td></tr>
           <tr><td>Age:</td><td>old enough to know better, young enough to push to main on Friday (19)</td></tr>
           <tr><td>Location:</td><td>Madison, WI (snow capital of the Big Ten)</td></tr>
-          <tr><td>School:</td><td>{profile.school}</td></tr>
+          <tr><td>School:</td><td>University of Wisconsin-Madison · BS Computer Science · Expected May 2028</td></tr>
           <tr><td>GPA:</td><td>{profile.gpa} (I will not stop bringing this up)</td></tr>
           <tr><td>Mood:</td><td>Building stuff</td></tr>
         </tbody>
@@ -110,7 +110,7 @@ export function AboutPage() {
 
       <h2 className="ie-h2">Currently listening to</h2>
       <div className="ie-winamp">
-        <strong>Update</strong> by Update — 03:24 / 04:21
+        <strong>Updating</strong> by Updating — 03:24 / 04:21
       </div>
 
       <h2 className="ie-h2">Favorite...</h2>

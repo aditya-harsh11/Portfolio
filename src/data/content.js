@@ -4,12 +4,7 @@
 export const profile = {
   name: 'Aditya Harshavardhan',
   handle: 'aditya',
-  role: 'CS @ UW-Madison',
-  school:
-    'University of Wisconsin-Madison · BS Computer Science · Expected May 2028',
   gpa: '4.0 / 4.0',
-  tagline:
-    'Building software, intelligent systems, and whatever catches my curiosity.',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
     'I currently work as a Software Engineer Intern at the Carboncopies Foundation and as a Research Assistant at the Niedenthal Emotions Lab.',
@@ -47,7 +42,7 @@ export const experience = [
     title: 'Software Engineer Intern',
     org: 'Carboncopies Foundation',
     url: 'https://carboncopies.org/',
-    location: 'San Fransisco, CA',
+    location: 'San Fransisco, CA (Remote)',
     dates: 'June 2026 – Present',
     bullets: [''],
   },

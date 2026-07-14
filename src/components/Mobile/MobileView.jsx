@@ -34,8 +34,6 @@ export function MobileView() {
         </div>
         <div className="mobile-hero-inner">
           <h1>{profile.name}</h1>
-          <p className="muted">{profile.role}</p>
-          <p className="muted">{profile.school}</p>
         </div>
       </header>
 

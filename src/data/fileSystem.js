@@ -37,10 +37,10 @@ export const FS = dir('C:', {
       'README.txt',
       lines(
         `Hi, I'm ${profile.name}.`,
-        profile.tagline,
+        'Building software, intelligent systems, and whatever catches my curiosity.',
         '',
-        profile.role,
-        profile.school,
+        'CS @ UW-Madison',
+        'University of Wisconsin-Madison · BS Computer Science · Expected May 2028',
         '',
         'Browse PROJECTS for what I\'ve built, EXPERIENCE for work history,',
         'AWARDS for recognitions, or open CONTACT.txt to reach me.',

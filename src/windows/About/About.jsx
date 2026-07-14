@@ -5,25 +5,19 @@ import './About.css';
 export function About() {
   return (
     <div className="about-window win95-scrollbar">
-      <header className="about-header">
+      <div className="about-intro">
         <img
           className="about-avatar"
           src="/images/aditya.jpg"
           alt={profile.name}
         />
-        <div>
-          <h1 className="about-name">{profile.name}</h1>
-          <p className="about-role">{profile.role}</p>
-          <p className="about-school">{profile.school}</p>
-        </div>
-      </header>
-
-      <section className="about-section">
-        <h2 className="about-h2">Overview</h2>
-        {profile.bio.map((p, i) => (
-          <p key={i} className="about-p">{p}</p>
-        ))}
-      </section>
+        <section className="about-section about-overview">
+          <h2 className="about-h2">Overview</h2>
+          {profile.bio.map((p, i) => (
+            <p key={i} className="about-p">{p}</p>
+          ))}
+        </section>
+      </div>
 
       <section className="about-section">
         <h2 className="about-h2">Focus Areas</h2>
@@ -100,7 +94,6 @@ export function About() {
 
       <section className="about-section">
         <h2 className="about-h2">Contact</h2>
-        <p className="about-p">{profile.tagline}</p>
         <ul className="contact-mini">
           <li>📧 <a href={gmailCompose('Hello Aditya', introBody)} target="_blank" rel="noreferrer">{contact.email}</a></li>
           <li>🐱 <a href={contact.github} target="_blank" rel="noreferrer">github.com/aditya-harsh11</a></li>
