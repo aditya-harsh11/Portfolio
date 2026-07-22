@@ -44,7 +44,7 @@ export const experience = [
     url: 'https://carboncopies.org/',
     location: 'San Fransisco, CA (Remote)',
     dates: 'June 2026 – Present',
-    bullets: [''],
+    bullets: ["Web Dev and LLM's"],
   },
   {
     title: 'Research Assistant',
@@ -142,15 +142,6 @@ export const projects = [
     ],
   },
   {
-    title: 'This Portfolio',
-    tagline: 'You are here',
-    blurb:
-      'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, and playable games.',
-    stack: ['React', 'Vite', 'JavaScript', 'Zustand', 'react-rnd', 'Tailwind'],
-    link: 'https://github.com/aditya-harsh11/Portfolio',
-    links: [{ label: 'Live Demo', url: 'https://aditya-bio.vercel.app/' }],
-  },
-  {
     title: 'Centralized Event Dashboard',
     tagline: '1,000+ student users',
     blurb:
@@ -165,6 +156,15 @@ export const projects = [
       'Gemini',
     ],
     link: 'https://github.com/albertw7711/Morgridge-Centralized-Event-Dashboard',
+  },
+  {
+    title: 'This Portfolio',
+    tagline: 'You are here',
+    blurb:
+      'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, and playable games.',
+    stack: ['React', 'Vite', 'JavaScript', 'Zustand', 'react-rnd', 'Tailwind'],
+    link: 'https://github.com/aditya-harsh11/Portfolio',
+    links: [{ label: 'Live Demo', url: 'https://aditya-bio.vercel.app/' }],
   },
   {
     title: 'Phanta',
