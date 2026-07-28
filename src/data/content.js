@@ -7,7 +7,7 @@ export const profile = {
   gpa: '4.0 / 4.0',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
-    'I currently work as a Software Engineer Intern at the Carboncopies Foundation and as a Research Assistant at the Niedenthal Emotions Lab.',
+    "I currently work as a Research Assistant at UW-Madison's DSI on the Farm2Facts project, a Software Engineer Intern at the Carboncopies Foundation, and a Research Assistant at the Niedenthal Emotions Lab.",
     "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks, Badger Build Fest, and a Claude hackathon.",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
@@ -39,21 +39,31 @@ export const education = [
 
 export const experience = [
   {
+    title: 'Research Assistant',
+    org: 'UW-Madison DSI',
+    url: 'https://farm2facts.org/',
+    location: 'Madison, WI',
+    dates: 'Jul 2026 - Present',
+    bullets: [
+      'WISCURDS - Farm2Facts Project',
+    ],
+  },
+  {
     title: 'Software Engineer Intern',
     org: 'Carboncopies Foundation',
     url: 'https://carboncopies.org/',
-    location: 'San Fransisco, CA (Remote)',
-    dates: 'June 2026 – Present',
-    bullets: ["Web Dev and LLM's"],
+    location: 'San Francisco, CA (Remote)',
+    dates: 'Jun 2026 – Present',
+    bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge eval framework, and developed Google OAuth for a members-only portal."],
   },
   {
     title: 'Research Assistant',
     org: 'Niedenthal Emotions Lab',
     url: 'https://www.niedenthalemotionslab.com/',
     location: 'Madison, WI',
-    dates: 'June 2026 – Present',
+    dates: 'Jun 2026 – Present',
     bullets: [
-      'Built a face- and voice-morphing video conferencing app for facial/vocal synchrony research, architected manual and reactive modes, and developed an admissions-bias research simulator.',
+      'Built a face- and voice-morphing video conferencing app for facial/vocal synchrony research, developed manual and reactive modes, automated cross platform releases, and developed an admissions-bias research simulator.',
     ],
   },
   {
@@ -63,7 +73,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Mar 2026 – May 2026',
     bullets: [
-      'Completed ARENA and BlueDot based curricula amd analyzed 8+ papers on mechanistic interpretability, scalable oversight, alignment, and evals.',
+      'Completed ARENA and BlueDot based curricula and analyzed 8+ papers on mechanistic interpretability, scalable oversight, alignment, and evals.',
     ],
   },
   {
@@ -73,7 +83,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [
-      'Built stop bar detection algorithm and developed BEV obstacle mapping with ego-motion-based static/dynamic classification for an autonomous vehicle.',
+      'Built stop bar detection algorithm and developed BEV obstacle mapping with ego-trajectory-based static/dynamic classification for an autonomous vehicle.',
     ],
   },
   {
