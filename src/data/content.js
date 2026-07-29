@@ -7,7 +7,7 @@ export const profile = {
   gpa: '4.0 / 4.0',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
-    "I currently work as a Research Assistant at UW-Madison's DSI on the Farm2Facts project, a Software Engineer Intern at the Carboncopies Foundation, and a Research Assistant at the Niedenthal Emotions Lab.",
+    "I currently work as a Research Assistant at UW–Madison's Data Science Institute (Farm2Facts) and the Niedenthal Emotions Lab, and as a Software Engineer Intern at the Carboncopies Foundation.",
     "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks, Badger Build Fest, and a Claude hackathon.",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
@@ -40,12 +40,12 @@ export const education = [
 export const experience = [
   {
     title: 'Research Assistant',
-    org: 'UW-Madison DSI',
+    org: 'Farm2Facts',
     url: 'https://farm2facts.org/',
     location: 'Madison, WI',
     dates: 'Jul 2026 - Present',
     bullets: [
-      'WISCURDS - Farm2Facts Project',
+      '',
     ],
   },
   {
@@ -213,23 +213,21 @@ export const projects = [
 ];
 
 export const skills = {
-  Languages: ['Python', 'JavaScript', 'Java', 'SQL', 'Dart', 'HTML', 'CSS'],
-  'Frameworks (SWE)': [
+  Languages: ['Python', 'JavaScript', 'TypeScript', 'Java', 'SQL', 'HTML', 'CSS'],
+  'Frameworks & Libraries:': [
     'React',
     'Next.js',
+    'Node.js',
+    'Express.js',
     'FastAPI',
     'Flask',
-    'Flutter',
-    'JavaFX',
-    'JUnit',
   ],
-  'Frameworks (AI/ML)': ['PyTorch', 'NumPy', 'Pandas', 'Matplotlib'],
+  'AI/ML': ['RAG', 'PyTorch', 'Skicit-learn', 'NumPy', 'Pandas', 'Matplotlib'],
   'Developer Tools': [
     'Git',
-    'GitHub',
+    'GitHub Actions',
     'Docker',
-    'Firebase',
-    'Supabase',
     'Vercel',
+    'Render',
   ],
 };
