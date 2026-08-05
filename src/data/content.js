@@ -63,7 +63,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Jun 2026 – Present',
     bullets: [
-      'Built a face- and voice-morphing video conferencing app for facial/vocal synchrony research, developed manual and reactive modes, automated cross platform releases, and developed an admissions-bias research simulator.',
+      'Built a face- and voice-morphing video conferencing app for facial/vocal synchrony research, developed manual and reactive modes, automated cross platform releases, and also developed an admissions-bias research simulator.',
     ],
   },
   {
@@ -73,7 +73,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Mar 2026 – May 2026',
     bullets: [
-      'Completed ARENA and BlueDot based curricula and analyzed 8+ papers on mechanistic interpretability, scalable oversight, alignment, and evals.',
+      "Completed a program based on BlueDot's AI Safety Fundamentals Technical Track, covering interpretability, alignment, evals, AI control, and governance.",
     ],
   },
   {
@@ -83,7 +83,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [
-      'Built stop bar detection algorithm and developed BEV obstacle mapping with ego-trajectory-based static/dynamic classification for an autonomous vehicle.',
+      'Built a stop bar detection algorithm and developed BEV obstacle mapping with ego-trajectory-based static/dynamic classification for an autonomous vehicle.',
     ],
   },
   {
@@ -222,7 +222,7 @@ export const skills = {
     'FastAPI',
     'Flask',
   ],
-  'AI/ML': ['RAG', 'PyTorch', 'Skicit-learn', 'NumPy', 'Pandas', 'Matplotlib'],
+  'AI/ML': ['RAG', 'PyTorch', 'Scikit-learn', 'NumPy', 'Pandas', 'Matplotlib'],
   'Developer Tools': [
     'Git',
     'GitHub Actions',
