@@ -8,7 +8,7 @@ export function About() {
       <div className="about-intro">
         <img
           className="about-avatar"
-          src="/images/aditya.jpg"
+          src="/images/profile-picture.jpg"
           alt={profile.name}
         />
         <section className="about-section about-overview">
