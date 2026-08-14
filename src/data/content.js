@@ -133,7 +133,7 @@ export const projects = [
     video: 'https://youtu.be/jfsXk_WrzzQ',
   },
   {
-    title: 'Anything Goes Poker',
+    title: 'PlayPoker',
     tagline: 'Real-time multiplayer poker',
     blurb:
       'A self-hosted poker room where a host shares a link and the server runs dealing, blinds, side pots, and 10+ game variants for up to 8 players.',
@@ -146,9 +146,9 @@ export const projects = [
       'Express',
       'Socket.IO',
     ],
-    link: 'https://github.com/aditya-harsh11/Card-Room',
+    link: 'https://github.com/aditya-harsh11/playpoker',
     links: [
-      { label: 'Live Demo', url: 'https://anything-goes-poker.onrender.com/' },
+      { label: 'Live Demo', url: 'https://playpoker.onrender.com/' },
     ],
   },
   {
