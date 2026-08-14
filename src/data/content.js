@@ -17,7 +17,7 @@ export const profile = {
 export const contact = {
   email: 'harshavardha@wisc.edu',
   github: 'https://github.com/aditya-harsh11',
-  linkedin: 'https://linkedin.com/in/aditya-harshavardhan11',
+  linkedin: 'https://linkedin.com/in/aditya-harsh11',
   location: 'Madison, WI and Bangalore, India',
 };
 

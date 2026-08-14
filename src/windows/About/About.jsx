@@ -97,7 +97,7 @@ export function About() {
         <ul className="contact-mini">
           <li>📧 <a href={gmailCompose('Hello Aditya', introBody)} target="_blank" rel="noreferrer">{contact.email}</a></li>
           <li>🐱 <a href={contact.github} target="_blank" rel="noreferrer">github.com/aditya-harsh11</a></li>
-          <li>💼 <a href={contact.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/aditya-harshavardhan11</a></li>
+          <li>💼 <a href={contact.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/aditya-harsh11</a></li>
         </ul>
       </section>
     </div>

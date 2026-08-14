@@ -224,7 +224,7 @@ export function LinksPage({ navigate }) {
       <h2 className="ie-h2">Find me (for real)</h2>
       <ul className="ie-nav-list">
         <li><a className="ie-a" href="https://github.com/aditya-harsh11" target="_blank" rel="noreferrer">GitHub</a> — my actual code</li>
-        <li><a className="ie-a" href="https://linkedin.com/in/aditya-harshavardhan11" target="_blank" rel="noreferrer">LinkedIn</a> — for the recruiters</li>
+        <li><a className="ie-a" href="https://linkedin.com/in/aditya-harsh11" target="_blank" rel="noreferrer">LinkedIn</a> — for the recruiters</li>
         <li><a className="ie-a" href={gmailCompose('Hello Aditya', introBody)} target="_blank" rel="noreferrer">Email</a> — {contact.email}</li>
       </ul>
 

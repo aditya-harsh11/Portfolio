@@ -124,7 +124,7 @@ export const desktopIcons = [
     label: 'LinkedIn',
     emoji: '💼',
     image: '/images/icons/linkedin.png',
-    link: 'https://linkedin.com/in/aditya-harshavardhan11',
+    link: 'https://linkedin.com/in/aditya-harsh11',
   },
 ];
 
