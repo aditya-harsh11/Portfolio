@@ -7,7 +7,7 @@ export const profile = {
   gpa: '4.0 / 4.0',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
-    "I currently work as a Research Assistant at UW–Madison's Data Science Institute (Farm2Facts) and the Niedenthal Emotions Lab, and as a Software Engineer Intern at the Carboncopies Foundation.",
+    "I currently work as a Research Assistant at UW–Madison's Data Science Institute (Farm2Facts) and at the Niedenthal Emotions Lab.",
     "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks, Badger Build Fest, and a Claude hackathon.",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
@@ -49,14 +49,6 @@ export const experience = [
     ],
   },
   {
-    title: 'Software Engineer Intern',
-    org: 'Carboncopies Foundation',
-    url: 'https://carboncopies.org/',
-    location: 'San Francisco, CA (Remote)',
-    dates: 'Jun 2026 – Present',
-    bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge eval framework, and developed Google OAuth for a members-only portal."],
-  },
-  {
     title: 'Research Assistant',
     org: 'Niedenthal Emotions Lab',
     url: 'https://www.niedenthalemotionslab.com/',
@@ -65,6 +57,14 @@ export const experience = [
     bullets: [
       'Built a face- and voice-morphing video conferencing app for facial/vocal synchrony research, developed manual and reactive modes, automated cross platform releases, and also developed an admissions-bias research simulator.',
     ],
+  },
+  {
+    title: 'Software Engineer Intern',
+    org: 'Carboncopies Foundation',
+    url: 'https://carboncopies.org/',
+    location: 'San Francisco, CA (Remote)',
+    dates: 'Jun 2026 – Present',
+    bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge eval framework, and developed Google OAuth for a members-only portal."],
   },
   {
     title: 'AI Safety Fellow',
