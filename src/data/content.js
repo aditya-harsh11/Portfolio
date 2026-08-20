@@ -177,7 +177,7 @@ export const projects = [
       'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, playable games, etc.',
     stack: ['React', 'Vite', 'JavaScript', 'Zustand', 'react-rnd', 'Tailwind'],
     link: 'https://github.com/aditya-harsh11/Portfolio',
-    links: [{ label: 'Live Demo', url: 'https://aditya-bio.vercel.app/' }],
+    links: [{ label: 'Live Site', url: 'https://aditya-harsh.vercel.app/' }],
   },
   {
     title: 'Phanta',

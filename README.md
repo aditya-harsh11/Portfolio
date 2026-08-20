@@ -16,7 +16,7 @@ folder has nine playable mini-games. Clippy occasionally pops up with
 opinions. There's a BSOD, a Matrix mode, a Konami code, and a fake hacker
 sequence — among other things you'll have to find yourself.
 
-The live site lives at: https://aditya-bio.vercel.app.
+The live site lives at: https://aditya-harsh.vercel.app.
 
 ## What's in it
 

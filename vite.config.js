@@ -9,7 +9,7 @@ export default defineConfig({
       // /api/* is a Vercel serverless function (api/visits.js), which plain
       // `vite dev` doesn't execute locally — forward to the live deployment.
       '/api': {
-        target: 'https://aditya-bio.vercel.app',
+        target: 'https://aditya-harsh.vercel.app',
         changeOrigin: true,
       },
     },
