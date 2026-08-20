@@ -25,13 +25,16 @@ export const education = [
   {
     school: 'University of Wisconsin-Madison',
     degree: 'B.S. Computer Science',
-    dates: 'Aug 2025 - May 2028 (expected)',
+    dates: 'Sept 2025 - May 2028 (expected)',
     gpa: '4.0 / 4.0',
     coursework: [
       'Data Structures & Algorithms',
+      'Big Data Systems',
+      'Machine Organization and Programming',
+      'AI Assisted Software Development',
       'Object-Oriented Programming',
-      'Computer Architecture',
       'Discrete Mathematics',
+      'Linear Algebra',
       'Calculus',
     ],
   },
@@ -55,7 +58,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Jun 2026 – Present',
     bullets: [
-      'Built a face- and voice-morphing video conferencing app for facial/vocal synchrony research, developed manual and reactive modes, automated cross platform releases, and also developed an admissions-bias research simulator.',
+      'Built a face/voice morphing video conferencing app for synchrony research, reduced latency from 4s to real time, developed manual and reactive modes, and automated cross platform releases',
     ],
   },
   {
@@ -64,7 +67,7 @@ export const experience = [
     url: 'https://carboncopies.org/',
     location: 'Remote',
     dates: 'Jun 2026 – Aug 2026',
-    bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge eval framework, and developed Google OAuth for a members-only portal."],
+    bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge benchmark, and developed Google OAuth for a members-only portal."],
   },
   {
     title: 'AI Safety Fellow',
@@ -93,7 +96,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [
-      'Built data pipelines for 125,000+ records, trained machine learning models to predict youth disengagement, and analyzed 4+ years of attendance data to identify dropout patterns.',
+      'Built ETL pipelines for 125,000+ records, trained machine learning models to predict youth disengagement, and analyzed 4+ years of attendance data to identify dropout patterns.',
     ],
   },
 ];
@@ -103,7 +106,7 @@ export const projects = [
     title: 'ArcFlow',
     tagline: '1st Place · MadData 26 (Qualcomm-sponsored)',
     blurb:
-      'A node-based AI pipeline editor that runs multimodal models on-device.',
+      'A drag-and-drop app for building AI pipelines on device.',
     stack: [
       'Next.js',
       'React Flow',
@@ -120,7 +123,7 @@ export const projects = [
     title: 'Unsilenced',
     tagline: '1st Place, Fish Audio Track · MadHacks 2025',
     blurb:
-      'A hands-free AAC tool restoring vocal identity for non-verbal users using real-time facial emotion detection.',
+      'A hands-free AAC tool restoring vocal identity for non-verbal users using real-time emotion detection.',
     stack: [
       'Next.js',
       'TypeScript',
@@ -136,7 +139,7 @@ export const projects = [
     title: 'PlayPoker',
     tagline: 'Real-time multiplayer poker',
     blurb:
-      'A self-hosted poker room where a host shares a link and the server runs dealing, blinds, side pots, and 10+ game variants for up to 8 players.',
+      'Self-hosted poker rooms where the server runs dealing, blinds, side pots, etc. 12+ game variants for up to 8 players.',
     stack: [
       'React',
       'Vite',
@@ -171,7 +174,7 @@ export const projects = [
     title: 'This Portfolio',
     tagline: 'You are here',
     blurb:
-      'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, and playable games.',
+      'A retro Windows 95-themed portfolio featuring desktop windows, a working terminal, an interactive file system, playable games, etc.',
     stack: ['React', 'Vite', 'JavaScript', 'Zustand', 'react-rnd', 'Tailwind'],
     link: 'https://github.com/aditya-harsh11/Portfolio',
     links: [{ label: 'Live Demo', url: 'https://aditya-bio.vercel.app/' }],
@@ -218,15 +221,18 @@ export const skills = {
     'React',
     'Next.js',
     'Node.js',
-    'Express.js',
+    'Express',
     'FastAPI',
     'Flask',
+    'Scikit-learn',
+    'NumPy',
+    'Pandas',
+    'Chroma DB',
   ],
-  'AI/ML': ['RAG', 'PyTorch', 'Scikit-learn', 'NumPy', 'Pandas', 'Matplotlib'],
   'Developer Tools': [
-    'Git',
-    'GitHub Actions',
     'Docker',
+    'GitHub Actions',
+    'Git',
     'Vercel',
     'Render',
   ],
