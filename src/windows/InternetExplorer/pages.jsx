@@ -404,7 +404,6 @@ export function EasterEggsPage({ navigate }) {
 
       <h2 className="ie-h2">Other</h2>
       <ul className="ie-nav-list">
-        <li><strong>Login screen</strong> — on first visit. Classic Win95 move: the <em>Cancel</em> button logs you in anyway.</li>
         <li><strong>Visitor counter</strong> — in the taskbar, bottom-right</li>
         <li><strong>Popup ads</strong> — show up ~12 seconds after opening this browser</li>
         <li><strong>Web ring buttons</strong> — &quot;Random&quot; might take you somewhere unexpected</li>

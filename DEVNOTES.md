@@ -66,8 +66,7 @@ src/
 │   │   ├── BSOD.jsx
 │   │   ├── Matrix.jsx
 │   │   ├── Confetti.jsx
-│   │   ├── Clippy.jsx      Pinned bottom-right assistant; localStorage-disable
-│   │   └── Login.jsx        Win95 "Welcome to AdityaOS" login gate; shows every visit
+│   │   └── Clippy.jsx      Pinned bottom-right assistant; localStorage-disable
 │   └── Mobile/MobileView.jsx   <768px fallback
 │
 ├── windows/                One subfolder per window
@@ -187,7 +186,6 @@ to the 2-column layout).
 - Clippy sayings: `src/components/Overlays/Clippy.jsx` → `SAYINGS`
 - BSOD error codes: `src/components/Overlays/BSOD.jsx` → `ERRORS`
 - Terminal fortunes / banner / boot: `src/windows/Terminal/Terminal.jsx`
-- Login screen copy: `src/components/Overlays/Login.jsx` (title + prompt strings)
 - Music tracks: `src/windows/MusicPlayer/MusicPlayer.jsx` → `TRACKS`
 - Wallpaper presets: `src/windows/Settings/Settings.jsx` → `WALLPAPERS`
 - All bio/projects/skills/contact: `src/data/content.js`
@@ -261,10 +259,10 @@ effects. Overlays: BSOD, Matrix canvas rain, Konami → Confetti.
 8 more games (Minesweeper, Tetris, G2048, Pong, Breakout, Memory, Gomoku,
 LightsOut). Games hub launcher at `windows/GamesHub/` (case-distinct from
 `games/` — see Gotchas). MusicPlayer Winamp-mock. DesktopPet
-overlays. First-run login gate (the Login overlay — see Phase 11).
-VisitorCounter — originally
+overlays. VisitorCounter — originally
 localStorage-only (Claude sandbox refused the third-party fetch); now
-wired to `counterapi.dev` for a global count (see Phase 10).
+wired to `counterapi.dev` for a global count (see Phase 10, migrated to
+v2 in Phase 12).
 
 ### Phase 4: polish
 Games + MusicPlayer wrapped in `React.lazy` + Suspense — each game ships as
@@ -539,6 +537,28 @@ Originally an uncommitted set of tweaks. Landed in the Polish Round commit.
   the IE homepage). Tripod web-ring URLs now route to the archived gravestone
   page instead of a generic 404.
 
+### Phase 12: Login screen removed, visitor counter migrated to v2
+
+- **Login screen removed.** Deleted `Login.jsx`/`Login.css` and the
+  `<Login />` mount in `App.jsx`; the app now boots straight to the
+  desktop. Also removed the now-orphaned `public/images/icons/login-key.png`
+  and the "Login screen" line on the IE Easter Eggs page
+  (`pages.jsx`).
+- **Visitor counter: v1 → v2.** The **v1** CounterAPI endpoint referenced in
+  Phase 10 above is dead — CounterAPI shut it down entirely (`410 Gone`,
+  not just deprecated). Migrated to **v2**, which requires an
+  `Authorization: Bearer` header. v2's CORS policy blocks that header from
+  browser requests outright, so a direct client-side call 405/CORS-fails
+  in every browser, not just locally. Fix: added `api/visits.js`, a Vercel
+  serverless function that holds `COUNTER_API_KEY` (set in the Vercel
+  dashboard env vars) and proxies `up`/get calls; `VisitorCounter.jsx` now
+  calls `/api/visits` instead of counterapi.dev directly, so no key ships
+  in the client bundle. Also added a Vite dev-server proxy
+  (`vite.config.js`) forwarding `/api/*` to the live Vercel deployment,
+  since plain `vite dev` doesn't execute serverless functions locally.
+  New workspace/counter: `adityas-team-1-5182/portfolio-website-aditya`
+  (the old `aditya-portfolio/visits` v1 counter's history is unrecoverable).
+
 ---
 
 ## 4. Gotchas
@@ -637,7 +657,6 @@ to apply without re-asking:
   those alone unless they explicitly ask for changes.
 - **Game tuning**: Pong / Breakout slow (~30% slower than naive
   defaults). Snake scores 1 per food, not 10.
-- **Login screen**: single OK button, no autofill, shows on every visit.
 - **Cursor**: old-Windows style (white arrow + hand SVGs) globally.
 - **Icon look**: 2-column layout, ~48px glyphs. Real images for GitHub
   (animated gif) and LinkedIn.
@@ -668,7 +687,6 @@ to apply without re-asking:
 | Fake FS structure | `src/data/fileSystem.js` |
 | Clippy sayings + show/dismiss timing | `src/components/Overlays/Clippy.jsx` |
 | BSOD error codes | `src/components/Overlays/BSOD.jsx` → `ERRORS` |
-| Login screen copy / behavior | `src/components/Overlays/Login.jsx` |
 | Terminal commands + banner + fortunes | `src/windows/Terminal/Terminal.jsx` |
 | Music Player tracks | `src/windows/MusicPlayer/MusicPlayer.jsx` → `TRACKS` |
 | Wallpaper presets | `src/windows/Settings/Settings.jsx` → `WALLPAPERS` |
