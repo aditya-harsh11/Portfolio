@@ -3,13 +3,14 @@ import './VisitorCounter.css';
 
 const KEY = 'visitorCount';
 const SESSION_FLAG = 'visitCounted';
-const ENDPOINT = 'https://api.counterapi.dev/v1/aditya-portfolio/visits';
+const ENDPOINT = '/api/visits';
 
 function pad(n, len) {
   return n.toString().padStart(len, '0');
 }
 
-// Global visit counter via counterapi.dev (free, no auth).
+// Global visit counter, proxied through /api/visits (see api/visits.js) so
+// the CounterAPI key stays server-side.
 // Increments once per browser session (sessionStorage de-dupes refreshes).
 // Falls back to last cached value if the API is unreachable.
 export function VisitorCounter() {
@@ -20,7 +21,7 @@ export function VisitorCounter() {
 
   useEffect(() => {
     const shouldIncrement = sessionStorage.getItem(SESSION_FLAG) !== '1';
-    const url = shouldIncrement ? `${ENDPOINT}/up` : `${ENDPOINT}/`;
+    const url = shouldIncrement ? `${ENDPOINT}?up=1` : ENDPOINT;
     fetch(url)
       .then((r) => r.json())
       .then((j) => {
