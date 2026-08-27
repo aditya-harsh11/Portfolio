@@ -7,7 +7,7 @@ export const profile = {
   gpa: '4.0 / 4.0',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
-    "I currently work as a Research Assistant at UW–Madison's Data Science Institute (Farm2Facts) and the Niedenthal Emotions Lab.",
+    "I currently work as an AI/Technical Builder at Tech Exploration Lab and as a Research Assistant at Farm2Facts and Niedenthal Emotions Lab.",
     "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks, Badger Build Fest, and a Claude hackathon.",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
@@ -34,7 +34,6 @@ export const education = [
       'AI Assisted Software Development',
       'Object-Oriented Programming',
       'Discrete Mathematics',
-      'Linear Algebra',
       'Calculus',
     ],
   },
@@ -42,13 +41,23 @@ export const education = [
 
 export const experience = [
   {
+    title: 'AI/Technical Builder',
+    org: 'Tech Exploration Lab',
+    url: 'https://techexplorationlab.wisc.edu/',
+    location: 'Madison, WI',
+    dates: 'Aug 2026 - Present',
+    bullets: [
+      'Solving real-world problems through rapid experimentation with applied AI and emerging technology. Partnering with companies to test and iterate from concept to prototype.',
+    ],
+  },
+  {
     title: 'Research Assistant',
     org: 'Farm2Facts',
     url: 'https://farm2facts.org/',
     location: 'Madison, WI',
     dates: 'Jul 2026 - Present',
     bullets: [
-      '',
+      'Integrating Mesonet weather data and building dashboard features for an open-source Ruby platform serving 100+ specialty crop farmers across 5 states.',
     ],
   },
   {
