@@ -7,7 +7,7 @@ export const profile = {
   gpa: '4.0 / 4.0',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
-    "I currently work as an AI/Technical Builder at Tech Exploration Lab and as a Research Assistant at Farm2Facts and Niedenthal Emotions Lab.",
+    "I currently work as an AI/Technical Builder at Tech Exploration Lab and as a Research Software Engineer at the Data Science Institute and Niedenthal Emotions Lab.",
     "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks, Badger Build Fest, and a Claude hackathon.",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
@@ -42,8 +42,7 @@ export const education = [
 export const experience = [
   {
     title: 'AI/Technical Builder',
-    org: 'Tech Exploration Lab',
-    url: 'https://techexplorationlab.wisc.edu/',
+    org: 'UW-Madison — Tech Exploration Lab',
     location: 'Madison, WI',
     dates: 'Aug 2026 - Present',
     bullets: [
@@ -51,19 +50,17 @@ export const experience = [
     ],
   },
   {
-    title: 'Research Assistant',
-    org: 'Farm2Facts',
-    url: 'https://farm2facts.org/',
+    title: 'Research Software Engineer',
+    org: 'UW-Madison — Data Science Institute',
     location: 'Madison, WI',
     dates: 'Jul 2026 - Present',
     bullets: [
-      'Integrating Mesonet weather data and building dashboard features for an open-source Ruby platform serving 100+ specialty crop farmers across 5 states.',
+      'Farm2Facts via Wiscurds: Integrating Mesonet weather data and building dashboard features for an open-source Ruby platform serving 100+ specialty crop farmers across 5 states.',
     ],
   },
   {
-    title: 'Research Assistant',
-    org: 'Niedenthal Emotions Lab',
-    url: 'https://www.niedenthalemotionslab.com/',
+    title: 'Research Software Engineer',
+    org: 'UW-Madison — Niedenthal Emotions Lab',
     location: 'Madison, WI',
     dates: 'Jun 2026 – Present',
     bullets: [
@@ -73,7 +70,6 @@ export const experience = [
   {
     title: 'Software Engineer Intern',
     org: 'Carboncopies Foundation',
-    url: 'https://carboncopies.org/',
     location: 'Remote',
     dates: 'Jun 2026 – Aug 2026',
     bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge benchmark, and developed Google OAuth for a members-only portal."],
@@ -81,7 +77,6 @@ export const experience = [
   {
     title: 'AI Safety Fellow',
     org: 'Wisconsin AI Safety Initiative',
-    url: 'https://waisi.org/',
     location: 'Madison, WI',
     dates: 'Mar 2026 – May 2026',
     bullets: [
@@ -91,7 +86,6 @@ export const experience = [
   {
     title: 'Perception Engineer',
     org: 'Wisconsin Autonomous',
-    url: 'https://wa.wisc.edu/',
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [
@@ -101,7 +95,6 @@ export const experience = [
   {
     title: 'Data Engineer',
     org: 'Biokind Analytics',
-    url: 'https://www.biokind.org/',
     location: 'Madison, WI',
     dates: 'Feb 2026 – May 2026',
     bullets: [

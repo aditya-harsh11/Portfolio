@@ -65,6 +65,9 @@ export function MobileView() {
             <strong>{ed.school}</strong>
             <div className="muted">{ed.degree} · {ed.dates}</div>
             <div className="muted">GPA: {ed.gpa}</div>
+            {ed.coursework && ed.coursework.length > 0 ? (
+              <p><strong>Coursework:</strong> {ed.coursework.join(' · ')}</p>
+            ) : null}
           </div>
         ))}
       </section>

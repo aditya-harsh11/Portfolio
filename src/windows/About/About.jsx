@@ -56,20 +56,7 @@ export function About() {
               <span className="muted">{e.dates}</span>
             </div>
             <div className="about-row">
-              <em>
-                {e.url ? (
-                  <a
-                    className="about-org-link"
-                    href={e.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {e.org}
-                  </a>
-                ) : (
-                  e.org
-                )}
-              </em>
+              <em>{e.org}</em>
               <span className="muted">{e.location}</span>
             </div>
             <ul className="about-bullets">
