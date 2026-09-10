@@ -64,7 +64,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Jun 2026 – Present',
     bullets: [
-      'Built a face/voice morphing video conferencing app for synchrony research, reduced latency from 4s to real time, developed manual and reactive modes, and automated cross platform releases',
+      'Built a face/voice morphing video conferencing app for synchrony research, reduced latency from 4s to real time, developed a reactive mode, added face calibration, and automated cross platform releases',
     ],
   },
   {
@@ -95,22 +95,6 @@ export const projects = [
     video: 'https://youtu.be/ZmeUEur-WIM',
   },
   {
-    title: 'Unsilenced',
-    tagline: 'Fish Audio Track Winner · MadHacks 2025',
-    blurb:
-      'A hands-free AAC tool restoring vocal identity for non-verbal users using real-time emotion detection.',
-    stack: [
-      'Next.js',
-      'TypeScript',
-      'Flask',
-      'MediaPipe',
-      'Face API',
-      'Fish Audio',
-    ],
-    link: 'https://github.com/anishsrinivasa/MadHacks',
-    video: 'https://youtu.be/jfsXk_WrzzQ',
-  },
-  {
     title: 'PlayPoker',
     tagline: 'Real-time multiplayer poker',
     blurb:
@@ -128,6 +112,22 @@ export const projects = [
     links: [
       { label: 'Live Site', url: 'https://playpoker.onrender.com/' },
     ],
+  },
+  {
+    title: 'Unsilenced',
+    tagline: 'Fish Audio Track Winner · MadHacks 2025',
+    blurb:
+      'A hands-free AAC tool restoring vocal identity for non-verbal users using real-time emotion detection.',
+    stack: [
+      'Next.js',
+      'TypeScript',
+      'Flask',
+      'MediaPipe',
+      'Face API',
+      'Fish Audio',
+    ],
+    link: 'https://github.com/anishsrinivasa/MadHacks',
+    video: 'https://youtu.be/jfsXk_WrzzQ',
   },
   {
     title: 'Centralized Event Dashboard',
