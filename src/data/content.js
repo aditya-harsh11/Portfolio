@@ -7,7 +7,7 @@ export const profile = {
   gpa: '4.0 / 4.0',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin-Madison majoring in Computer Science.",
-    "I currently work as an AI Engineer at Tech Exploration Lab and as a Research Software Engineer at the Data Science Institute and Niedenthal Emotions Lab.",
+    "I work as an AI Engineer at the Tech Exploration Lab, a Software Engineer at the Data Science Institute, and a Research Software Engineer at the Niedenthal Emotions Lab.",
     "Outside of class, I've spent a lot of time building software through hackathons. I've won MadData 26, MadHacks 25, Badger Build Fest 25, and a Claude hackathon.",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball. Go Lakers!",
   ],
@@ -42,16 +42,16 @@ export const education = [
 export const experience = [
   {
     title: 'AI Engineer',
-    org: 'UW-Madison — Tech Exploration Lab',
+    org: 'Tech Exploration Lab',
     location: 'Madison, WI',
-    dates: 'Aug 2026 - Present',
+    dates: 'Sep 2026 - Present',
     bullets: [
       'Solving real-world problems through rapid experimentation with applied AI and emerging technology. Partnering with companies to test and iterate from concept to prototype.',
     ],
   },
   {
-    title: 'Research Software Engineer',
-    org: 'UW-Madison — Data Science Institute',
+    title: 'Software Engineer',
+    org: 'Data Science Institute',
     location: 'Madison, WI',
     dates: 'Jul 2026 - Present',
     bullets: [
@@ -60,7 +60,7 @@ export const experience = [
   },
   {
     title: 'Research Software Engineer',
-    org: 'UW-Madison — Niedenthal Emotions Lab',
+    org: 'Dept. of Psychology — Niedenthal Emotions Lab',
     location: 'Madison, WI',
     dates: 'Jun 2026 – Present',
     bullets: [
