@@ -133,22 +133,6 @@ export const projects = [
     video: 'https://youtu.be/jfsXk_WrzzQ',
   },
   {
-    title: 'Centralized Event Dashboard',
-    tagline: 'UW Undergraduate Projects Lab',
-    blurb:
-      'An app that collects campus events from emails, discord, and flyers into one easy-to-use calendar.',
-    stack: [
-      'SvelteKit',
-      'TypeScript',
-      'Flask',
-      'Python',
-      'SQLite',
-      'AWS EC2',
-      'Gemini',
-    ],
-    link: 'https://github.com/albertw7711/Morgridge-Centralized-Event-Dashboard',
-  },
-  {
     title: 'This Portfolio',
     tagline: 'You are here',
     blurb:
