@@ -144,24 +144,30 @@ export const projects = [
 ];
 
 export const skills = {
-  Languages: ['Python', 'JavaScript', 'TypeScript', 'Java', 'SQL', 'HTML', 'CSS'],
+  'Languages:': ['Python', 'TypeScript', 'JavaScript', 'Java', 'SQL', 'HTML', 'CSS'],
   'Frameworks & Libraries:': [
     'React',
     'Next.js',
     'Node.js',
-    'Express',
+    'Express.js',
     'FastAPI',
     'Flask',
+    'Socket.IO',
+  ],
+  'AI/ML': [
+    'PyTorch',
     'Scikit-learn',
     'NumPy',
     'Pandas',
+    'MediaPipe',
     'Chroma DB',
   ],
   'Developer Tools': [
+    'Git',
     'Docker',
     'GitHub Actions',
-    'Git',
+    'GCP',
+    'Redis',
     'Vercel',
-    'Render',
   ],
 };
