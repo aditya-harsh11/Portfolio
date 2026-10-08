@@ -98,19 +98,22 @@ export const projects = [
     title: 'PlayPoker',
     tagline: 'Real-time multiplayer poker',
     blurb:
-      'Self-hosted poker rooms where the server runs dealing, blinds, side pots, etc. 12+ game variants for up to 8 players.',
+      'Self-hosted poker rooms where the server runs dealing, blinds, side pots, etc. 12+ game variants for up to 8 players. Got hooked on distributed systems, so it now runs on 3 servers.',
     stack: [
       'React',
       'Vite',
       'Tailwind',
       'TypeScript',
-      'Node.js',
       'Express',
       'Socket.IO',
+      'Redis',
+      'Nginx',
+      'Docker',
+      'GCP',
     ],
     link: 'https://github.com/aditya-harsh11/playpoker',
     links: [
-      { label: 'Live Site', url: 'https://playpoker.onrender.com/' },
+      { label: 'Live Site', url: 'http://playpoker.duckdns.org/' },
     ],
   },
   {
