@@ -46,7 +46,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Sep 2026 - Present',
     bullets: [
-      'Solving real-world problems through rapid experimentation with applied AI and emerging technology. Partnering with companies to test and iterate from concept to prototype.',
+      
     ],
   },
   {
@@ -55,7 +55,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Jul 2026 - Present',
     bullets: [
-      'Farm2Facts via Wiscurds: Integrating Mesonet weather data and building dashboard features for an open-source Ruby platform serving 100+ crop farmers across 5 states.',
+      
     ],
   },
   {
