@@ -118,7 +118,7 @@ export const projects = [
   },
   {
     title: 'Fixing the Poisoned Well',
-    tagline: 'UW Madison ML + X Challenge',
+    tagline: 'UW Madison ML + X',
     blurb:
       'Found and removed a hidden backdoor from a river-flow forecasting AI that predicted 14% fake water.',
     stack: ['Python', 'PyTorch', 'NumPy', 'SciPy', 'Pandas'],
@@ -152,7 +152,7 @@ export const projects = [
 ];
 
 export const skills = {
-  'Languages:': ['Python', 'TypeScript', 'JavaScript', 'Java', 'SQL', 'HTML', 'CSS'],
+  'Languages:': ['Python', 'TypeScript', 'JavaScript', 'Java', 'C', 'SQL', 'HTML', 'CSS'],
   'Frameworks & Libraries:': [
     'React',
     'Next.js',
@@ -164,7 +164,7 @@ export const skills = {
   ],
   'AI/ML': [
     'PyTorch',
-    'Scikit-learn',
+    'scikit-learn',
     'NumPy',
     'Pandas',
     'MediaPipe',
@@ -175,6 +175,8 @@ export const skills = {
     'Docker',
     'GitHub Actions',
     'GCP',
+    'PostgreSQL',
+    'SQLite',
     'Redis',
     'Vercel',
   ],
