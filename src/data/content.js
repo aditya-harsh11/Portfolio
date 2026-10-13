@@ -117,6 +117,14 @@ export const projects = [
     ],
   },
   {
+    title: 'Fixing the Poisoned Well',
+    tagline: 'UW Madison ML + X Challenge',
+    blurb:
+      'Found and removed a hidden backdoor from a river-flow forecasting AI that predicted 14% fake water.',
+    stack: ['Python', 'PyTorch', 'NumPy', 'SciPy', 'Pandas'],
+    link: 'https://github.com/aditya-harsh11/fixing-the-poisoned-well',
+  },
+  {
     title: 'Unsilenced',
     tagline: 'Fish Audio Track Winner · MadHacks 2025',
     blurb:
