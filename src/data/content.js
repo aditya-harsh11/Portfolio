@@ -71,7 +71,7 @@ export const experience = [
     title: 'Research Assistant',
     org: 'UW Dept. of Psychology — Niedenthal Emotions Lab',
     location: 'Madison, WI',
-    dates: 'Jun 2026 – Present',
+    dates: 'Jun 2026 - Present',
     bullets: [
       'Built a face/voice morphing video conferencing app for synchrony research, reduced latency from 4s to real time, developed a reactive mode, added face calibration, and automated cross platform releases',
     ],
@@ -80,8 +80,8 @@ export const experience = [
     title: 'Software Engineer Intern',
     org: 'Carboncopies Foundation',
     location: 'Remote',
-    dates: 'Jun 2026 – Aug 2026',
-    bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge benchmark, and developed Google OAuth for a members-only portal."],
+    dates: 'Jun 2026 - Aug 2026',
+    bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge benchmark, and developed Google OAuth for a members-only portal"],
   },
 ];
 
