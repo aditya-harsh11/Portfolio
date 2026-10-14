@@ -41,6 +41,15 @@ export const education = [
 
 export const experience = [
   {
+    title: 'Research Intern',
+    org: 'Wisconsin Center for Education Research — SimLab',
+    location: 'Madison, WI',
+    dates: 'Oct 2026 - Present',
+    bullets: [
+      
+    ],
+  },
+  {
     title: 'AI Engineer',
     org: 'UW Tech Exploration Lab',
     location: 'Madison, WI',
