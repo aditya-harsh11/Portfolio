@@ -50,7 +50,7 @@ export const experience = [
     ],
   },
   {
-    title: 'Lab Associate (AI Engineer)',
+    title: 'AI Engineer',
     org: 'UW Tech Exploration Lab',
     location: 'Madison, WI',
     dates: 'Sep 2026 - Present',
