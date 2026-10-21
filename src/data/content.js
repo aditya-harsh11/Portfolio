@@ -7,7 +7,7 @@ export const profile = {
   gpa: '4.0 / 4.0',
   bio: [
     "Hey! I'm Aditya Harshavardhan, a sophomore at the University of Wisconsin–Madison majoring in Computer Science.",
-    "I currently work across a few labs at UW–Madison, doing both research and software engineering.",
+    "I currently work across a few labs at UW–Madison, doing both research and software/ai engineering.",
     "Outside of class, I've spent a lot of time building software at hackathons, and I've won 4 of them!",
     "Most of my free time goes into building projects and strengthening my technical skills. When I'm not behind a keyboard, you can usually find me playing basketball.",
   ],
@@ -64,7 +64,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Jul 2026 - Present',
     bullets: [
-      
+      'Farm2Facts via Wiscurds'
     ],
   },
   {
@@ -73,7 +73,7 @@ export const experience = [
     location: 'Madison, WI',
     dates: 'Jun 2026 - Present',
     bullets: [
-      'Built a face/voice morphing video conferencing app for synchrony research, reduced latency from 4s to real time, developed a reactive mode, added face calibration, and automated cross platform releases',
+      'Niedenthal Emotions Lab',
     ],
   },
   {
@@ -81,7 +81,9 @@ export const experience = [
     org: 'Carboncopies Foundation',
     location: 'Remote',
     dates: 'Jun 2026 - Aug 2026',
-    bullets: ["Optimized CarbonGPT's RAG pipeline, built an LLM-as-a-judge benchmark, and developed Google OAuth for a members-only portal"],
+    bullets: [
+      
+    ],
   },
 ];
 
@@ -107,7 +109,7 @@ export const projects = [
     title: 'PlayPoker',
     tagline: 'Real-time multiplayer poker',
     blurb:
-      'Self-hosted poker rooms where the server runs dealing, blinds, side pots, etc. 12+ game variants for up to 8 players. Got hooked on distributed systems, so it now runs on 3 servers.',
+      'Self-hosted poker rooms where the server runs dealing, blinds, side pots, etc. 12+ game variants for up to 8 players.',
     stack: [
       'React',
       'Vite',
