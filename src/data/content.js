@@ -79,8 +79,17 @@ export const experience = [
   {
     title: 'Software Engineer Intern',
     org: 'Carboncopies Foundation',
-    location: 'Remote',
+    location: 'San Francisco, CA (Remote)',
     dates: 'Jun 2026 - Aug 2026',
+    bullets: [
+      
+    ],
+  },
+  {
+    title: 'Technical Fellowship',
+    org: 'Wisconsin AI Safety Initiative',
+    location: 'Madison, WI',
+    dates: 'Mar 2026 - May 2026',
     bullets: [
       
     ],
